@@ -7,6 +7,8 @@
  * Styles
  */
 #app
+  font-family: Oclock
+  background-color: $div-bgcolor
   padding: 3em
   width: 500px
   text-align: center
@@ -14,11 +16,19 @@
   border: 1px solid $border-color
 
   &-title
+    color: $link-color
     font-weight: 700
     font-size: 2em
+
+    &:hover
+      color: $link-color-hover
 
   &-content
     margin: .6em 0
     color: #55b1f3
     font-style: italic
     font-size: 1.2em
+
+.icons
+  color: $link-color
+  width: 2rem
