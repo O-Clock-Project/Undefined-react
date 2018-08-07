@@ -10,15 +10,22 @@ import React from 'react';
 
 // Styles et assets
 import './app.sass';
-import android from 'src/assets/icons/android.svg';
 
 /**
  * Code
  */
 const App = () => (
   <div id="app">
-    <h1 id="app-title">Undefined</h1>
-    <img className="icons" src={android} alt=""/>
+    <div id="navbar">navbar</div>
+    <div id="main">
+      <div id="mainLeft">
+        Main left
+      </div>
+      <div id="mainRight">
+        Main right
+      </div>
+    </div>
+    <div id="footer">footer</div>
   </div>
 );
 
