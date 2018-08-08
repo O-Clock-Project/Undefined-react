@@ -9,9 +9,6 @@ import { Provider } from 'react-redux';
 /**
  * Local import
  */
-// Style Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import App from 'src/components/App';
 // store
 import store from 'src/store';
