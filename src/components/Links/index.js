@@ -26,68 +26,74 @@ import './links.sass';
 const Links = () => (
   <div id="links">
     <div className="link">
-      <div className="link_icon"><FaSchool /></div>
       <div className="link_url">
         <a
           href="https://cockpit.oclock.io/login"
           target="_blank"
           rel="noopener noreferrer"
-        >Cockpit
+        >
+          <div className="link_icon"><FaSchool /></div>
+          <span>Cockpit</span>
         </a>
       </div>
     </div>
     <div className="link">
-      <div className="link_icon"><FaGooglePlay /></div>
       <div className="link_url">
         <a
           href="https://drive.google.com/drive/folders/1-aRtfhJ8lrzhUJQxDa6Jyp31JbEaWsKz"
           target="_blank"
           rel="noopener noreferrer"
-        >Replays
+        >
+          <div className="link_icon"><FaGooglePlay /></div>
+          <span>Replays</span>
         </a>
       </div>
     </div>
     <div className="link">
-      <div className="link_icon"><FaArchive /></div>
       <div className="link_url">
         <a
           href="https://github.com/O-clock-Alumni/fiches-recap"
           target="_blank"
           rel="noopener noreferrer"
-        >Fiches récap
+        >
+          <div className="link_icon"><FaArchive /></div>
+          <span>Fiches récap.</span>
         </a>
       </div>
     </div>
     <div className="link">
-      <div className="link_icon"><FaGoogleDrive /></div>
       <div className="link_url">
         <a
           href="https://drive.google.com/drive/folders/1-OZEtWXMGgaOaFmSeaJAbatRok_UT2DJ"
           target="_blank"
           rel="noopener noreferrer"
-        >Drive
+        >
+          <div className="link_icon"><FaGoogleDrive /></div>
+          <span>Drive</span>
         </a>
       </div>
     </div>
     <div className="link">
-      <div className="link_icon"><FaGithub /></div>
       <div className="link_url">
         <a
           href="https://github.com/orgs/O-clock-Invaders/dashboard"
           target="_blank"
           rel="noopener noreferrer"
-        >GitHub
+        >
+          <div className="link_icon"><FaGithub /></div>
+          <span>GitHub</span>
         </a>
       </div>
     </div>
     <div className="link">
-      <div className="link_icon"><FaSlackHash /></div>
       <div className="link_url">
         <a
           href="https://oclock-invaders.slack.com"
           target="_blank"
           rel="noopener noreferrer"
-        >Slack
+        >
+          <div className="link_icon"><FaSlackHash /></div>
+          <span>Slack</span>
         </a>
       </div>
     </div>
