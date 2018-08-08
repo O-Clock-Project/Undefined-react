@@ -7,22 +7,21 @@ import React from 'react';
  * Local import
  */
 // Composants
-import Home from 'src/components/Home';
 
 
 // Styles et assets
-import './mainleft.sass';
+import './home.sass';
 
 /**
  * Code
  */
-const Mainleft = () => (
-  <div id="mainleft">
-    <Home />
+const Home = () => (
+  <div id="home">
+    Je suis la home
   </div>
 );
 
 /**
  * Export
  */
-export default Mainleft;
+export default Home;
