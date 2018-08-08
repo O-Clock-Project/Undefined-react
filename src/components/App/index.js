@@ -7,6 +7,8 @@ import React from 'react';
  * Local import
  */
 // Composants
+import Mainleft from 'src/components/Mainleft';
+import Mainright from 'src/components/Mainright';
 
 // Styles et assets
 import './app.sass';
@@ -18,12 +20,8 @@ const App = () => (
   <div id="app">
     <div id="navbar">navbar</div>
     <div id="main">
-      <div id="mainLeft">
-        Main left
-      </div>
-      <div id="mainRight">
-        Main right
-      </div>
+      <Mainleft />
+      <Mainright />
     </div>
     <div id="footer">footer</div>
   </div>
