@@ -21,6 +21,7 @@ const Home = () => (
   <div id="home">
     <h1>Invaders</h1>
     <Channel />
+    <span id="border" />
     <Links />
   </div>
 );
