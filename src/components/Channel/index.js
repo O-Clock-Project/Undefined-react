@@ -18,10 +18,20 @@ import './channel.sass';
 const Channel = () => (
   <div id="channel">
     <div className="message">
-      Je suis un message
+      <span className="message_author">
+        Benoclock :
+      </span>
+      <span className="messagecontent">
+        Allez travailler bande de feignants !
+      </span>
     </div>
     <div className="message">
-      Je suis un second message
+      <span className="message_author">
+        Julien :
+      </span>
+      <span className="messagecontent">
+        Oui maître !
+      </span>
     </div>
   </div>
 );
