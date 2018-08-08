@@ -55,9 +55,9 @@ class HeaderNav extends React.Component {
         <Navbar expand="md">
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="" navbar>
+            <Nav navbar>
               <NavItem>
-                <img src={avatar} alt="" className="profile mr-4" />
+                <img src={avatar} alt="" className="profile mr-3" />
               </NavItem>
               <NavItem>
                 <NavLink href="#"><FaHome className="svg-link" /> Accueil</NavLink>
