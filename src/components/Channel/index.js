@@ -7,7 +7,7 @@ import React from 'react';
  * Local import
  */
 // Composants
-
+import Message from 'src/components/Message';
 
 // Styles et assets
 import './channel.sass';
@@ -17,22 +17,8 @@ import './channel.sass';
  */
 const Channel = () => (
   <div id="channel">
-    <div className="message">
-      <span className="message_author">
-        Benoclock :
-      </span>
-      <span className="messagecontent">
-        Allez travailler bande de feignants !
-      </span>
-    </div>
-    <div className="message">
-      <span className="message_author">
-        Julien :
-      </span>
-      <span className="messagecontent">
-        Oui maître !
-      </span>
-    </div>
+    <Message />
+    <Message />
   </div>
 );
 
