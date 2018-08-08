@@ -7,6 +7,7 @@ import React from 'react';
  * Local import
  */
 // Composants
+import HeaderNav from 'src/components/HeaderNav';
 
 // Styles et assets
 import './app.sass';
@@ -16,7 +17,7 @@ import './app.sass';
  */
 const App = () => (
   <div id="app">
-    <div id="navbar">navbar</div>
+    <div id="navbar"><HeaderNav /></div>
     <div id="main">
       <div id="mainLeft">
         Main left
