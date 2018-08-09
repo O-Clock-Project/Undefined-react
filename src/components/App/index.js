@@ -20,12 +20,18 @@ import './app.sass';
  */
 const App = () => (
   <div id="app">
-    <header id="navbar"><Nav /></header>
-    <main id="main">
-      <Mainleft />
-      <Mainright />
-    </main>
-    <Footer />
+    <div id="main_container">
+      <header id="navbar">
+        <Nav />
+      </header>
+      <main id="main">
+        <Mainleft />
+        <Mainright />
+      </main>
+    </div>
+    <div id="footer_container">
+      <Footer />
+    </div>
   </div>
 );
 
