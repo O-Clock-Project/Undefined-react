@@ -5,7 +5,6 @@ import React from 'react';
 import {
   FaHome, FaBook, FaUserCircle, FaInfoCircle,
 } from 'react-icons/fa';
-import { IoIosMenu } from 'react-icons/io';
 
 /**
  * Local import

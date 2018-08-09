@@ -2,11 +2,6 @@
  * Import
  */
 @import src/styles/vars
-
-/**
- * Variables
- */
-$break-point: 990px;
   
 /**
  * Styles
@@ -44,6 +39,7 @@ $break-point: 990px;
     display: flex
     @media screen and (max-width: $break-point)
       justify-content: space-between
+      align-items: center;
       width: 100%
 
   &-link
@@ -63,13 +59,18 @@ $break-point: 990px;
       align-self: flex-start
 
   &-burger
-    display: block
+    display: flex
+    flex-direction: column
     color: $link-color
     font-size: 2rem
     font-weight: 700
-    border: 1px solid $link-color
-    border-radius: .2rem
+    // border: 1px solid $link-color
+    // border-radius: .2rem
     cursor: pointer
+
+    &-text
+      text-align: center
+      font-size: .6rem
 
 .font-svg
   font-size: 1.3rem

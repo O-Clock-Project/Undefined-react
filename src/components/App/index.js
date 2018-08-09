@@ -10,6 +10,7 @@ import React from 'react';
 import Mainleft from 'src/components/Mainleft';
 import Mainright from 'src/components/Mainright';
 import Nav from 'src/components/Nav';
+import Footer from 'src/components/Footer';
 
 // Styles et assets
 import './app.sass';
@@ -24,7 +25,7 @@ const App = () => (
       <Mainleft />
       <Mainright />
     </main>
-    <footer id="footer">footer</footer>
+    <Footer />
   </div>
 );
 
