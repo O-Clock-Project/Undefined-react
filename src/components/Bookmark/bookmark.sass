@@ -1,0 +1,66 @@
+/**
+ * Import
+ */
+@import src/styles/vars
+
+/**
+ * Styles
+ */
+.bookmark 
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 1rem
+  padding-bottom: 1rem
+  border-bottom: 1px solid $border-color
+
+  // Bookmark identity
+  &_identity
+    display: flex
+    align-items: center
+    font-size: 1.2rem
+
+    &_support
+      margin: 0 .5rem 0 0
+
+  // Bookmark infos
+  &_infos
+    font-size: 0.9rem
+    font-style: italic
+    margin-top: 0.3rem
+
+  // Bookmark tags
+  &_tags
+    margin-top: 0.5rem
+
+    & li
+      float: left
+      padding: 0 0.5rem
+      border-right: 1px solid $border-color
+
+      &:first-child
+        margin-left: 1rem
+
+      &:last-child
+        border-right: none
+
+  // Bookmark highlight
+  &_highlight
+    display: flex
+
+    &_certificat
+      width: 46px
+
+    &_voted, &_favored
+      display: flex
+      flex-direction: column
+      justify-content: center
+      text-align: center
+      margin-left: 1rem
+      border: 1px solid $border-color
+      border-radius: 0.3rem
+      padding: 0.5rem
+
+.voted_title, .favored_title
+  font-size: smaller
+      
