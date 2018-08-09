@@ -1,0 +1,29 @@
+/**
+ * Import
+ */
+@import src/styles/vars
+
+/**
+ * Styles
+ */
+#footer
+  margin-top: 5rem
+  padding: 2.5rem 2.5rem 3.5rem
+  width: 100%
+  background-color: transparentize($div-bgcolor, 0.5)
+  display: flex
+  justify-content: center
+  @media screen and (max-width: $break-point)
+    align-items: center
+
+.footer-text
+  margin: 0 .5rem
+
+.footer-icons
+  margin: 0 .5rem
+  transition-duration: .5s
+  @media screen and (max-width: $break-point)
+    font-size: 1.5rem
+
+.footer-icons:hover
+  font-size: 1.5rem
