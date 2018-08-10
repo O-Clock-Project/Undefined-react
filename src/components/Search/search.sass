@@ -6,11 +6,19 @@
 /**
  * Styles
  */
+.search_button
+  border: 1px solid $border-color
+  border-radius: 0.3rem
+  font-size: 1rem
+  padding: 0.5rem 5rem
+  margin: 0 2rem
+  background-color: $div-bgcolor
+  font-family: inherit
+  color: inherit
+
+// Search page
 #search
   margin: 3rem 1.5rem 3rem 3rem
-  display: flex
-  flex-direction: column
-  align-items: center
 
   &_title
     text-align: center
@@ -19,6 +27,7 @@
     text-transform: uppercase
 
   &_intro
+    text-align: center
     font-size: 1rem
     margin-bottom: 3rem
 
@@ -32,15 +41,16 @@
     text-align: justify
 
   &_buttons
-    margin: 3rem 0
+    margin: 4rem 0
+    text-align: center
+  
+  // Search form component
+  &_form
+    align-self: flex-start
 
-.search_button
-  border: 1px solid $border-color
-  border-radius: 0.3rem
-  font-size: 1rem
-  padding: 0.5rem 5rem
-  margin: 0 2rem
-  background-color: $div-bgcolor
-  font-family: inherit
-  color: inherit
-
+    &_title
+      font-weight: 600
+      font-size: 1.6rem
+      border-bottom: 2px solid $border-color
+      padding-bottom: 0.5rem
+      margin-bottom: 1rem

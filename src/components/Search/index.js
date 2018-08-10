@@ -26,7 +26,6 @@ const Search = () => (
       <button type="button" className="search_button">Ajouter</button>
       <button type="button" className="search_button">Favoris</button>
     </div>
-    <span id="border" />
     <Form />
   </div>
 );
