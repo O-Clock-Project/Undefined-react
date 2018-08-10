@@ -8,6 +8,7 @@ import React from 'react';
  */
 // Composants
 import Home from 'src/components/Home';
+import Profile from 'src/containers/Profile';
 
 
 // Styles et assets
@@ -18,7 +19,8 @@ import './mainleft.sass';
  */
 const Mainleft = () => (
   <div id="mainleft">
-    <Home />
+    {/* <Home /> */}
+    <Profile />
   </div>
 );
 
