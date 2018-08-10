@@ -9,6 +9,7 @@ import React from 'react';
 // Composants
 import Home from 'src/components/Home';
 import Profile from 'src/containers/Profile';
+import Search from 'src/components/Search';
 
 
 // Styles et assets
@@ -19,8 +20,9 @@ import './mainleft.sass';
  */
 const Mainleft = () => (
   <div id="mainleft">
-    {/* <Home /> */}
-    <Profile />
+    <Home />
+    {/* <Profile /> */}
+    {/* <Search /> */}
   </div>
 );
 

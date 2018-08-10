@@ -25,7 +25,7 @@ const Bookmark = () => (
         <a href="#" className="bookmark_identity_support"><FaFilm /> </a>
         <a href="#" className="bookmark_identity_title">React.js, la révolution par le fond et le vomi, dur dur</a>
         {/* Certificat */}
-        <img className="bookmark_highlight_certificat" src={certified} alt="certified" />
+        <img className="bookmark_identity_certificat" src={certified} alt="certified" />
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">

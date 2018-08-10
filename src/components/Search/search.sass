@@ -1,0 +1,48 @@
+/**
+ * Import
+ */
+@import src/styles/vars
+
+/**
+ * Styles
+ */
+#search
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  &_title
+    margin-top: 3rem
+    text-align: center
+    font-size: 3rem
+    font-weight: bold
+    text-transform: uppercase
+
+  &_intro
+    font-size: 1rem
+    margin-bottom: 3rem
+
+  &_title_abstract
+    align-self: flex-start
+    font-size: 1.6rem
+    text-decoration: underline
+    padding: 0 3rem
+    margin-bottom: 0.5rem
+
+  &_abstract
+    padding: 0 3rem
+    text-align: justify
+
+  &_buttons
+    margin: 3rem 0
+
+.search_button
+  border: 1px solid $border-color
+  border-radius: 0.3rem
+  font-size: 1rem
+  padding: 0.5rem 5rem
+  margin: 0 2rem
+  background-color: $div-bgcolor
+  font-family: inherit
+  color: inherit
+
