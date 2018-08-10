@@ -7,6 +7,7 @@ import React from 'react';
  * Local import
  */
 // Composants
+import Form from './Form';
 
 
 // Styles et assets
@@ -26,6 +27,7 @@ const Search = () => (
       <button type="button" className="search_button">Favoris</button>
     </div>
     <span id="border" />
+    <Form />
   </div>
 );
 
