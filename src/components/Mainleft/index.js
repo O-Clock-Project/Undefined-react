@@ -8,6 +8,7 @@ import React from 'react';
  */
 // Composants
 import Home from 'src/components/Home';
+import Search from 'src/components/Search';
 
 
 // Styles et assets
@@ -18,7 +19,8 @@ import './mainleft.sass';
  */
 const Mainleft = () => (
   <div id="mainleft">
-    <Home />
+    {/* <Home /> */}
+    <Search />
   </div>
 );
 
