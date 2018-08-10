@@ -32,6 +32,8 @@ const Bookmarks = () => (
       <Bookmark />
       <Bookmark />
       <Bookmark />
+      <Bookmark />
+      <Bookmark />
     </div>
   </div>
 );

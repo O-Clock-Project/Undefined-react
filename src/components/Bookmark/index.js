@@ -24,6 +24,8 @@ const Bookmark = () => (
       <div className="bookmark_identity">
         <a href="#" className="bookmark_identity_support"><FaFilm /> </a>
         <a href="#" className="bookmark_identity_title">React.js, la révolution par le fond et le vomi, dur dur</a>
+        {/* Certificat */}
+        <img className="bookmark_highlight_certificat" src={certified} alt="certified" />
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
@@ -36,14 +38,14 @@ const Bookmark = () => (
         <li><a href="#" className="bookmark_tags_tag">HTML</a></li>
         <li><a href="#" className="bookmark_tags_tag">CSS</a></li>
         <li><a href="#" className="bookmark_tags_tag">JavaScript</a></li>
-        <li><a href="#" className="bookmark_tags_tag">OuiOui</a></li>
+        <li><a href="#" className="bookmark_tags_tag">React.js</a></li>
+        <li><a href="#" className="bookmark_tags_tag">Redux</a></li>
+        <li><a href="#" className="bookmark_tags_tag">JavaScript</a></li>
       </ul>
     </div>
     <div>
       {/* Bookmark highlight */}
       <div className="bookmark_highlight">
-        {/* Certificat */}
-        <div className="bookmark_highlight_certificat"><img src={certified} alt="certified" /></div>
         {/* Votes */}
         <div className="bookmark_highlight_voted">
           <div className="voted_note">5</div>
