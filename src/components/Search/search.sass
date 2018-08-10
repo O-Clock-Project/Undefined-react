@@ -7,10 +7,11 @@
  * Styles
  */
 .search_button
+  width: 220px
   border: 1px solid $border-color
   border-radius: 0.3rem
   font-size: 1rem
-  padding: 0.5rem 5rem
+  padding: 0.5rem 3rem
   margin: 0 2rem
   background-color: $div-bgcolor
   font-family: inherit
@@ -33,7 +34,7 @@
 
   &_title_abstract
     align-self: flex-start
-    font-size: 1.6rem
+    font-size: 1.4rem
     text-decoration: underline
     margin-bottom: 0.5rem
 
@@ -46,7 +47,6 @@
   
   // Search form component
   &_form
-    align-self: flex-start
 
     &_title
       font-weight: 600
@@ -54,3 +54,26 @@
       border-bottom: 2px solid $border-color
       padding-bottom: 0.5rem
       margin-bottom: 1rem
+
+    &_container
+      display: flex
+      justify-content: space-between
+
+.search_form_label
+  display: block
+  margin-bottom: 1rem
+  text-align: right
+
+.search_form_select
+  border: 1px solid $border-color
+  border-radius: 0.3rem
+  font-size: 1rem
+  margin-left: 0.5rem
+  padding: 0 0.4rem
+  background-color: $div-bgcolor
+  font-family: inherit
+  color: inherit
+
+.search_form_submit
+  align-self: center
+  width: 50%
