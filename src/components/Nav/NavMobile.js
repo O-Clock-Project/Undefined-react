@@ -39,15 +39,15 @@ class NavMobile extends React.Component {
 
     return (
       <nav className="navbar">
-        <div className="navbar-end">
-          <a href="#" className="navbar-link"><img className="navbar-logo" src={logo} alt="Logo The Hub" /></a>
-          <div className="navbar-burger"><span className="navbar-burger-text">Menu</span><IoIosMenu onClick={this.toggleNavbar} /></div>
-        </div>
         <div className={classCSS}>
           <a href="#" className="navbar-link"><FaHome className="font-svg" /> Accueil</a>
           <a href="#" className="navbar-link"><FaBook className="font-svg" /> <span>Bookmarks</span></a>
           <a href="#" className="navbar-link"><FaUserCircle className="font-svg" /> <span>Profil</span></a>
           <a href="#" className="navbar-link"><FaInfoCircle className="font-svg" /> <span>Informations</span></a>
+        </div>
+        <div className="navbar-end">
+          <a href="#" className="navbar-link"><img className="navbar-logo" src={logo} alt="Logo The Hub" /></a>
+          <div className="navbar-burger"><span className="navbar-burger-text">Menu</span><IoIosMenu onClick={this.toggleNavbar} /></div>
         </div>
       </nav>
     );

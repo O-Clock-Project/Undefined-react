@@ -9,15 +9,20 @@ import { connect } from 'react-redux';
 import ProfileEdit from 'src/components/Profile/ProfileEdit';
 
 // Action Creators
-import { clickProfileEdit } from 'src/store/reducer';
+import { clickProfileEdit, changeBirthday } from 'src/store/reducer';
 
 /* === State (données) === */
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  inputForm: state.edit_profile_form,
+});
 
 /* === Actions === */
 const mapDispatchToProps = dispatch => ({
   clickProfileEdit: () => {
     dispatch(clickProfileEdit());
+  },
+  changeBirthday: (value) => {
+    dispatch(changeBirthday(value));
   },
 });
 
