@@ -18,10 +18,10 @@ import './profile.sass';
 /**
  * Code
  */
-const Profile = ({ edit }) => (
+const Profile = ({ user, edit }) => (
   <div id="profile">
-    <h1 id="profile_title">Nayu</h1>
-    <p id="profile_intro">Invaders - (Professeur référent) - (Tuteur)</p>
+    <h1 id="profile_title">{user.username}</h1>
+    <p id="profile_intro">{user.affectations[0].promotion.name} - (Professeur référent) - (Tuteur)</p>
     {!edit && <ProfileView />}
     {edit && <ProfileEdit />}
     <ProfileNav />
@@ -29,6 +29,7 @@ const Profile = ({ edit }) => (
 );
 
 Profile.propTypes = {
+  user: PropTypes.object.isRequired,
   edit: PropTypes.bool.isRequired,
 };
 

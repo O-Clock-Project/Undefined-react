@@ -12,7 +12,9 @@ import ProfileView from 'src/components/Profile/ProfileView';
 import { clickProfileEdit } from 'src/store/reducer';
 
 /* === State (données) === */
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
 /* === Actions === */
 const mapDispatchToProps = dispatch => ({
