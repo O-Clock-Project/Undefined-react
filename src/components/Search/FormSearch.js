@@ -20,67 +20,68 @@ const FormSearch = () => (
     {/* Title */}
     <p id="search_form_title">Filtrer les bookmarks</p>
 
-    <div id="search_form_container">
-      {/* Categories */}
-      <div>
-        {/* Category 1 */}
-        <label htmlFor="tag_1" className="search_form_label">
-          Veuillez selectionner une langue :
-          <select id="tag_1" className="search_form_select">
-            <option value="Grapefruit">Grapefruit</option>
-            <option value="Lime">Lime</option>
-          </select>
-        </label>
-        {/* Category 2 */}
-        <label htmlFor="tag_2" className="search_form_label">
-          Veuillez sélectionner la difficulté :
-          <select id="tag_2" className="search_form_select">
-            <option value="Grapefruit">Grapefruit</option>
-            <option value="Lime">Lime</option>
-          </select>
-        </label>
-        {/* Category 3 */}
-        <label htmlFor="tag_3" className="search_form_label">
-          veuillez sélectionner le support :
-          <select id="tag_3" className="search_form_select">
-            <option value="Grapefruit">Grapefruit</option>
-            <option value="Lime">Lime</option>
-          </select>
-        </label>
-        {/* Category 4 */}
-        <label htmlFor="tag_4" className="search_form_label">
-          Sélectionner catégorie libre :
-          <select id="tag_4" className="search_form_select">
-            <option value="Grapefruit">Grapefruit</option>
-            <option value="Lime">Lime</option>
-          </select>
-        </label>
-        {/* Category 5 */}
-        <label htmlFor="tag_5" className="search_form_label">
-          Sélectionner catégorie libre :
-          <select id="tag_5" className="search_form_select">
-            <option value="Grapefruit">Grapefruit</option>
-            <option value="Lime">Lime</option>
-          </select>
-        </label>
-        {/* Category 6 */}
-        <label htmlFor="tag_6" className="search_form_label">
-          Sélectionner catégorie libre :
-          <select id="tag_6" className="search_form_select">
-            <option value="Grapefruit">Grapefruit</option>
-            <option value="Lime">Lime</option>
-          </select>
-        </label>
+    {/* Categories */}
+    <div className="search_form_tags">
+      {/* Category 1 */}
+      <div className="search_form_tag">
+        <p className="search_form_label">Veuillez selectionner un support :</p>
+        <select className="search_form_select">
+          <option value="all">All</option>
+          <option value="audio">Audio</option>
+          <option value="video">Vidéo</option>
+          <option value="article">Article</option>
+        </select>
       </div>
-
-      {/* Form submit */}
-      <div className="search_form_submit">
-        <button type="submit" value="Submit" className="search_button">Rechercher</button>
+      {/* Category 2 */}
+      <div className="search_form_tag">
+        <p className="search_form_label">Veuillez selectionner une langue :</p>
+        <select className="search_form_select">
+          <option value="All">All</option>
+          <option value="french">Français</option>
+          <option value="english">Anglais</option>
+        </select>
       </div>
+      {/* Category 3 */}
+      <div className="search_form_tag">
+        <p className="search_form_label">Veuillez selectionner un niveau :</p>
+        <select className="search_form_select">
+          <option value="All">All</option>
+          <option value="debutant">Débutant</option>
+          <option value="confirmed">Confirmé</option>
+          <option value="expert">Expert</option>
+        </select>
+      </div>
+    </div>
 
+    <div className="search_form_tags">
+      {/* Category 4 */}
+      <div className="search_form_tag">
+        <p className="search_form_label">Champs libre 1</p>
+        <select className="search_form_select">
+          <option value="all">All</option>
+          <option value="tags_1">Tags 1</option>
+        </select>
+      </div>
+      {/* Category 5 */}
+      <div className="search_form_tag">
+        <p className="search_form_label">Champs libre 2</p>
+        <select className="search_form_select">
+          <option value="All">All</option>
+          <option value="tags_1">Tags 1</option>
+        </select>
+      </div>
+      {/* Category 6 */}
+      <div className="search_form_tag">
+        <p className="search_form_label">Champs libre 3</p>
+        <select className="search_form_select">
+          <option value="All">All</option>
+          <option value="tags_1">Tags 1</option>
+        </select>
+      </div>
     </div>
 
   </form>
+
 );
 
 /**
