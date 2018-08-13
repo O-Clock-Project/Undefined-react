@@ -39,7 +39,10 @@ class FormSearch extends React.Component {
     return (
       <form id="search_form">
         {/* Title */}
-        <p id="search_form_title">Filtrer les bookmarks</p>
+        <div id="search_form_intro">
+          <p id="search_form_title">Filtrer les bookmarks</p>
+          <button type="button" className="search_form_reset">Reset</button>
+        </div>
 
         {/* Categories */}
         <div className="search_form_tags">

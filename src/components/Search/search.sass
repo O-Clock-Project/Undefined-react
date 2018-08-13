@@ -63,28 +63,42 @@
   &_title
     font-weight: 600
     font-size: 1.6rem
+
+  &_intro
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    padding-bottom:  0.5rem
     border-bottom: 2px solid $border-color
-    padding-bottom: 0.5rem
     margin-bottom: 3rem
 
-.search_form_tags
-  display: flex
-  margin-bottom: 3rem
+.search_form
 
-.search_form_tag
-  width: 20%
-  margin: auto
-  text-align: center
+  &_tags
+    display: flex
+    margin-bottom: 3rem
 
-.search_form_label
-  margin-bottom: 1rem
+  &_tag
+    width: 20%
+    margin: auto
+    text-align: center
 
-.search_form_select
-  width: 100%
-  border: 1px solid $border-color
-  border-radius: 0.3rem
-  font-size: 1rem
-  padding: 0 0.4rem
-  background-color: $div-bgcolor
-  font-family: inherit
-  color: inherit
+  &_label
+    margin-bottom: 1rem
+
+  &_select,
+  &_reset
+    border: 1px solid $border-color
+    border-radius: 0.3rem
+    font-size: 1rem
+    background-color: $div-bgcolor
+    font-family: inherit
+    color: inherit
+
+  &_select
+    width: 100%
+    padding: 0 0.4rem
+
+  &_reset
+    padding: 0.1rem 0.8rem
+
