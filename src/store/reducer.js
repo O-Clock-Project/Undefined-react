@@ -1,18 +1,20 @@
+import user from 'src/data/users';
 /**
  * Initial State
  */
 const initialState = {
   // User profil
+  user,
   edit_profile: false,
   edit_profile_form: {
-    input_firstname: '',
-    input_lastname: '',
-    input_email: '',
+    input_firstname: user.first_name,
+    input_lastname: user.last_name,
+    input_email: user.email,
     input_new_password: '',
     input_confirm_new_password: '',
-    input_pseudo_github: '',
-    input_zip: '',
-    birthday: '1988-07-11',
+    input_pseudo_github: user.pseudo_github,
+    input_zip: user.zip,
+    birthday: user.birthday,
   },
   // Bookmarks filter
   search_bookmark_form: {

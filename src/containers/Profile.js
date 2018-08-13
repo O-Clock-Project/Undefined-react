@@ -12,6 +12,7 @@ import Profile from 'src/components/Profile';
 
 /* === State (données) === */
 const mapStateToProps = state => ({
+  user: state.user,
   edit: state.edit_profile,
 });
 

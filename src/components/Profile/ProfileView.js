@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaCog, FaGithub } from 'react-icons/fa';
+import moment from 'moment';
 
 /**
  * Local import
@@ -12,7 +13,7 @@ import { FaCog, FaGithub } from 'react-icons/fa';
 
 
 // Styles et assets
-import avatar from 'src/assets/images/avatar.jpg';
+// import avatar from 'src/assets/images/avatar.jpg';
 
 /**
  * Code
@@ -20,6 +21,7 @@ import avatar from 'src/assets/images/avatar.jpg';
 class ProfileView extends React.Component {
   static propTypes = {
     clickProfileEdit: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
   };
 
   clickOnTools = () => {
@@ -28,16 +30,19 @@ class ProfileView extends React.Component {
   }
 
   render() {
+    const { user } = this.props;
+    const urlGitHub = `https://github.com/${user.pseudo_github}`;
     return (
       <div className="profile-infos">
-        <a href="#" className="profile-infos-tools" onClick={this.clickOnTools}><FaCog /></a>
-        <a href="#" className="profile-infos-github"><FaGithub /></a>
-        <img className="profile-infos-avatar" src={avatar} alt="Votre avatar" />
+        <FaCog className="profile-infos-tools" onClick={this.clickOnTools} />
+        <a href={urlGitHub} className="profile-infos-github"><FaGithub /></a>
+        <img className="profile-infos-avatar" src={user.avatar} alt="Votre avatar" />
         <div className="profile-infos-content">
-          <div>Prénom : <span>Julien</span></div>
-          <div>Nom : <span>Berrebi</span></div>
-          <div>Rôle : <span>Étudiant</span></div>
-          <div>Date de naissance : <span>11-07-1988</span></div>
+          <div>Prénom : <span>{user.first_name}</span></div>
+          <div>Nom : <span>{user.last_name}</span></div>
+          <div>Rôle : <span>{user.affectations[0].role.name}</span></div>
+          <div>Spécialité : <span>{user.speciality.name}</span></div>
+          <div>Date de naissance : <span>{moment(user.birthday).format('DD-MM-YYYY')}</span></div>
         </div>
       </div>
     );
