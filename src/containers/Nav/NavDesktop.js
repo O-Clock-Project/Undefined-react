@@ -6,27 +6,27 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Profile from 'src/components/Profile';
+import NavDesktop from 'src/components/Nav/NavDesktop';
 
 // Action Creators
 
 /* === State (données) === */
 const mapStateToProps = state => ({
   user: state.user,
-  edit: state.edit_profile,
+  loaded: state.loaded,
 });
 
 /* === Actions === */
 const mapDispatchToProps = {};
 
 // Container
-const ProfileContainer = connect(
+const NavDesktopContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Profile);
+)(NavDesktop);
 
 
 /**
  * Export
  */
-export default ProfileContainer;
+export default NavDesktopContainer;

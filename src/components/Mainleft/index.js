@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
  */
 // Composants
 import Home from 'src/components/Home';
-import Profile from 'src/containers/Profile';
+import Profile from 'src/containers/Profile/Profile';
 import Search from 'src/components/Search';
 
 
@@ -23,7 +23,7 @@ const Mainleft = () => (
   <div id="mainleft">
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/profile" component={Profile} />
+      <Route exact path="/profile/:id" component={Profile} />
       <Route exact path="/bookmarks" component={Search} />
     </Switch>
   </div>

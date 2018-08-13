@@ -1,20 +1,21 @@
-import user from 'src/data/users';
+// import user from 'src/data/users';
 /**
  * Initial State
  */
 const initialState = {
-  // User profil
-  user,
+  loaded: false,
+  id_user: 0,
+  user: {},
   edit_profile: false,
   edit_profile_form: {
-    input_firstname: user.first_name,
-    input_lastname: user.last_name,
-    input_email: user.email,
+    input_firstname: '',
+    input_lastname: '',
+    input_email: '',
     input_new_password: '',
     input_confirm_new_password: '',
-    input_pseudo_github: user.pseudo_github,
-    input_zip: user.zip,
-    birthday: user.birthday,
+    input_pseudo_github: '',
+    input_zip: '',
+    birthday: '',
   },
   // Bookmarks filter
   search_bookmark_form: {
@@ -30,6 +31,9 @@ const initialState = {
 /**
  * Types
  */
+export const LOAD_USER = 'LOAD_USER';
+export const RECEIVED_USER = 'RECEIVED_USER';
+
 const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
 const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
@@ -46,6 +50,31 @@ const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     // User Profil
+    case LOAD_USER: {
+      return {
+        ...state,
+        loaded: false,
+        id_user: action.id,
+      };
+    }
+
+    case RECEIVED_USER: {
+      return {
+        ...state,
+        user: action.data,
+        loaded: true,
+        edit_profile_form: {
+          ...state.edit_profile_form,
+          input_firstname: action.data.firstName,
+          input_lastname: action.data.lastName,
+          input_email: action.data.email,
+          input_pseudo_github: action.data.pseudoGithub,
+          input_zip: action.data.zip,
+          birthday: action.data.birthday,
+        },
+      };
+    }
+
     case CLICK_PROFILE_EDIT:
       return {
         ...state,
@@ -72,6 +101,7 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     }
+    
     // Bookmarks filter
     case CHANGE_SELECT_VALUE: {
       return {
@@ -106,6 +136,16 @@ const reducer = (state = initialState, action = {}) => {
  * Action Creators
  */
 // User Profil
+export const loadUser = id => ({
+  type: LOAD_USER,
+  id,
+});
+
+export const receivedUser = data => ({
+  type: RECEIVED_USER,
+  data,
+});
+
 export const clickProfileEdit = () => ({
   type: CLICK_PROFILE_EDIT,
 });

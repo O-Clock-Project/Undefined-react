@@ -20,7 +20,10 @@ class ProfileEditLine extends React.Component {
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
     changeInputValue: PropTypes.func.isRequired,
   }
 

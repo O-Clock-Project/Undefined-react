@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import {
   FaHome, FaBook, FaUserCircle, FaInfoCircle,
@@ -14,21 +15,20 @@ import {
 
 // Assets
 import logo from 'src/assets/images/logo_bold_jaune.png';
-import avatar from 'src/assets/images/avatar.jpg';
 
 /**
  * Code
  */
-const NavDesktop = () => (
+const NavDesktop = ({ user, loaded }) => (
   <nav className="navbar">
     <div className="navbar-start">
       {/* Profile */}
       <NavLink
         exact
-        to="/profile"
+        to={`/profile/${user.id}`}
         className="navbar-link"
       >
-        <img className="navbar-avatar" src={avatar} alt="Votre avatar" />
+        {loaded && <img className="navbar-avatar" src={user.avatar} alt="Votre avatar" />}
       </NavLink>
       {/* Home */}
       <NavLink
@@ -51,7 +51,7 @@ const NavDesktop = () => (
       {/* Profile */}
       <NavLink
         exact
-        to="/profile"
+        to={`/profile/${user.id}`}
         className="navbar-link"
         activeClassName="navbar-link--active"
       >
@@ -73,6 +73,12 @@ const NavDesktop = () => (
     </div>
   </nav>
 );
+
+NavDesktop.propTypes = {
+  user: PropTypes.object.isRequired,
+  loaded: PropTypes.bool.isRequired,
+};
+
 
 /**
  * Export

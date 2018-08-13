@@ -2,7 +2,6 @@
  * Import
  */
 import React from 'react';
-// import { FaCog, FaGithub } from 'react-icons/fa';
 
 /**
  * Local import
@@ -11,7 +10,6 @@ import React from 'react';
 
 
 // Styles et assets
-// import avatar from 'src/assets/images/avatar.jpg';
 
 /**
  * Code
