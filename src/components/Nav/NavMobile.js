@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
 import {
   FaHome, FaBook, FaUserCircle, FaInfoCircle,
 } from 'react-icons/fa';
@@ -40,13 +41,49 @@ class NavMobile extends React.Component {
     return (
       <nav className="navbar">
         <div className={classCSS}>
-          <a href="#" className="navbar-link"><FaHome className="font-svg" /> Accueil</a>
-          <a href="#" className="navbar-link"><FaBook className="font-svg" /> <span>Bookmarks</span></a>
-          <a href="#" className="navbar-link"><FaUserCircle className="font-svg" /> <span>Profil</span></a>
-          <a href="#" className="navbar-link"><FaInfoCircle className="font-svg" /> <span>Informations</span></a>
+          {/* Home */}
+          <NavLink
+            exact
+            to="/"
+            className="navbar-link"
+            activeClassName="navbar-link--active"
+            onClick={this.toggleNavbar}
+          >
+            <FaHome className="font-svg" /> Accueil
+          </NavLink>
+          {/* Bookmarks */}
+          <NavLink
+            exact
+            to="/bookmarks"
+            className="navbar-link"
+            activeClassName="navbar-link--active"
+            onClick={this.toggleNavbar}
+          >
+            <FaBook className="font-svg" /> Bookmarks
+          </NavLink>
+          {/* Profile */}
+          <NavLink
+            exact
+            to="/profile"
+            className="navbar-link"
+            activeClassName="navbar-link--active"
+            onClick={this.toggleNavbar}
+          >
+            <FaUserCircle className="font-svg" /> Profil
+          </NavLink>
+          {/* Informations */}
+          <a href="#" className="navbar-link"><FaInfoCircle className="font-svg" /> Informations</a>
         </div>
         <div className="navbar-end">
-          <a href="#" className="navbar-link"><img className="navbar-logo" src={logo} alt="Logo The Hub" /></a>
+          {/* Home */}
+          <NavLink
+            exact
+            to="/"
+            className="navbar-link"
+            activeClassName="navbar-link--active"
+          >
+            <img className="navbar-logo" src={logo} alt="Logo The Hub" />
+          </NavLink>
           <div className="navbar-burger"><span className="navbar-burger-text">Menu</span><IoIosMenu onClick={this.toggleNavbar} /></div>
         </div>
       </nav>
