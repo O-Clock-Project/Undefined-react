@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import {
@@ -16,12 +17,15 @@ import { IoIosMenu } from 'react-icons/io';
 
 // Assets
 import logo from 'src/assets/images/logo_bold_jaune.png';
-import avatar from 'src/assets/images/avatar.jpg';
 
 /**
  * Code
  */
 class NavMobile extends React.Component {
+  static propTypes = {
+    user: PropTypes.object.isRequired,
+  }
+
   state = {
     navOpen: false,
   }
@@ -35,6 +39,7 @@ class NavMobile extends React.Component {
   }
 
   render() {
+    const { user } = this.props;
     const { navOpen } = this.state;
     const classCSS = classNames('navbar-start', { navOpen });
 
@@ -64,7 +69,7 @@ class NavMobile extends React.Component {
           {/* Profile */}
           <NavLink
             exact
-            to="/profile"
+            to={`/profile/${user.id}`}
             className="navbar-link"
             activeClassName="navbar-link--active"
             onClick={this.toggleNavbar}

@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
  */
 // Composants
 import withMobile from 'src/hoc/withMobile';
-import NavDesktop from './NavDesktop';
-import NavMobile from './NavMobile';
+import NavDesktop from 'src/containers/Nav/NavDesktop';
+import NavMobile from 'src/containers/Nav/NavMobile';
 
 // Styles
 import './nav.sass';

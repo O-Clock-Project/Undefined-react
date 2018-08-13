@@ -10,7 +10,7 @@ import moment from 'moment';
  * Local import
  */
 // Composants
-import ProfileEditLine from 'src/containers/ProfileEditLine';
+import ProfileEditLine from 'src/containers/Profile/ProfileEditLine';
 
 // Styles et assets
 import 'react-datepicker/dist/react-datepicker.css';
