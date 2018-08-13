@@ -6,24 +6,32 @@
 /**
  * Styles
  */
+// Buttons
 .search_button
-  width: 220px
-  border: 1px solid $border-color
-  border-radius: 0.3rem
-  font-size: 1rem
-  padding: 0.5rem 3rem
-  margin: 0.5rem 2rem
-  background-color: $div-bgcolor
-  font-family: inherit
+  margin: 0rem 3rem
+  font-family: Oclock
+  font-weight: 700
+  text-transform: uppercase
   color: $link-color
-  box-shadow: 0px 0px 10px 3px #656565;
+  background-color: $nav-bgcolor
+  border: 1px solid $link-color
+  border-radius: .3rem
+  padding: .5rem 1rem
 
   &:hover
     color: $link-color-hover
+    border-color: $link-color-hover
 
 // Search page
 #search
   margin: 3rem 1.5rem 3rem 3rem
+
+  &_container
+    margin-bottom: 3rem
+    padding: 1.5rem
+    background-color: $div-bgcolor
+    border-radius: 0.3rem
+    border: 1px solid $border-color
 
   &_title
     text-align: center
@@ -46,25 +54,25 @@
     text-align: justify
 
   &_buttons
-    margin: 3.5rem 0
+    margin: 4rem 0 0.5rem 0
     text-align: center
   
-  // Search form component
-  &_form
+// Search form component
+#search_form
 
-    &_title
-      font-weight: 600
-      font-size: 1.6rem
-      border-bottom: 2px solid $border-color
-      padding-bottom: 0.5rem
-      margin-bottom: 3rem
+  &_title
+    font-weight: 600
+    font-size: 1.6rem
+    border-bottom: 2px solid $border-color
+    padding-bottom: 0.5rem
+    margin-bottom: 3rem
 
 .search_form_tags
   display: flex
   margin-bottom: 3rem
 
 .search_form_tag
-  width: 25%
+  width: 20%
   margin: auto
   text-align: center
 
@@ -80,5 +88,3 @@
   background-color: $div-bgcolor
   font-family: inherit
   color: inherit
-
-// Search input

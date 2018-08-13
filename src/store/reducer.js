@@ -2,6 +2,7 @@
  * Initial State
  */
 const initialState = {
+  // User profil
   edit_profile: false,
   edit_profile_form: {
     input_firstname: '',
@@ -13,6 +14,7 @@ const initialState = {
     input_zip: '',
     birthday: '1988-07-11',
   },
+  // Bookmarks research
 };
 
 /**
@@ -31,6 +33,7 @@ const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    // User Profil
     case CLICK_PROFILE_EDIT:
       return {
         ...state,
@@ -57,6 +60,8 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     }
+
+    // Bookmarks research
 
     default:
       return state;
