@@ -15,6 +15,9 @@ const initialState = {
     birthday: '1988-07-11',
   },
   // Bookmarks research
+  search_bookmark_form: {
+
+  },
 };
 
 /**
