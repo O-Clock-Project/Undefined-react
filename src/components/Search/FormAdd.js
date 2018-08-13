@@ -17,7 +17,7 @@ import './search.sass';
  */
 const FormAdd = () => (
   <div id="add_form">
-    Je suis le formulaire d'ajout d'un bookmark
+    TODO: Formulaire d'ajout d'un bookmark
   </div>
 
 );
