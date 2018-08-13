@@ -27,10 +27,8 @@ class FormSearch extends React.Component {
     const { changeSelectValue } = this.props;
     // I catch the name of the selector
     const { name } = evt.target;
-    console.log(name);
     // I catch the value of the selector
     const { value } = evt.target;
-    console.log(value);
     // I change the state with action creator
     changeSelectValue(name, value);
   }

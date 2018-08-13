@@ -71,7 +71,6 @@ const reducer = (state = initialState, action = {}) => {
     }
     // Bookmarks filter
     case CHANGE_SELECT_VALUE: {
-      console.log(action);
       return {
         ...state,
         search_bookmark_form: {
