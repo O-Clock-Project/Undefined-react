@@ -32,7 +32,7 @@ class FormSearch extends React.Component {
     const { value } = evt.target;
     console.log(value);
     // I change the state with action creator
-    // changeSelectValue(name, value);
+    changeSelectValue(name, value);
   }
 
   render() {

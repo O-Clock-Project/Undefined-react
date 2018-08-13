@@ -30,8 +30,8 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  changeSelectValue: () => {
-    dispatch(changeSelectValue());
+  changeSelectValue: (name, value) => {
+    dispatch(changeSelectValue(name, value));
   },
 });
 
