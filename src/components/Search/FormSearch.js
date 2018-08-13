@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -16,11 +17,27 @@ import './search.sass';
  * Code
  */
 class FormSearch extends React.Component {
-  handleChange = () => {
+  static propTypes = {
+    data: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    changeSelectValue: PropTypes.func.isRequired,
+  };
 
+  handleChange = (evt) => {
+    // I prepare my action creator
+    const { changeSelectValue } = this.props;
+    // I catch the name of the selector
+    const { name } = evt.target;
+    console.log(name);
+    // I catch the value of the selector
+    const { value } = evt.target;
+    console.log(value);
+    // I change the state with action creator
+    // changeSelectValue(name, value);
   }
 
   render() {
+    const { data } = this.props;
+
     return (
       <form id="search_form">
         {/* Title */}
@@ -28,29 +45,29 @@ class FormSearch extends React.Component {
 
         {/* Categories */}
         <div className="search_form_tags">
-          {/* Category 1 */}
+          {/* Category type */}
           <div className="search_form_tag">
             <p className="search_form_label">Veuillez selectionner un support :</p>
-            <select className="search_form_select">
+            <select name="select_type" value={data.select_type} className="search_form_select" onChange={this.handleChange}>
               <option value="all">All</option>
               <option value="audio">Audio</option>
               <option value="video">Vidéo</option>
               <option value="article">Article</option>
             </select>
           </div>
-          {/* Category 2 */}
+          {/* Category language */}
           <div className="search_form_tag">
             <p className="search_form_label">Veuillez selectionner une langue :</p>
-            <select className="search_form_select">
+            <select name="select_language" value={data.select_language} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
               <option value="french">Français</option>
               <option value="english">Anglais</option>
             </select>
           </div>
-          {/* Category 3 */}
+          {/* Category level */}
           <div className="search_form_tag">
             <p className="search_form_label">Veuillez selectionner un niveau :</p>
-            <select className="search_form_select">
+            <select name="select_level" value={data.select_level} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
               <option value="debutant">Débutant</option>
               <option value="confirmed">Confirmé</option>
@@ -60,26 +77,26 @@ class FormSearch extends React.Component {
         </div>
 
         <div className="search_form_tags">
-          {/* Category 4 */}
+          {/* Category tag1 */}
           <div className="search_form_tag">
             <p className="search_form_label">Champs libre 1</p>
-            <select className="search_form_select">
+            <select name="select_tag1" value={data.select_tag1} className="search_form_select" onChange={this.handleChange}>
               <option value="all">All</option>
               <option value="tags_1">Tags 1</option>
             </select>
           </div>
-          {/* Category 5 */}
+          {/* Category tag2 */}
           <div className="search_form_tag">
             <p className="search_form_label">Champs libre 2</p>
-            <select className="search_form_select">
+            <select name="select_tag2" value={data.select_tag2} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
               <option value="tags_1">Tags 1</option>
             </select>
           </div>
-          {/* Category 6 */}
+          {/* Category tag3 */}
           <div className="search_form_tag">
             <p className="search_form_label">Champs libre 3</p>
-            <select className="search_form_select">
+            <select name="select_tag3" value={data.select_tag3} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
               <option value="tags_1">Tags 1</option>
             </select>

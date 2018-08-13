@@ -14,9 +14,14 @@ const initialState = {
     input_zip: '',
     birthday: '1988-07-11',
   },
-  // Bookmarks research
+  // Bookmarks filter
   search_bookmark_form: {
-
+    select_type: 'all',
+    select_language: 'all',
+    select_level: 'all',
+    select_tag1: 'all',
+    select_tag2: 'all',
+    select_tag3: 'all',
   },
 };
 
@@ -26,6 +31,7 @@ const initialState = {
 const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
 const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
+const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 
 /**
  * Traitements
@@ -63,8 +69,17 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     }
-
-    // Bookmarks research
+    // Bookmarks filter
+    case CHANGE_SELECT_VALUE: {
+      console.log(action);
+      return {
+        ...state,
+        search_bookmark_form: {
+          ...state.search_bookmark_form,
+          [action.name]: action.value,
+        },
+      };
+    }
 
     default:
       return state;
@@ -74,6 +89,7 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
+// User Profil
 export const clickProfileEdit = () => ({
   type: CLICK_PROFILE_EDIT,
 });
@@ -86,6 +102,12 @@ export const changeInputValue = (name, value) => ({
 
 export const changeBirthday = value => ({
   type: CHANGE_BIRTHDAY,
+  value,
+});
+// Bookmarks filter
+export const changeSelectValue = (name, value) => ({
+  type: CHANGE_SELECT_VALUE,
+  name,
   value,
 });
 

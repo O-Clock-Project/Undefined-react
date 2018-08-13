@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import FormSearch from 'src/components/Search/FormSearch';
 
 // Action Creators
-import { doSomething } from 'src/store/reducer';
+import { changeSelectValue } from 'src/store/reducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -29,9 +29,9 @@ const mapStateToProps = state => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  doSomething: () => {
-    dispatch(doSomething());
+const mapDispatchToProps = dispatch => ({
+  changeSelectValue: () => {
+    dispatch(changeSelectValue());
   },
 });
 
