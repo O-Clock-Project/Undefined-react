@@ -32,6 +32,7 @@ const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
 const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
 const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
+const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 
 /**
  * Traitements
@@ -80,6 +81,20 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case RESET_SELECT_VALUE: {
+      return {
+        ...state,
+        search_bookmark_form: {
+          select_type: 'all',
+          select_language: 'all',
+          select_level: 'all',
+          select_tag1: 'all',
+          select_tag2: 'all',
+          select_tag3: 'all',
+        },
+      };
+    }
+
     default:
       return state;
   }
@@ -108,6 +123,10 @@ export const changeSelectValue = (name, value) => ({
   type: CHANGE_SELECT_VALUE,
   name,
   value,
+});
+
+export const resetSelectValue = () => ({
+  type: RESET_SELECT_VALUE,
 });
 
 /**

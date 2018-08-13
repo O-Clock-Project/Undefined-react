@@ -20,6 +20,7 @@ class FormSearch extends React.Component {
   static propTypes = {
     data: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
     changeSelectValue: PropTypes.func.isRequired,
+    resetSelectValue: PropTypes.func.isRequired,
   };
 
   handleChange = (evt) => {
@@ -33,6 +34,13 @@ class FormSearch extends React.Component {
     changeSelectValue(name, value);
   }
 
+  handleClick = () => {
+    // Catch my action creator
+    const { resetSelectValue } = this.props;
+    // Update the state with the action creator
+    resetSelectValue();
+  }
+
   render() {
     const { data } = this.props;
 
@@ -41,7 +49,7 @@ class FormSearch extends React.Component {
         {/* Title */}
         <div id="search_form_intro">
           <p id="search_form_title">Filtrer les bookmarks</p>
-          <button type="button" className="search_form_reset">Reset</button>
+          <button type="button" className="search_form_reset" onClick={this.handleClick}>Reset</button>
         </div>
 
         {/* Categories */}

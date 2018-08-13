@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import FormSearch from 'src/components/Search/FormSearch';
 
 // Action Creators
-import { changeSelectValue } from 'src/store/reducer';
+import { changeSelectValue, resetSelectValue } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
@@ -20,6 +20,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   changeSelectValue: (name, value) => {
     dispatch(changeSelectValue(name, value));
+  },
+
+  resetSelectValue: () => {
+    dispatch(resetSelectValue());
   },
 });
 
