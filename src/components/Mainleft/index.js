@@ -19,8 +19,8 @@ import './mainleft.sass';
  */
 const Mainleft = () => (
   <div id="mainleft">
-    {/* <Home /> */}
-    <Search />
+    <Home />
+    {/* <Search /> */}
   </div>
 );
 
