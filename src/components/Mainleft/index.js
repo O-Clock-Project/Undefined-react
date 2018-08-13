@@ -8,6 +8,7 @@ import React from 'react';
  */
 // Composants
 import Home from 'src/components/Home';
+import Profile from 'src/containers/Profile';
 import Search from 'src/components/Search';
 
 

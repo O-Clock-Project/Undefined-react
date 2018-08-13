@@ -1,0 +1,135 @@
+/**
+ * Import
+ */
+@import src/styles/vars
+
+/**
+ * Styles
+ */
+#profile
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  &_title
+    margin-top: 3rem
+    text-align: center
+    font-size: 3rem
+    font-weight: bold
+    text-transform: uppercase
+
+  &_intro
+    font-size: 1rem
+
+.profile-infos,
+.profile-edit
+  margin: 3rem auto 0
+  padding: 1rem
+  width: 80%
+  background-color: $div-bgcolor
+  border: 1px solid $border-color
+  border-radius: 0.3rem
+
+.profile-infos
+  display: flex
+  position: relative
+
+  &-tools
+    position: absolute
+    right: 1rem
+    top: 1rem
+
+  &-github
+    position: absolute
+    right: 1rem
+    bottom: 1rem
+    font-size: 2rem
+
+  &-avatar
+    width: 100px
+    height: 100px
+    margin-right: 1rem
+    border-radius: 1rem
+
+  &-content
+    align-self: center
+
+    & > div
+      margin: .5rem
+
+.profile-edit
+  &-form
+    width: 80%
+    margin: auto
+    padding: 1rem 0
+
+    &-line
+      border-bottom: 1px dashed $link-color-hover
+      margin: 1rem 0
+      padding-bottom: .5rem
+
+    &-label
+      cursor: pointer
+      color: $link-color
+
+      &:hover
+        color: $link-color-hover
+    
+    &-input
+      margin-left: .5rem
+      background: 0 0
+      border: 0
+      color: lightblue
+      font-family: Oclock
+      font-weight: 400
+      font-size: 1rem
+
+    &-birthday
+      display: flex
+      align-items: center
+
+  &-validate
+    margin-top: 2rem
+    text-align: center
+
+  &-btn
+    font-family: Oclock
+    font-weight: 700
+    text-transform: uppercase
+    color: $link-color
+    background-color: $nav-bgcolor
+    border: 1px solid $link-color
+    border-radius: .3rem
+    padding: .5rem 1rem
+
+    &:hover
+      color: $link-color-hover
+      border-color: $link-color-hover
+
+.profile-nav
+  display: flex
+  margin-top: 3rem
+
+  &-link
+    color: $link-color
+    text-align: center
+    margin: 0 1rem
+    padding: .5rem 1rem
+    background-color: $div-bgcolor
+    border: 1px solid $border-color
+    border-radius: .3rem
+    cursor: pointer
+
+    &:hover
+      color: $link-color-hover
+  
+  &-count
+    font-size: 1.3rem
+    font-weight: 700
+    margin-top: .5rem
+
+#border
+  height: 2px
+  width: 40%
+  background-color: $border-color
+  

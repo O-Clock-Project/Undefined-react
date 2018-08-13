@@ -24,15 +24,14 @@
   @media screen and (max-width: $break-point)
       justify-content: flex-end
 
-
   &-start
     z-index: 10
     display: flex
     align-items: center
     @media screen and (max-width: $break-point)
-      // animation-name: slideInDown
-      // animation-fill-mode: both
-      // animation-duration: 1s
+      animation-name: slideLeft
+      animation-timing-function: ease    
+      animation-duration: 1s
       display: none
 
   &-end
@@ -89,5 +88,6 @@
 @media screen and (max-width: $break-point)
   .navbar-start
     .navbar-link
+      border-left: 4px solid $link-color
       border-bottom: 1px solid $link-color
       padding: 1rem 2rem
