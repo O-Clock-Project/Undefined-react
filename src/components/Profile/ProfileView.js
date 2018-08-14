@@ -40,7 +40,7 @@ class ProfileView extends React.Component {
           <div>Prénom : <span>{user.first_name}</span></div>
           <div>Nom : <span>{user.last_name}</span></div>
           <div>Rôle : <span>{user.affectations['0'].role.name}</span></div>
-          <div>Spécialité : <span>{user.speciality.name}</span></div>
+          {user.speciality && <div>Spécialité : <span>{user.speciality.name}</span></div>}
           <div>Date de naissance : <span>{moment(user.birthday).format('DD-MM-YYYY')}</span></div>
         </div>
       </div>

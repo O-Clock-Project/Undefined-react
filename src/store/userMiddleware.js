@@ -1,8 +1,11 @@
 /**
  * Import
  */
+import baseUrl from 'src/data/config';
+
 import axios from 'axios';
 import { LOAD_USER, receivedUser } from './reducer';
+
 
 /**
  * Code
@@ -14,7 +17,8 @@ import { LOAD_USER, receivedUser } from './reducer';
 const userAxios = store => next => (action) => {
   switch (action.type) {
     case LOAD_USER: {
-      const url = `http://127.0.0.1:8001/api/users/${action.id}?displayGroup=concise`;
+      console.log(store);
+      const url = `${baseUrl}/api/users/${action.id}?displayGroup=profile`;
       axios
         .get(url)
         .then((response) => {

@@ -2,6 +2,7 @@
  * Npm import
  */
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
@@ -29,4 +30,4 @@ const NavDesktopContainer = connect(
 /**
  * Export
  */
-export default NavDesktopContainer;
+export default withRouter(NavDesktopContainer);
