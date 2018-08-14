@@ -7,7 +7,7 @@ import axios from 'axios';
  * Local import
  */
 import baseUrl from 'src/data/config';
-import { LOAD_USER, receivedUser } from './reducer';
+import { LOAD_USER } from './reducer';
 
 
 /**
@@ -17,16 +17,16 @@ import { LOAD_USER, receivedUser } from './reducer';
 /**
  * Middleware
  */
-const userAxios = store => next => (action) => {
+const bookmarksAxios = store => next => (action) => {
   switch (action.type) {
     case LOAD_USER: {
-      console.log(store);
       const url = `${baseUrl}/api/users/${action.id}?displayGroup=profile`;
       axios
         .get(url)
         .then((response) => {
-          // console.log(response.data[0]);
-          store.dispatch(receivedUser(response.data));
+          console.log(store);
+          console.log(response);
+          // store.dispatch(receivedUser(response.data));
         })
         .catch((error) => {
           console.error(error);
@@ -45,4 +45,4 @@ const userAxios = store => next => (action) => {
 /**
  * Export
  */
-export default userAxios;
+export default bookmarksAxios;

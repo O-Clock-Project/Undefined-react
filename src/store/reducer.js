@@ -1,8 +1,10 @@
 // import user from 'src/data/users';
+import dataBookmarks from 'src/data/bookmarks';
 /**
  * Initial State
  */
 const initialState = {
+  // Users
   loaded: false,
   id_user: 0,
   user: {},
@@ -18,6 +20,7 @@ const initialState = {
     birthday: '',
   },
   // Bookmarks filter
+  bookmarks: dataBookmarks,
   search_bookmark_form: {
     select_type: 'all',
     select_language: 'all',
