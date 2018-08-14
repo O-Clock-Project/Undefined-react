@@ -14,12 +14,12 @@ import { LOAD_USER, receivedUser } from './reducer';
 const userAxios = store => next => (action) => {
   switch (action.type) {
     case LOAD_USER: {
-      const url = `http://127.0.0.1:8001/api/users/${action.id}`;
+      const url = `http://127.0.0.1:8001/api/users/${action.id}?displayGroup=concise`;
       axios
         .get(url)
         .then((response) => {
           // console.log(response.data[0]);
-          store.dispatch(receivedUser(response.data[0]));
+          store.dispatch(receivedUser(response.data));
         })
         .catch((error) => {
           console.error(error);

@@ -65,10 +65,10 @@ const reducer = (state = initialState, action = {}) => {
         loaded: true,
         edit_profile_form: {
           ...state.edit_profile_form,
-          input_firstname: action.data.firstName,
-          input_lastname: action.data.lastName,
+          input_firstname: action.data.first_name,
+          input_lastname: action.data.last_name,
           input_email: action.data.email,
-          input_pseudo_github: action.data.pseudoGithub,
+          input_pseudo_github: action.data.pseudo_github,
           input_zip: action.data.zip,
           birthday: action.data.birthday,
         },
@@ -101,7 +101,7 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     }
-    
+
     // Bookmarks filter
     case CHANGE_SELECT_VALUE: {
       return {

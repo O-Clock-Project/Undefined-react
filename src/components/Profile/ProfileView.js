@@ -30,15 +30,15 @@ class ProfileView extends React.Component {
 
   render() {
     const { user } = this.props;
-    const urlGitHub = `https://github.com/${user.pseudoGithub}`;
+    const urlGitHub = `https://github.com/${user.pseudo_github}`;
     return (
       <div className="profile-infos">
         <FaCog className="profile-infos-tools" onClick={this.clickOnTools} />
         <a href={urlGitHub} className="profile-infos-github"><FaGithub /></a>
         <img className="profile-infos-avatar" src={user.avatar} alt="Votre avatar" />
         <div className="profile-infos-content">
-          <div>Prénom : <span>{user.firstName}</span></div>
-          <div>Nom : <span>{user.lastName}</span></div>
+          <div>Prénom : <span>{user.first_name}</span></div>
+          <div>Nom : <span>{user.last_name}</span></div>
           <div>Rôle : <span>{user.affectations['0'].role.name}</span></div>
           <div>Spécialité : <span>{user.speciality.name}</span></div>
           <div>Date de naissance : <span>{moment(user.birthday).format('DD-MM-YYYY')}</span></div>

@@ -21,11 +21,6 @@ const AppContainer = connect(
   mapDispatchToProps,
 )(App);
 
-/* 2 temps
-const createContainer = connect(mapStateToProps, mapDispatchToProps);
-const AppContainer = createContainer(App);
-*/
-
 /**
  * Export
  */
