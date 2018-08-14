@@ -36,11 +36,6 @@ const BookmarksContainer = connect(
   mapDispatchToProps,
 )(Bookmarks);
 
-/* 2 temps
-const createContainer = connect(mapStateToProps, mapDispatchToProps);
-const ExampleContainer = createContainer(Example);
-*/
-
 /**
  * Export
  */

@@ -18,11 +18,17 @@ import './bookmarks.sass';
  */
 class Bookmarks extends React.Component {
   static propTypes = {
-    bookmarks: PropTypes.object.isRequired,
+    bookmarks: PropTypes.array.isRequired,
+  };
+
+  state = {
+
   };
 
   render() {
-    return(
+    const { bookmarks } = this.props;
+
+    return (
       <div id="bookmarks">
         <form id="bookmarks_form">
           <p id="bookmarks_title">Trier les bookmarks</p>
@@ -32,15 +38,12 @@ class Bookmarks extends React.Component {
           </select>
         </form>
         <div id="bookmarks_list">
-          <Bookmark />
-          <Bookmark />
-          <Bookmark />
-          <Bookmark />
-          <Bookmark />
-          <Bookmark />
-          <Bookmark />
-          <Bookmark />
-          <Bookmark />
+          {bookmarks.map(bookmark => (
+            <Bookmark
+              key={bookmark.id}
+              {...bookmark}
+            />
+          ))}
         </div>
       </div>
     );
