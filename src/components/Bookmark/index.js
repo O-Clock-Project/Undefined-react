@@ -2,7 +2,12 @@
  * Import
  */
 import React from 'react';
-import { FaFilm } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import {
+  FaFilm,
+  FaHeadphones,
+  FaFileAlt,
+} from 'react-icons/fa';
 
 /**
  * Local import
@@ -17,15 +22,21 @@ import certified from 'src/assets/images/certified.svg';
 /**
  * Code
  */
-const Bookmark = () => (
+const Bookmark = ({
+  icon,
+  title,
+  certified_by,
+}) => (
   <div className="bookmark">
     <div>
       {/* Bookmark identity */}
       <div className="bookmark_identity">
-        <a href="#" className="bookmark_identity_support"><FaFilm /> </a>
-        <a href="#" className="bookmark_identity_title">React.js, la révolution par le fond et le vomi, dur dur</a>
+        {icon === 'FaFilm' && <a href="#" className="bookmark_identity_support"><FaFilm /></a>}
+        {icon === 'FaHeadphones' && <a href="#" className="bookmark_identity_support"><FaHeadphones /></a>}
+        {icon === 'FaFileAlt' && <a href="#" className="bookmark_identity_support"><FaFileAlt /></a>}
+        <a href="#" className="bookmark_identity_title">{title}</a>
         {/* Certificat */}
-        <img className="bookmark_identity_certificat" src={certified} alt="certified" />
+        {certified_by.length > 0 && <img className="bookmark_identity_certificat" src={certified} alt="certified" />}
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
@@ -60,6 +71,12 @@ const Bookmark = () => (
     </div>
   </div>
 );
+
+Bookmark.propTypes = {
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  certified_by: PropTypes.array.isRequired,
+};
 
 /**
  * Export
