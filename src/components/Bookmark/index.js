@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import {
   FaFilm,
   FaHeadphones,
@@ -26,6 +27,9 @@ const Bookmark = ({
   icon,
   title,
   certified_by,
+  published_at,
+  author,
+  user,
 }) => (
   <div className="bookmark">
     <div>
@@ -40,9 +44,9 @@ const Bookmark = ({
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
-        <span className="bookmark_infos_date"> 08.08.2018 -</span>
-        <span className="bookmark_infos_author"> Nicolas Ouissiaen -</span>
-        <span className="bookmark_infos_proposed"> Proposé par <a href="#"> Julien</a></span>
+        <span className="bookmark_infos_date"> {moment(published_at).format('DD-MM-YYYY')} -</span>
+        <span className="bookmark_infos_author"> {author} -</span>
+        <span className="bookmark_infos_proposed"> Proposé par <a href="#"> {user.username}</a></span>
       </div>
       {/* Bookmark tags */}
       <ul className="bookmark_tags">
@@ -76,6 +80,12 @@ Bookmark.propTypes = {
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   certified_by: PropTypes.array.isRequired,
+  published_at: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    username: PropTypes.string,
+  }).isRequired,
 };
 
 /**
