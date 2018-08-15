@@ -28,6 +28,10 @@ export default [
         {
             "id": 520,
             "value": 1
+        },
+        {
+          "id": 400,
+          "value": 1
         }
     ],
     "faved_by": [
@@ -46,6 +50,10 @@ export default [
         {
             "id": 306,
             "label": "Symfony"
+        },
+        {
+          "id": 305,
+          "label": "CSS"
         }
     ],
     "locale": {
