@@ -20,12 +20,10 @@ import { LOAD_USER, receivedUser } from './reducer';
 const userAxios = store => next => (action) => {
   switch (action.type) {
     case LOAD_USER: {
-      console.log(store);
       const url = `${baseUrl}/api/users/${action.id}?displayGroup=profile`;
       axios
         .get(url)
         .then((response) => {
-          // console.log(response.data[0]);
           store.dispatch(receivedUser(response.data));
         })
         .catch((error) => {

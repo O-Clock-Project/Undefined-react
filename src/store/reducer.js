@@ -1,12 +1,8 @@
-// import user from 'src/data/users';
-import dataBookmarks from 'src/data/bookmarks';
 /**
  * Initial State
  */
 const initialState = {
-  /**
-   * Users
-   */
+  // Users
   loaded: false,
   id_user: 0,
   user: {},
@@ -21,11 +17,9 @@ const initialState = {
     input_zip: '',
     birthday: '',
   },
-  /**
-   * Bookmarks
-   */
+  // Bookmarks
   // Datas
-  bookmarks: dataBookmarks,
+  bookmarks: [],
   // Loading status
   bookmarksStatus: 'loading',
   // Select filter
@@ -119,6 +113,14 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     // Bookmarks
+    case LOAD_BOOKMARKS: {
+      return {
+        ...state,
+        // Loading status for bookmarks
+        bookmarksStatus: 'loading',
+      };
+    }
+
     case RECEIVED_BOOKMARKS: {
       return {
         ...state,
@@ -126,14 +128,6 @@ const reducer = (state = initialState, action = {}) => {
         bookmarks: action.data,
         // Change the loading status
         bookmarksStatus: 'loaded',
-      };
-    }
-
-    case LOAD_BOOKMARKS: {
-      return {
-        ...state,
-        // Loading status for bookmarks
-        bookmarksStatus: 'loading',
       };
     }
 

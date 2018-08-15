@@ -11,13 +11,13 @@ import NavDesktop from 'src/components/Nav/NavDesktop';
 
 // Action Creators
 
-/* === State (données) === */
+// State
 const mapStateToProps = state => ({
   user: state.user,
   loaded: state.loaded,
 });
 
-/* === Actions === */
+// Actions
 const mapDispatchToProps = {};
 
 // Container

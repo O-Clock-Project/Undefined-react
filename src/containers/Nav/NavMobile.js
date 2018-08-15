@@ -11,12 +11,12 @@ import NavMobile from 'src/components/Nav/NavMobile';
 
 // Action Creators
 
-/* === State (données) === */
+// State
 const mapStateToProps = state => ({
   user: state.user,
 });
 
-/* === Actions === */
+// Actions
 const mapDispatchToProps = {};
 
 // Container

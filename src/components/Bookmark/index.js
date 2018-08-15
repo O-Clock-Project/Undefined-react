@@ -38,12 +38,22 @@ const Bookmark = ({
     <div>
       {/* Bookmark identity */}
       <div className="bookmark_identity">
-        {support.icon === 'FaFilm' && <a href="#" className="bookmark_identity_support"><FaFilm /></a>}
-        {support.icon === 'FaHeadphones' && <a href="#" className="bookmark_identity_support"><FaHeadphones /></a>}
-        {support.icon === 'FaFileAlt' && <a href="#" className="bookmark_identity_support"><FaFileAlt /></a>}
+        {/* Support  */}
+        {support.icon === 'FaFilm'
+          && <a href="#" className="bookmark_identity_support"><FaFilm /></a>
+        }
+        {support.icon === 'FaHeadphones'
+          && <a href="#" className="bookmark_identity_support"><FaHeadphones /></a>
+        }
+        {support.icon === 'FaFileAlt'
+          && <a href="#" className="bookmark_identity_support"><FaFileAlt /></a>
+        }
+        {/* Title */}
         <a href="#" className="bookmark_identity_title">{title}</a>
         {/* Certificat */}
-        {certified_by.length > 0 && <img className="bookmark_identity_certificat" src={certified} alt="certified" />}
+        {certified_by.length > 0
+          && <img className="bookmark_identity_certificat" src={certified} alt="certified" />
+        }
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
