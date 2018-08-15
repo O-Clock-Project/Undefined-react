@@ -4,8 +4,11 @@
  */
 const initialState = {
   loaded: false,
+  loaded_view: false,
   id_user: 0,
+  id_user_view: 0,
   user: {},
+  user_view: {},
   edit_profile: false,
   edit_profile_form: {
     input_firstname: '',
@@ -32,8 +35,11 @@ const initialState = {
  * Types
  */
 export const LOAD_USER = 'LOAD_USER';
+export const LOAD_USER_VIEW = 'LOAD_USER_VIEW';
 export const RECEIVED_USER = 'RECEIVED_USER';
+export const RECEIVED_USER_VIEW = 'RECEIVED_USER_VIEW';
 
+const CHANGE_USER_VIEW = 'CHANGE_USER_VIEW';
 const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
 const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
@@ -58,6 +64,14 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case LOAD_USER_VIEW: {
+      return {
+        ...state,
+        loaded_view: false,
+        id_user_view: action.id,
+      };
+    }
+
     case RECEIVED_USER: {
       return {
         ...state,
@@ -72,6 +86,21 @@ const reducer = (state = initialState, action = {}) => {
           input_zip: action.data.zip,
           birthday: action.data.birthday,
         },
+      };
+    }
+
+    case RECEIVED_USER_VIEW: {
+      return {
+        ...state,
+        user_view: action.data,
+        loaded_view: true,
+      };
+    }
+
+    case CHANGE_USER_VIEW: {
+      return {
+        ...state,
+        id_user_view: action.id,
       };
     }
 
@@ -141,9 +170,24 @@ export const loadUser = id => ({
   id,
 });
 
+export const loadUserView = id => ({
+  type: LOAD_USER_VIEW,
+  id,
+});
+
 export const receivedUser = data => ({
   type: RECEIVED_USER,
   data,
+});
+
+export const receivedUserView = data => ({
+  type: RECEIVED_USER_VIEW,
+  data,
+});
+
+export const changeUserView = id => ({
+  type: CHANGE_USER_VIEW,
+  id,
 });
 
 export const clickProfileEdit = () => ({

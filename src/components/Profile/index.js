@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 // Composants
 import ProfileView from 'src/containers/Profile/ProfileView';
 import ProfileEdit from 'src/containers/Profile/ProfileEdit';
-import ProfileNav from './ProfileNav';
+import ProfileNav from 'src/containers/Profile/ProfileNav';
 
 // Styles et assets
 import './profile.sass';
@@ -24,7 +24,7 @@ const Profile = ({ user, edit, loaded }) => (
     {loaded && <p id="profile_intro">{user.affectations['0'].promotion.name} - (Professeur référent) - (Tuteur)</p>}
     {!edit && loaded && <ProfileView />}
     {edit && loaded && <ProfileEdit />}
-    <ProfileNav />
+    {loaded && <ProfileNav />}
   </div>
 );
 

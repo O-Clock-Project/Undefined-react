@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom';
 import NavDesktop from 'src/components/Nav/NavDesktop';
 
 // Action Creators
+import { changeUserView } from 'src/store/reducer';
 
 /* === State (données) === */
 const mapStateToProps = state => ({
@@ -18,7 +19,11 @@ const mapStateToProps = state => ({
 });
 
 /* === Actions === */
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  changeUserView: (id) => {
+    dispatch(changeUserView(id));
+  },
+});
 
 // Container
 const NavDesktopContainer = connect(

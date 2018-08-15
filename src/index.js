@@ -29,4 +29,4 @@ const rootComponent = (
 
 render(rootComponent, document.getElementById('root'));
 
-store.dispatch(loadUser(2));
+store.dispatch(loadUser(1));

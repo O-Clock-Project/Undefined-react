@@ -7,22 +7,13 @@ import { withRouter } from 'react-router-dom';
 /**
  * Local import
  */
-import Profile from 'src/components/Profile';
+import Mainleft from 'src/components/Mainleft';
 
 // Action Creators
 import { loadUserView } from 'src/store/reducer';
 
 /* === State (données) === */
-const mapStateToProps = (state, ownProps) => {
-  const { id } = ownProps.match.params;
-
-  return {
-    idView: id,
-    user: state.user_view,
-    edit: state.edit_profile,
-    loaded: state.loaded_view,
-  };
-};
+const mapStateToProps = null;
 
 /* === Actions === */
 const mapDispatchToProps = dispatch => ({
@@ -32,13 +23,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // Container
-const ProfileContainer = connect(
+const MainleftContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Profile);
+)(Mainleft);
 
 
 /**
  * Export
  */
-export default withRouter(ProfileContainer);
+export default withRouter(MainleftContainer);

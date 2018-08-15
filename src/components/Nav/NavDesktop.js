@@ -19,7 +19,7 @@ import logo from 'src/assets/images/logo_bold_jaune.png';
 /**
  * Code
  */
-const NavDesktop = ({ user, loaded }) => (
+const NavDesktop = ({ user, loaded, changeUserView }) => (
   <nav className="navbar">
     <div className="navbar-start">
       {/* Profile */}
@@ -50,7 +50,7 @@ const NavDesktop = ({ user, loaded }) => (
       </NavLink>
       {/* Profile */}
       <NavLink
-        exact
+        strict
         to={`/profile/${user.id}`}
         className="navbar-link"
         activeClassName="navbar-link--active"
@@ -77,6 +77,7 @@ const NavDesktop = ({ user, loaded }) => (
 NavDesktop.propTypes = {
   user: PropTypes.object.isRequired,
   loaded: PropTypes.bool.isRequired,
+  changeUserView: PropTypes.func.isRequired,
 };
 
 
