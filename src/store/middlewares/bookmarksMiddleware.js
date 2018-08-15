@@ -7,7 +7,7 @@ import axios from 'axios';
  * Local import
  */
 import baseUrl from 'src/data/config';
-import { LOAD_USER } from './reducer';
+import { LOAD_BOOKMARKS, receivedBookmarks } from '../reducer';
 
 
 /**
@@ -19,14 +19,13 @@ import { LOAD_USER } from './reducer';
  */
 const bookmarksAxios = store => next => (action) => {
   switch (action.type) {
-    case LOAD_USER: {
-      const url = `${baseUrl}/api/users/${action.id}?displayGroup=profile`;
+    case LOAD_BOOKMARKS: {
+      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks`;
       axios
         .get(url)
         .then((response) => {
-          console.log(store);
-          console.log(response);
-          // store.dispatch(receivedUser(response.data));
+          console.log(response.data);
+          store.dispatch(receivedBookmarks(response.data));
         })
         .catch((error) => {
           console.error(error);

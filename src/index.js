@@ -14,7 +14,7 @@ import App from 'src/components/App';
 
 // store
 import store from 'src/store';
-import { loadUser } from 'src/store/reducer';
+import { loadUser, loadBookmarks } from 'src/store/reducer';
 
 /**
  * Code
@@ -30,3 +30,4 @@ const rootComponent = (
 render(rootComponent, document.getElementById('root'));
 
 store.dispatch(loadUser(2));
+store.dispatch(loadBookmarks());

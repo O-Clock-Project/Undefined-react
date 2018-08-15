@@ -19,6 +19,7 @@ import './bookmarks.sass';
 class Bookmarks extends React.Component {
   static propTypes = {
     bookmarks: PropTypes.array.isRequired,
+    status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
   };
 
   state = {
@@ -26,7 +27,7 @@ class Bookmarks extends React.Component {
   };
 
   render() {
-    const { bookmarks } = this.props;
+    const { bookmarks, status } = this.props;
 
     return (
       <div id="bookmarks">
@@ -37,14 +38,10 @@ class Bookmarks extends React.Component {
             <option value="news">News</option>
           </select>
         </form>
-        <div id="bookmarks_list">
-          {bookmarks.map(bookmark => (
-            <Bookmark
-              key={bookmark.id}
-              {...bookmark}
-            />
-          ))}
-        </div>
+        {status === 'loading' && <div>Loading ...</div>}
+        {status === 'loaded'
+          && <div id="bookmarks_list"> {bookmarks.map(bookmark => (<Bookmark key={bookmark.id} {...bookmark} />))}</div>
+        }
       </div>
     );
   }

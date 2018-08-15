@@ -14,6 +14,7 @@ import { doSomething } from 'src/store/reducer';
 // State
 const mapStateToProps = state => ({
   bookmarks: state.bookmarks,
+  status: state.bookmarksStatus,
 });
 
 /* === Actions ===

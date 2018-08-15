@@ -4,7 +4,9 @@ import dataBookmarks from 'src/data/bookmarks';
  * Initial State
  */
 const initialState = {
-  // Users
+  /**
+   * Users
+   */
   loaded: false,
   id_user: 0,
   user: {},
@@ -19,8 +21,14 @@ const initialState = {
     input_zip: '',
     birthday: '',
   },
-  // Bookmarks filter
+  /**
+   * Bookmarks
+   */
+  // Datas
   bookmarks: dataBookmarks,
+  // Loading status
+  bookmarksStatus: 'loading',
+  // Select filter
   search_bookmark_form: {
     select_type: 'all',
     select_language: 'all',
@@ -34,14 +42,18 @@ const initialState = {
 /**
  * Types
  */
+// Users
 export const LOAD_USER = 'LOAD_USER';
 export const RECEIVED_USER = 'RECEIVED_USER';
+export const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
+export const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
+export const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
 
-const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
-const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
-const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
-const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
-const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
+// Bookmarks
+export const LOAD_BOOKMARKS = 'LOAD_BOOKMARKS';
+export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
+export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
+export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
 
 /**
  * Traitements
@@ -78,11 +90,12 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
-    case CLICK_PROFILE_EDIT:
+    case CLICK_PROFILE_EDIT: {
       return {
         ...state,
         edit_profile: !state.edit_profile,
       };
+    }
 
     case CHANGE_INPUT_VALUE: {
       const input = `input_${action.name}`;
@@ -105,12 +118,32 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
-    // Bookmarks filter
+    // Bookmarks
+    case RECEIVED_BOOKMARKS: {
+      return {
+        ...state,
+        // Adding received bookmarks to the state
+        bookmarks: action.data,
+        // Change the loading status
+        bookmarksStatus: 'loaded',
+      };
+    }
+
+    case LOAD_BOOKMARKS: {
+      return {
+        ...state,
+        // Loading status for bookmarks
+        bookmarksStatus: 'loading',
+      };
+    }
+
     case CHANGE_SELECT_VALUE: {
       return {
         ...state,
         search_bookmark_form: {
+          // Old select value in the state
           ...state.search_bookmark_form,
+          // New action select value
           [action.name]: action.value,
         },
       };
@@ -119,6 +152,7 @@ const reducer = (state = initialState, action = {}) => {
     case RESET_SELECT_VALUE: {
       return {
         ...state,
+        // Reset all the select
         search_bookmark_form: {
           select_type: 'all',
           select_language: 'all',
@@ -163,7 +197,16 @@ export const changeBirthday = value => ({
   type: CHANGE_BIRTHDAY,
   value,
 });
-// Bookmarks filter
+// Bookmarks
+export const loadBookmarks = () => ({
+  type: LOAD_BOOKMARKS,
+});
+
+export const receivedBookmarks = data => ({
+  type: RECEIVED_BOOKMARKS,
+  data,
+});
+
 export const changeSelectValue = (name, value) => ({
   type: CHANGE_SELECT_VALUE,
   name,

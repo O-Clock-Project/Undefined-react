@@ -24,7 +24,7 @@ import certified from 'src/assets/images/certified.svg';
  * Code
  */
 const Bookmark = ({
-  icon,
+  support,
   title,
   certified_by,
   published_at,
@@ -38,9 +38,9 @@ const Bookmark = ({
     <div>
       {/* Bookmark identity */}
       <div className="bookmark_identity">
-        {icon === 'FaFilm' && <a href="#" className="bookmark_identity_support"><FaFilm /></a>}
-        {icon === 'FaHeadphones' && <a href="#" className="bookmark_identity_support"><FaHeadphones /></a>}
-        {icon === 'FaFileAlt' && <a href="#" className="bookmark_identity_support"><FaFileAlt /></a>}
+        {support.icon === 'FaFilm' && <a href="#" className="bookmark_identity_support"><FaFilm /></a>}
+        {support.icon === 'FaHeadphones' && <a href="#" className="bookmark_identity_support"><FaHeadphones /></a>}
+        {support.icon === 'FaFileAlt' && <a href="#" className="bookmark_identity_support"><FaFileAlt /></a>}
         <a href="#" className="bookmark_identity_title">{title}</a>
         {/* Certificat */}
         {certified_by.length > 0 && <img className="bookmark_identity_certificat" src={certified} alt="certified" />}
@@ -79,7 +79,11 @@ const Bookmark = ({
 );
 
 Bookmark.propTypes = {
-  icon: PropTypes.string.isRequired,
+  support: PropTypes.shape({
+    icon: PropTypes.string,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
   title: PropTypes.string.isRequired,
   certified_by: PropTypes.array.isRequired,
   published_at: PropTypes.string.isRequired,
