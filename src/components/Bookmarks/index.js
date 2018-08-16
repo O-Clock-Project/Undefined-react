@@ -57,8 +57,8 @@ class Bookmarks extends React.Component {
               type="spinningBubbles"
               color="#e8ddcb"
               className="react_loading"
-              width="10%"
-              height="10%"
+              width="5%"
+              height="5%"
             />
           </div>)}
 

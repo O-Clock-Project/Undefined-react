@@ -30,5 +30,5 @@ const rootComponent = (
 render(rootComponent, document.getElementById('root'));
 
 store.dispatch(loadUser(2));
-store.dispatch(loadBookmarks());
 store.dispatch(loadFilters());
+store.dispatch(loadBookmarks());

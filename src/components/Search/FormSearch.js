@@ -58,13 +58,13 @@ class FormSearch extends React.Component {
         {/* Loading */}
         {status === 'loading' && (
           <div className="loading">
-            <ReactLoading
+            {/* <ReactLoading
               type="spinningBubbles"
               color="#e8ddcb"
               className="react_loading"
-              width="10%"
-              height="10%"
-            />
+              width="5%"
+              height="5%"
+            /> */}
           </div>)}
 
         {/* Filters */}
