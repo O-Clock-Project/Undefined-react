@@ -11,10 +11,10 @@ import ProfileEditLine from 'src/components/Profile/ProfileEditLine';
 // Action Creators
 import { changeInputValue } from 'src/store/reducer';
 
-/* === State (données) === */
+// State
 const mapStateToProps = null;
 
-/* === Actions === */
+// Actions
 const mapDispatchToProps = dispatch => ({
   changeInputValue: (name, value) => {
     dispatch(changeInputValue(name, value));

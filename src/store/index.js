@@ -9,6 +9,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 // Reducer
 import reducer from 'src/store/reducer';
 import userMiddleware from 'src/store/userMiddleware';
+import bookmarksMiddleware from 'src/store/middlewares/bookmarksMiddleware';
 
 /*
  * Code
@@ -18,7 +19,7 @@ if (window.devToolsExtension) {
   devTools.push(window.devToolsExtension());
 }
 
-const appliedMiddleware = applyMiddleware(userMiddleware);
+const appliedMiddleware = applyMiddleware(userMiddleware, bookmarksMiddleware);
 const enhancers = compose(appliedMiddleware, ...devTools);
 
 // createStore

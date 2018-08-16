@@ -1,10 +1,19 @@
 /**
  * Import
  */
-import baseUrl from 'src/data/config';
-
 import axios from 'axios';
-import { LOAD_USER, LOAD_USER_VIEW, receivedUser, receivedUserView} from './reducer';
+
+
+/**
+ * Local import
+ */
+import baseUrl from 'src/data/config';
+import {
+  LOAD_USER,
+  LOAD_USER_VIEW,
+  receivedUser,
+  receivedUserView,
+} from './reducer';
 
 
 /**
@@ -21,7 +30,6 @@ const userAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          // console.log(response.data[0]);
           store.dispatch(receivedUser(response.data));
         })
         .catch((error) => {

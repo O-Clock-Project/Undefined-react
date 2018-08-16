@@ -7,7 +7,7 @@ import React from 'react';
  * Local import
  */
 // Composants
-import Bookmarks from 'src/components/Bookmarks';
+import BookmarksContainer from 'src/containers/Bookmarks/Bookmarks';
 
 
 // Styles et assets
@@ -18,7 +18,7 @@ import './mainright.sass';
  */
 const Mainright = () => (
   <div id="mainright">
-    <Bookmarks />
+    <BookmarksContainer />
   </div>
 );
 

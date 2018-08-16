@@ -2,7 +2,13 @@
  * Import
  */
 import React from 'react';
-import { FaFilm } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import {
+  FaFilm,
+  FaHeadphones,
+  FaFileAlt,
+} from 'react-icons/fa';
 
 /**
  * Local import
@@ -17,30 +23,49 @@ import certified from 'src/assets/images/certified.svg';
 /**
  * Code
  */
-const Bookmark = () => (
+const Bookmark = ({
+  support,
+  title,
+  certified_by,
+  published_at,
+  author,
+  user,
+  tags,
+  faved_by,
+  votes,
+}) => (
   <div className="bookmark">
     <div>
       {/* Bookmark identity */}
       <div className="bookmark_identity">
-        <a href="#" className="bookmark_identity_support"><FaFilm /> </a>
-        <a href="#" className="bookmark_identity_title">React.js, la révolution par le fond et le vomi, dur dur</a>
+        {/* Support  */}
+        {support.icon === 'FaFilm'
+          && <a href="#" className="bookmark_identity_support"><FaFilm /></a>
+        }
+        {support.icon === 'FaHeadphones'
+          && <a href="#" className="bookmark_identity_support"><FaHeadphones /></a>
+        }
+        {support.icon === 'FaFileAlt'
+          && <a href="#" className="bookmark_identity_support"><FaFileAlt /></a>
+        }
+        {/* Title */}
+        <a href="#" className="bookmark_identity_title">{title}</a>
         {/* Certificat */}
-        <img className="bookmark_identity_certificat" src={certified} alt="certified" />
+        {certified_by.length > 0
+          && <img className="bookmark_identity_certificat" src={certified} alt="certified" />
+        }
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
-        <span className="bookmark_infos_date"> 08.08.2018 -</span>
-        <span className="bookmark_infos_author"> Nicolas Ouissiaen -</span>
-        <span className="bookmark_infos_proposed"> Proposé par <a href="#"> Julien</a></span>
+        <span className="bookmark_infos_date"> {moment(published_at).format('DD-MM-YYYY')} -</span>
+        <span className="bookmark_infos_author"> {author} -</span>
+        <span className="bookmark_infos_proposed"> Proposé par <a href="#"> {user.username}</a></span>
       </div>
       {/* Bookmark tags */}
       <ul className="bookmark_tags">
-        <li><a href="#" className="bookmark_tags_tag">HTML</a></li>
-        <li><a href="#" className="bookmark_tags_tag">CSS</a></li>
-        <li><a href="#" className="bookmark_tags_tag">JavaScript</a></li>
-        <li><a href="#" className="bookmark_tags_tag">React.js</a></li>
-        <li><a href="#" className="bookmark_tags_tag">Redux</a></li>
-        <li><a href="#" className="bookmark_tags_tag">JavaScript</a></li>
+        {tags.map(tag => (
+          <li key={tag.id}><a href="#" className="bookmark_tags_tag">{tag.label}</a></li>
+        ))}
       </ul>
     </div>
     <div>
@@ -48,18 +73,48 @@ const Bookmark = () => (
       <div className="bookmark_highlight">
         {/* Votes */}
         <div className="bookmark_highlight_voted">
-          <div className="voted_note">5</div>
+          <div className="voted_note">{votes.reduce((cumul, vote) => (
+            cumul + vote.value), 0)}
+          </div>
           <div className="voted_title">votes</div>
         </div>
         {/* Favored */}
         <div className="bookmark_highlight_favored">
-          <div className="favored_note">55</div>
+          <div className="favored_note">{faved_by.length}</div>
           <div className="favored_title">favoris</div>
         </div>
       </div>
     </div>
   </div>
 );
+
+Bookmark.propTypes = {
+  support: PropTypes.shape({
+    icon: PropTypes.string,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
+  title: PropTypes.string.isRequired,
+  certified_by: PropTypes.array.isRequired,
+  published_at: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    username: PropTypes.string,
+  }).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    label: PropTypes.string,
+  })).isRequired,
+  faved_by: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    username: PropTypes.string,
+  })).isRequired,
+  votes: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    value: PropTypes.number,
+  })).isRequired,
+};
 
 /**
  * Export

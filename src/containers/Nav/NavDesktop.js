@@ -12,7 +12,7 @@ import NavDesktop from 'src/components/Nav/NavDesktop';
 // Action Creators
 import { changeUserView } from 'src/store/reducer';
 
-/* === State (données) === */
+// State
 const mapStateToProps = state => ({
   user: state.user,
   loaded: state.loaded,

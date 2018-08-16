@@ -2,31 +2,31 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
  */
-import NavMobile from 'src/components/Nav/NavMobile';
+import Bookmarks from 'src/components/Bookmarks';
 
 // Action Creators
 
 // State
 const mapStateToProps = state => ({
-  user: state.user,
+  bookmarks: state.bookmarks,
+  status: state.bookmarksStatus,
 });
 
 // Actions
 const mapDispatchToProps = {};
 
 // Container
-const NavMobileContainer = connect(
+// connect(Ce dont j'ai besoin)(Qui en a besoin)
+const BookmarksContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NavMobile);
-
+)(Bookmarks);
 
 /**
  * Export
  */
-export default withRouter(NavMobileContainer);
+export default BookmarksContainer;

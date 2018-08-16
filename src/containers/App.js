@@ -8,10 +8,14 @@ import { connect } from 'react-redux';
  */
 import App from 'src/components/App';
 
+// Action Creators
+
+// State
 const mapStateToProps = state => ({
   loaded: state.loaded,
 });
 
+// Actions
 const mapDispatchToProps = {};
 
 // Container
