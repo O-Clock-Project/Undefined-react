@@ -53,7 +53,6 @@ class Search extends React.Component {
 
         </div>
 
-
         {/* Form add or research */}
         {toggleForm && <FormSearchContainer />}
         {!toggleForm && <FormAdd />}

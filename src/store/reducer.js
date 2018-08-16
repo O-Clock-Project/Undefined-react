@@ -1,4 +1,3 @@
-import filtersData from 'src/data/filters';
 /**
  * Initial State
  */
@@ -24,7 +23,7 @@ const initialState = {
   // Bookmarks
   // Datas
   bookmarks: [],
-  filters: filtersData,
+  filters: {},
   // Loading status
   bookmarksStatus: 'loading',
   filtersStatus: 'loading',
@@ -59,6 +58,7 @@ export const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
 export const LOAD_BOOKMARKS = 'LOAD_BOOKMARKS';
 export const LOAD_FILTERS = 'LOAD_FILTERS';
 export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
+export const RECEIVED_FILTERS = 'RECEIVED_FILTERS';
 export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
@@ -176,6 +176,16 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case RECEIVED_FILTERS: {
+      return {
+        ...state,
+        // Adding received bookmarks to the state
+        filters: action.data,
+        // Change the loading status
+        filtersStatus: 'loaded',
+      };
+    }
+
     case CHANGE_SELECT_VALUE: {
       return {
         ...state,
@@ -270,6 +280,11 @@ export const loadFilters = () => ({
 
 export const receivedBookmarks = data => ({
   type: RECEIVED_BOOKMARKS,
+  data,
+});
+
+export const receivedFilters = data => ({
+  type: RECEIVED_FILTERS,
   data,
 });
 

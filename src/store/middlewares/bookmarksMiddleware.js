@@ -7,7 +7,12 @@ import axios from 'axios';
  * Local import
  */
 import baseUrl from 'src/data/config';
-import { LOAD_BOOKMARKS, LOAD_FILTERS, receivedBookmarks } from '../reducer';
+import {
+  LOAD_BOOKMARKS,
+  LOAD_FILTERS,
+  receivedBookmarks,
+  receivedFilters,
+} from '../reducer';
 
 
 /**
@@ -41,8 +46,8 @@ const bookmarksAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          console.log(store);
           console.log(response);
+          store.dispatch(receivedFilters(response.data));
         })
         .catch((error) => {
           console.error(error);
