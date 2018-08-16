@@ -49,7 +49,6 @@ class Search extends React.Component {
               {toggleForm && 'Ajouter'}
               {!toggleForm && 'Rechercher'}
             </button>
-            <button type="button" className="search_button">Favoris</button>
           </div>
 
         </div>
