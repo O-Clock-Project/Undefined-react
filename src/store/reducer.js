@@ -34,6 +34,8 @@ const initialState = {
     select_tag2: 'all',
     select_tag3: 'all',
   },
+  // Select ordering
+  search_bookmark_ordering: 'last',
 };
 
 /**
@@ -52,9 +54,10 @@ export const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
 
 // Bookmarks
 export const LOAD_BOOKMARKS = 'LOAD_BOOKMARKS';
+export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
 export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
-export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
+export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
 
 /**
  * Traitements
@@ -188,6 +191,14 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case CHANGE_ORDERING_VALUE: {
+      return {
+        ...state,
+        // New value for ordering
+        search_bookmark_ordering: action.value,
+      };
+    }
+
     default:
       return state;
   }
@@ -254,6 +265,11 @@ export const changeSelectValue = (name, value) => ({
 
 export const resetSelectValue = () => ({
   type: RESET_SELECT_VALUE,
+});
+
+export const changeOrderingValue = value => ({
+  type: CHANGE_ORDERING_VALUE,
+  value,
 });
 
 /**
