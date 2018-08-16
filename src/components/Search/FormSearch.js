@@ -19,6 +19,7 @@ import './search.sass';
 class FormSearch extends React.Component {
   static propTypes = {
     data: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    filters: PropTypes.objectOf(PropTypes.array).isRequired,
     changeSelectValue: PropTypes.func.isRequired,
     resetSelectValue: PropTypes.func.isRequired,
   };
@@ -42,7 +43,7 @@ class FormSearch extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, filters } = this.props;
 
     return (
       <form id="search_form">
@@ -59,9 +60,9 @@ class FormSearch extends React.Component {
             <p className="search_form_label">Veuillez selectionner un support :</p>
             <select name="select_type" value={data.select_type} className="search_form_select" onChange={this.handleChange}>
               <option value="all">All</option>
-              <option value="audio">Audio</option>
-              <option value="video">Vidéo</option>
-              <option value="article">Article</option>
+              {filters.supports.map(support => (
+                <option value={support.name}>{support.name}</option>
+              ))}
             </select>
           </div>
           {/* Category language */}
@@ -69,8 +70,9 @@ class FormSearch extends React.Component {
             <p className="search_form_label">Veuillez selectionner une langue :</p>
             <select name="select_language" value={data.select_language} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
-              <option value="french">Français</option>
-              <option value="english">Anglais</option>
+              {filters.difficulties.map(difficultie => (
+                <option value={difficultie.name}>{difficultie.name}</option>
+              ))}
             </select>
           </div>
           {/* Category level */}
@@ -78,9 +80,9 @@ class FormSearch extends React.Component {
             <p className="search_form_label">Veuillez selectionner un niveau :</p>
             <select name="select_level" value={data.select_level} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
-              <option value="debutant">Débutant</option>
-              <option value="confirmed">Confirmé</option>
-              <option value="expert">Expert</option>
+              {filters.locales.map(locale => (
+                <option value={locale.name}>{locale.name}</option>
+              ))}
             </select>
           </div>
         </div>
@@ -91,7 +93,9 @@ class FormSearch extends React.Component {
             <p className="search_form_label">Champs libre 1</p>
             <select name="select_tag1" value={data.select_tag1} className="search_form_select" onChange={this.handleChange}>
               <option value="all">All</option>
-              <option value="tags_1">Tags 1</option>
+              {filters.tags.map(tag => (
+                <option value={tag.label}>{tag.label}</option>
+              ))}
             </select>
           </div>
           {/* Category tag2 */}
@@ -99,7 +103,9 @@ class FormSearch extends React.Component {
             <p className="search_form_label">Champs libre 2</p>
             <select name="select_tag2" value={data.select_tag2} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
-              <option value="tags_1">Tags 1</option>
+              {filters.tags.map(tag => (
+                <option value={tag.label}>{tag.label}</option>
+              ))}
             </select>
           </div>
           {/* Category tag3 */}
@@ -107,7 +113,9 @@ class FormSearch extends React.Component {
             <p className="search_form_label">Champs libre 3</p>
             <select name="select_tag3" value={data.select_tag3} className="search_form_select" onChange={this.handleChange}>
               <option value="All">All</option>
-              <option value="tags_1">Tags 1</option>
+              {filters.tags.map(tag => (
+                <option value={tag.label}>{tag.label}</option>
+              ))}
             </select>
           </div>
         </div>

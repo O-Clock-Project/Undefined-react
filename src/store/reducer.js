@@ -1,3 +1,4 @@
+import filtersData from 'src/data/filters';
 /**
  * Initial State
  */
@@ -23,6 +24,7 @@ const initialState = {
   // Bookmarks
   // Datas
   bookmarks: [],
+  filters: filtersData,
   // Loading status
   bookmarksStatus: 'loading',
   // Select filter

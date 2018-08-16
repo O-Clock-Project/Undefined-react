@@ -14,6 +14,7 @@ import { changeSelectValue, resetSelectValue } from 'src/store/reducer';
 // State
 const mapStateToProps = state => ({
   data: state.search_bookmark_form,
+  filters: state.filters,
 });
 
 // Actions
