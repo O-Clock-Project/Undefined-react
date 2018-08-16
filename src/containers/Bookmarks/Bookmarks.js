@@ -9,15 +9,21 @@ import { connect } from 'react-redux';
 import Bookmarks from 'src/components/Bookmarks';
 
 // Action Creators
+import { changeOrderingValue } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
   bookmarks: state.bookmarks,
   status: state.bookmarksStatus,
+  ordering: state.search_bookmark_ordering,
 });
 
 // Actions
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  changeOrderingValue: (value) => {
+    dispatch(changeOrderingValue(value));
+  },
+});
 
 // Container
 // connect(Ce dont j'ai besoin)(Qui en a besoin)

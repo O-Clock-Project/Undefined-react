@@ -23,17 +23,21 @@ const initialState = {
   // Bookmarks
   // Datas
   bookmarks: [],
+  filters: {},
   // Loading status
   bookmarksStatus: 'loading',
+  filtersStatus: 'loading',
   // Select filter
   search_bookmark_form: {
-    select_type: 'all',
-    select_language: 'all',
-    select_level: 'all',
-    select_tag1: 'all',
-    select_tag2: 'all',
-    select_tag3: 'all',
+    select_type: 'All',
+    select_language: 'All',
+    select_level: 'All',
+    select_tag1: 'All',
+    select_tag2: 'All',
+    select_tag3: 'All',
   },
+  // Select ordering
+  search_bookmark_ordering: 'last',
 };
 
 /**
@@ -52,9 +56,12 @@ export const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
 
 // Bookmarks
 export const LOAD_BOOKMARKS = 'LOAD_BOOKMARKS';
+export const LOAD_FILTERS = 'LOAD_FILTERS';
+export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
+export const RECEIVED_FILTERS = 'RECEIVED_FILTERS';
 export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
-export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
+export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
 
 /**
  * Traitements
@@ -151,6 +158,14 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case LOAD_FILTERS: {
+      return {
+        ...state,
+        // Loading status for filters
+        filtersStatus: 'loading',
+      };
+    }
+
     case RECEIVED_BOOKMARKS: {
       return {
         ...state,
@@ -158,6 +173,16 @@ const reducer = (state = initialState, action = {}) => {
         bookmarks: action.data,
         // Change the loading status
         bookmarksStatus: 'loaded',
+      };
+    }
+
+    case RECEIVED_FILTERS: {
+      return {
+        ...state,
+        // Adding received bookmarks to the state
+        filters: action.data,
+        // Change the loading status
+        filtersStatus: 'loaded',
       };
     }
 
@@ -178,13 +203,21 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         // Reset all the select
         search_bookmark_form: {
-          select_type: 'all',
-          select_language: 'all',
-          select_level: 'all',
-          select_tag1: 'all',
-          select_tag2: 'all',
-          select_tag3: 'all',
+          select_type: 'All',
+          select_language: 'All',
+          select_level: 'All',
+          select_tag1: 'All',
+          select_tag2: 'All',
+          select_tag3: 'All',
         },
+      };
+    }
+
+    case CHANGE_ORDERING_VALUE: {
+      return {
+        ...state,
+        // New value for ordering
+        search_bookmark_ordering: action.value,
       };
     }
 
@@ -241,8 +274,17 @@ export const loadBookmarks = () => ({
   type: LOAD_BOOKMARKS,
 });
 
+export const loadFilters = () => ({
+  type: LOAD_FILTERS,
+});
+
 export const receivedBookmarks = data => ({
   type: RECEIVED_BOOKMARKS,
+  data,
+});
+
+export const receivedFilters = data => ({
+  type: RECEIVED_FILTERS,
   data,
 });
 
@@ -254,6 +296,11 @@ export const changeSelectValue = (name, value) => ({
 
 export const resetSelectValue = () => ({
   type: RESET_SELECT_VALUE,
+});
+
+export const changeOrderingValue = value => ({
+  type: CHANGE_ORDERING_VALUE,
+  value,
 });
 
 /**
