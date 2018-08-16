@@ -18,9 +18,9 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     idView: id,
-    user: state.user_view,
-    edit: state.edit_profile,
-    loaded: state.loaded_view,
+    user: state.main.user_view,
+    edit: state.main.edit_profile,
+    loaded: state.main.loaded_view,
   };
 };
 

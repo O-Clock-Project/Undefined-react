@@ -12,7 +12,7 @@ import ProfileNav from 'src/components/Profile/ProfileNav';
 
 /* === State (données) === */
 const mapStateToProps = state => ({
-  user: state.user_view,
+  user: state.main.user_view,
 });
 
 /* === Actions === */

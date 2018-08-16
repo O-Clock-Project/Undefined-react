@@ -12,8 +12,8 @@ import Bookmarks from 'src/components/Bookmarks';
 
 // State
 const mapStateToProps = state => ({
-  bookmarks: state.bookmarks,
-  status: state.bookmarksStatus,
+  bookmarks: state.main.bookmarks,
+  status: state.main.bookmarksStatus,
 });
 
 // Actions
