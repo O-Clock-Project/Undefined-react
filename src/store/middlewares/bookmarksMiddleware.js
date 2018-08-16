@@ -46,7 +46,6 @@ const bookmarksAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          console.log(response);
           store.dispatch(receivedFilters(response.data));
         })
         .catch((error) => {
