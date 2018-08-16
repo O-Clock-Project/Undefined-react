@@ -20,7 +20,7 @@ import './mainleft.sass';
 /**
  * Code
  */
-const Mainleft = ({ loadUserView }) => (
+const Mainleft = ({ change }) => (
   <div id="mainleft">
     <Switch>
       <Route exact path="/" component={Home} />
@@ -28,12 +28,12 @@ const Mainleft = ({ loadUserView }) => (
         exact
         strict
         path="/profile/:id"
-        // component={Profile}
-        render={({ match }) => {
-          const { id } = match.params;
-          loadUserView(id);
-          return <Profile />;
-        }}
+        component={Profile}
+        // render={({ match }) => {
+        //   const { id } = match.params;
+        //   loadUserView(id);
+        //   return <Profile />;
+        // }}
       />
       <Route exact path="/bookmarks" component={Search} />
     </Switch>

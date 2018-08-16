@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import {
   FaFilm,
@@ -26,12 +27,12 @@ import certified from 'src/assets/images/certified.svg';
 const Bookmark = ({
   support,
   title,
-  certified_by,
-  published_at,
+  certified_by: certifiedBy,
+  published_at: publishedAt,
   author,
   user,
   tags,
-  faved_by,
+  faved_by: favedBy,
   votes,
 }) => (
   <div className="bookmark">
@@ -51,15 +52,15 @@ const Bookmark = ({
         {/* Title */}
         <a href="#" className="bookmark_identity_title">{title}</a>
         {/* Certificat */}
-        {certified_by.length > 0
+        {certifiedBy.length > 0
           && <img className="bookmark_identity_certificat" src={certified} alt="certified" />
         }
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
-        <span className="bookmark_infos_date"> {moment(published_at).format('DD-MM-YYYY')} -</span>
+        <span className="bookmark_infos_date"> {moment(publishedAt).format('DD-MM-YYYY')} -</span>
         <span className="bookmark_infos_author"> {author} -</span>
-        <span className="bookmark_infos_proposed"> Proposé par <a href="#"> {user.username}</a></span>
+        <span className="bookmark_infos_proposed"> Proposé par <NavLink strict to={`/profile/${user.id}`}> {user.username}</NavLink></span>
       </div>
       {/* Bookmark tags */}
       <ul className="bookmark_tags">
@@ -80,7 +81,7 @@ const Bookmark = ({
         </div>
         {/* Favored */}
         <div className="bookmark_highlight_favored">
-          <div className="favored_note">{faved_by.length}</div>
+          <div className="favored_note">{favedBy.length}</div>
           <div className="favored_title">favoris</div>
         </div>
       </div>

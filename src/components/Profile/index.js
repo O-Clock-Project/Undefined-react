@@ -18,21 +18,40 @@ import './profile.sass';
 /**
  * Code
  */
-const Profile = ({ user, edit, loaded }) => (
-  <div id="profile">
-    {loaded && <h1 id="profile_title">{user.username}</h1>}
-    {loaded && <p id="profile_intro">{user.affectations['0'].promotion.name} - (Professeur référent) - (Tuteur)</p>}
-    {!edit && loaded && <ProfileView />}
-    {edit && loaded && <ProfileEdit />}
-    {loaded && <ProfileNav />}
-  </div>
-);
+class Profile extends React.Component {
+  static propTypes = {
+    idView: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
+    edit: PropTypes.bool.isRequired,
+    loaded: PropTypes.bool.isRequired,
+    loadUserView: PropTypes.func.isRequired,
+  }
 
-Profile.propTypes = {
-  user: PropTypes.object.isRequired,
-  edit: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
-};
+  componentDidMount() {
+    const { idView, loadUserView } = this.props;
+    loadUserView(idView);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { idView, loadUserView } = this.props;
+    if (idView != prevProps.idView) {
+      loadUserView(idView);
+    }
+  }
+
+  render() {
+    const { user, edit, loaded } = this.props;
+    return (
+      <div id="profile">
+        {loaded && <h1 id="profile_title">{user.username}</h1>}
+        {loaded && <p id="profile_intro">{user.affectations['0'].promotion.name} - (Professeur référent) - (Tuteur)</p>}
+        {!edit && loaded && <ProfileView />}
+        {edit && loaded && <ProfileEdit />}
+        {loaded && <ProfileNav />}
+      </div>
+    );
+  }
+}
 
 /**
  * Export
