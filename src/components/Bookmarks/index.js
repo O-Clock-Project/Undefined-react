@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactLoading from 'react-loading';
 
 /**
  * Local import
@@ -48,10 +49,30 @@ class Bookmarks extends React.Component {
             <option value="favored">Favoris</option>
           </select>
         </form>
-        {status === 'loading' && <div>Loading ...</div>}
+
+        {/* Loading */}
+        {status === 'loading' && (
+          <div className="loading">
+            <ReactLoading
+              type="spinningBubbles"
+              color="#e8ddcb"
+              className="react_loading"
+              width="10%"
+              height="10%"
+            />
+          </div>)}
+
+        {/* Bookmarks */}
         {status === 'loaded'
-          && <div id="bookmarks_list">{bookmarks.map(bookmark => (<Bookmark key={bookmark.id} {...bookmark} />))}</div>
-        }
+          && (
+            <div id="bookmarks_list">
+              {bookmarks.map(bookmark => (
+                <Bookmark
+                  key={bookmark.id}
+                  {...bookmark}
+                />))}
+            </div>)}
+
       </div>
     );
   }

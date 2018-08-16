@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactLoading from 'react-loading';
 
 /**
  * Local import
@@ -54,7 +55,19 @@ class FormSearch extends React.Component {
           <button type="button" className="search_form_reset" onClick={this.handleClick}>Reset</button>
         </div>
 
-        {status === 'loading' && <div>Loading ...</div>}
+        {/* Loading */}
+        {status === 'loading' && (
+          <div className="loading">
+            <ReactLoading
+              type="spinningBubbles"
+              color="#e8ddcb"
+              className="react_loading"
+              width="10%"
+              height="10%"
+            />
+          </div>)}
+
+        {/* Filters */}
         {status === 'loaded'
           && (
           <div>
