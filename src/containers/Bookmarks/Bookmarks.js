@@ -13,9 +13,9 @@ import { changeOrderingValue } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
-  bookmarks: state.bookmarks,
-  status: state.bookmarksStatus,
-  ordering: state.search_bookmark_ordering,
+  bookmarks: state.main.bookmarks,
+  status: state.main.bookmarksStatus,
+  ordering: state.main.search_bookmark_ordering,
 });
 
 // Actions

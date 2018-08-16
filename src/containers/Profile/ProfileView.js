@@ -13,8 +13,8 @@ import { clickProfileEdit } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
-  idUser: state.id_user,
-  user: state.user_view,
+  idUser: state.main.id_user,
+  user: state.main.user_view,
 });
 
 // Actions

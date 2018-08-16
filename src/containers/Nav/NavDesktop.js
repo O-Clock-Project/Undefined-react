@@ -14,8 +14,8 @@ import { changeUserView } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
-  user: state.user,
-  loaded: state.loaded,
+  user: state.main.user,
+  loaded: state.main.loaded,
 });
 
 /* === Actions === */

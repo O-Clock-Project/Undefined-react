@@ -111,6 +111,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         user_view: action.data,
         loaded_view: true,
+        edit_profile: false,
       };
     }
 

@@ -64,10 +64,24 @@
       margin: .5rem
 
 .profile-edit
+  position: relative
+
+  &-tools
+    position: absolute
+    right: 1rem
+    top: 1rem
+    color: $link-color
+    cursor: pointer
+    font-size: 1.3rem
+
+    &:hover
+      color: $link-color-hover
+  
   &-form
     width: 80%
     margin: auto
     padding: 1rem 0
+
 
     &-line
       border-bottom: 1px dashed $link-color-hover
@@ -82,6 +96,7 @@
         color: $link-color-hover
     
     &-input
+      min-width: 50%
       margin-left: .5rem
       background: 0 0
       border: 0

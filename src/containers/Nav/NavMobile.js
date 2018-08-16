@@ -13,7 +13,7 @@ import NavMobile from 'src/components/Nav/NavMobile';
 
 // State
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.main.user,
 });
 
 // Actions
