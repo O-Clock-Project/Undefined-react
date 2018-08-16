@@ -20,6 +20,7 @@ import moment from 'moment';
 class ProfileView extends React.Component {
   static propTypes = {
     clickProfileEdit: PropTypes.func.isRequired,
+    idUser: PropTypes.number.isRequired,
     user: PropTypes.object.isRequired,
   };
 
@@ -29,11 +30,11 @@ class ProfileView extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { idUser, user } = this.props;
     const urlGitHub = `https://github.com/${user.pseudo_github}`;
     return (
       <div className="profile-infos">
-        <FaCog className="profile-infos-tools" onClick={this.clickOnTools} />
+        {idUser === user.id && <FaCog className="profile-infos-tools" onClick={this.clickOnTools} />}
         <a href={urlGitHub} className="profile-infos-github"><FaGithub /></a>
         <img className="profile-infos-avatar" src={user.avatar} alt="Votre avatar" />
         <div className="profile-infos-content">
