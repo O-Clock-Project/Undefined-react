@@ -11,6 +11,8 @@ import {
 /**
  * Local import
  */
+// Assets
+import preview from 'src/assets/images/preview.png';
 // Composants
 
 
@@ -89,7 +91,7 @@ const Ressource = () => (
         <a href="#">URL du bookmark</a>
       </div>
       <div id="ressource_capture">
-        Je suis la preview du bookmark
+        <img id="ressource_image" src={preview} alt="preview" />
       </div>
     </div>
 
