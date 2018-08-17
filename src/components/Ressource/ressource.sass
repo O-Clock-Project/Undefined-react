@@ -6,3 +6,99 @@
 /**
  * Styles
  */
+#ressource
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 3rem 1.5rem 3rem 3rem
+
+  &_title
+    text-align: center
+    font-size: 3rem
+    font-weight: bold
+    text-transform: uppercase
+
+  &_infos
+    font-weight: bold
+    margin-bottom: 3rem
+
+  &_presentation
+    line-height: 1.2
+    text-align: center
+
+  &_tags
+    margin: 2.5rem 0
+    display: flex
+    flex-direction: column
+
+  &_preview
+    width: 100%
+
+    &_section
+      display: flex
+      align-items: flex-end
+      justify-content: space-between
+      padding-bottom: 0.5rem
+      margin-bottom: 1rem
+      border-bottom: 2px solid $border-color
+
+    &_icon
+      width: 30px
+      height: 100%
+
+    &_title
+      font-weight: 600
+      font-size: 1.6rem
+    
+  &_link
+    display: flex
+
+    & p
+      margin-right: 0.5rem
+
+  &_capture
+    width: 60%
+    min-height: 250px
+    margin: 3rem auto
+    border: 1px dashed $border-color
+
+
+// Tags CSS
+.ressource_tags
+  
+  &_line
+    display: flex
+    justify-content: center
+    margin: 0.5rem
+
+  &_tag
+    display: flex
+
+.tag_content
+  display: flex
+  align-items: center
+  text-align: center
+  color: $link-color
+  background-color: $div-bgcolor
+  border-top: 1px solid darken($div-bgcolor, 5%)
+  border-bottom: 1px solid darken($div-bgcolor, 5%)
+  padding: 0.5rem 0
+  text-transform: lowercase
+  font-weight: 600
+
+.tag_left, .tag_right
+  width: 30px
+  height: 100%
+  background-color: $div-bgcolor
+  border: 1px solid darken($div-bgcolor, 5%)
+  border-radius: 50%
+
+.tag_left
+  transform: translate(50%)
+  z-index: -1
+
+.tag_right
+  transform: translate(-50%)
+  z-index: -1
+
+
