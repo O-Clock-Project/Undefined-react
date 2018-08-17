@@ -88,8 +88,8 @@ class FormSearch extends React.Component {
                 <p className="search_form_label">Veuillez selectionner une langue :</p>
                 <select name="select_language" value={data.select_language} className="search_form_select" onChange={this.handleChange}>
                   <option value="All">Tous</option>
-                  {filters.difficulties.map(difficultie => (
-                    <option value={difficultie.name} key={difficultie.id}>{difficultie.name}</option>
+                  {filters.locales.map(locale => (
+                    <option value={locale.name} key={locale.id}>{locale.name}</option>
                   ))}
                 </select>
               </div>
@@ -98,8 +98,8 @@ class FormSearch extends React.Component {
                 <p className="search_form_label">Veuillez selectionner un niveau :</p>
                 <select name="select_level" value={data.select_level} className="search_form_select" onChange={this.handleChange}>
                   <option value="All">Tous</option>
-                  {filters.locales.map(locale => (
-                    <option value={locale.name} key={locale.id}>{locale.name}</option>
+                  {filters.difficulties.map(difficultie => (
+                    <option value={difficultie.name} key={difficultie.id}>{difficultie.name}</option>
                   ))}
                 </select>
               </div>

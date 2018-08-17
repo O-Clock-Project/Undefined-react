@@ -20,7 +20,6 @@ import './home.sass';
 const Home = () => (
   <div id="home">
     <h1 id="home_title">Invaders</h1>
-    <p id="home_intro">Spécialité - Professeur référent - Tuteur</p>
     <Channel />
     <span id="border" />
     <Links />

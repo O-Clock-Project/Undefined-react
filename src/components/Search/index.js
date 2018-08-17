@@ -36,8 +36,6 @@ class Search extends React.Component {
       <div id="search">
         <h1 id="search_title">Les Bookmarks</h1>
 
-        <p id="search_intro">Spécialité - Professeur référent - Tuteur</p>
-
         <div id="search_container">
           <h2 id="search_title_abstract">Un petit texte d'intro ? Ici, on n'est pas chez Wikipédia</h2>
 
