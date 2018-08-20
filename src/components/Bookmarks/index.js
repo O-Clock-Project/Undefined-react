@@ -43,7 +43,7 @@ class Bookmarks extends React.Component {
           <p id="bookmarks_title">Trier les bookmarks</p>
           {/* Select ordering */}
           <select name="ordering" id="bookmarks_select" value={ordering} onChange={this.handleChange}>
-            <option value="last">Plus récents</option>
+            <option value="created_at">Plus récents</option>
             <option value="old">Plus anciens</option>
             <option value="voted">Mieux notés</option>
             <option value="favored">Favoris</option>

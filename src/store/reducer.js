@@ -31,15 +31,15 @@ const initialState = {
   filtersStatus: 'loading',
   // Select filter
   search_bookmark_form: {
-    select_type: 'All',
-    select_language: 'All',
-    select_level: 'All',
-    select_tag1: 'All',
-    select_tag2: 'All',
-    select_tag3: 'All',
+    select_type: '',
+    select_language: '',
+    select_level: '',
+    select_tag1: '',
+    select_tag2: '',
+    select_tag3: '',
   },
   // Select ordering
-  search_bookmark_ordering: 'last',
+  search_bookmark_ordering: 'created_at',
   // Form Add Bookmark
   show_add_tag: false,
 };
@@ -214,12 +214,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         // Reset all the select
         search_bookmark_form: {
-          select_type: 'All',
-          select_language: 'All',
-          select_level: 'All',
-          select_tag1: 'All',
-          select_tag2: 'All',
-          select_tag3: 'All',
+          select_type: '',
+          select_language: '',
+          select_level: '',
+          select_tag1: '',
+          select_tag2: '',
+          select_tag3: '',
         },
       };
     }
