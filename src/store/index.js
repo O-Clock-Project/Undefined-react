@@ -16,7 +16,7 @@ import { reducer as formReducer } from 'redux-form';
 import mainReducer from 'src/store/reducer';
 
 // Middlewares
-import userMiddleware from 'src/store/userMiddleware';
+import userMiddleware from 'src/store/middlewares/userMiddleware';
 import bookmarksMiddleware from 'src/store/middlewares/bookmarksMiddleware';
 
 /*

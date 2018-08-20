@@ -2,7 +2,6 @@
  * Import
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -25,11 +24,6 @@ const FormAdd = () => (
     <SearchAddForm />
   </div>
 );
-
-FormAdd.propTypes = {
-  showFormTag: PropTypes.bool.isRequired,
-  addTag: PropTypes.func.isRequired,
-};
 
 /**
  * Export

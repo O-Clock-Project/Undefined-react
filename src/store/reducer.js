@@ -52,11 +52,11 @@ export const LOAD_USER = 'LOAD_USER';
 export const LOAD_USER_VIEW = 'LOAD_USER_VIEW';
 export const RECEIVED_USER = 'RECEIVED_USER';
 export const RECEIVED_USER_VIEW = 'RECEIVED_USER_VIEW';
+export const EDIT_USER = 'EDIT_USER';
+export const SUCCESS_EDIT_USER = 'SUCCESS_EDIT_USER';
 
 export const CHANGE_USER_VIEW = 'CHANGE_USER_VIEW';
 export const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
-export const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
-export const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
 
 // Bookmarks
 export const LOAD_BOOKMARKS = 'LOAD_BOOKMARKS';
@@ -127,6 +127,27 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case EDIT_USER: {
+      return {
+        ...state,
+      };
+    }
+
+    case SUCCESS_EDIT_USER: {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.data,
+        },
+        user_view: {
+          ...state.user_view,
+          ...action.data,
+        },
+        edit_profile: false,
+      };
+    }
+
     case CHANGE_USER_VIEW: {
       return {
         ...state,
@@ -138,27 +159,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         edit_profile: !state.edit_profile,
-      };
-    }
-
-    case CHANGE_INPUT_VALUE: {
-      const input = `input_${action.name}`;
-      return {
-        ...state,
-        edit_profile_form: {
-          ...state.edit_profile_form,
-          [input]: action.value,
-        },
-      };
-    }
-
-    case CHANGE_BIRTHDAY: {
-      return {
-        ...state,
-        edit_profile_form: {
-          ...state.edit_profile_form,
-          birthday: action.value,
-        },
       };
     }
 
@@ -297,6 +297,16 @@ export const receivedUserView = data => ({
   data,
 });
 
+export const editUser = values => ({
+  type: EDIT_USER,
+  values,
+});
+
+export const successEditUser = data => ({
+  type: SUCCESS_EDIT_USER,
+  data,
+});
+
 export const changeUserView = id => ({
   type: CHANGE_USER_VIEW,
   id,
@@ -306,16 +316,6 @@ export const clickProfileEdit = () => ({
   type: CLICK_PROFILE_EDIT,
 });
 
-export const changeInputValue = (name, value) => ({
-  type: CHANGE_INPUT_VALUE,
-  name,
-  value,
-});
-
-export const changeBirthday = value => ({
-  type: CHANGE_BIRTHDAY,
-  value,
-});
 // Bookmarks
 export const loadBookmarks = () => ({
   type: LOAD_BOOKMARKS,
