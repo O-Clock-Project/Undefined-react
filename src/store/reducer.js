@@ -1,3 +1,4 @@
+import ressource from 'src/data/ressource';
 /**
  * Initial State
  */
@@ -23,6 +24,7 @@ const initialState = {
   // Bookmarks
   // Datas
   bookmarks: [],
+  bookmark: ressource,
   filters: {},
   // Loading status
   bookmarksStatus: 'loading',
@@ -61,9 +63,11 @@ export const LOAD_BOOKMARKS = 'LOAD_BOOKMARKS';
 export const LOAD_FILTERS = 'LOAD_FILTERS';
 export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
 export const RECEIVED_FILTERS = 'RECEIVED_FILTERS';
+
 export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
+
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
 export const ADD_TAG = 'ADD_TAG';
