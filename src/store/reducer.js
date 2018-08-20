@@ -68,6 +68,8 @@ export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
 
+export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
+
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
 export const ADD_TAG = 'ADD_TAG';
@@ -206,6 +208,13 @@ const reducer = (state = initialState, action = {}) => {
           // New action select value
           [action.name]: action.value,
         },
+        bookmarksStatus: 'loading',
+      };
+    }
+
+    case REQUEST_BOOKMARKS: {
+      return {
+        ...state,
       };
     }
 
@@ -348,6 +357,10 @@ export const showAddTag = () => ({
 export const addTag = value => ({
   type: ADD_TAG,
   value,
+});
+
+export const requestBookmarks = () => ({
+  type: REQUEST_BOOKMARKS,
 });
 
 /**

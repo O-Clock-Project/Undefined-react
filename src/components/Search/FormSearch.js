@@ -23,24 +23,29 @@ class FormSearch extends React.Component {
     status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
     changeSelectValue: PropTypes.func.isRequired,
     resetSelectValue: PropTypes.func.isRequired,
+    requestBookmarks: PropTypes.func.isRequired,
   };
 
   handleChange = (evt) => {
     // I prepare my action creator
-    const { changeSelectValue } = this.props;
+    const { changeSelectValue, requestBookmarks } = this.props;
     // I catch the name of the selector
     const { name } = evt.target;
     // I catch the value of the selector
     const { value } = evt.target;
     // I change the state with action creator
     changeSelectValue(name, value);
+    // Request for news bookmarks
+    requestBookmarks();
   }
 
   handleClick = () => {
     // Catch my action creator
-    const { resetSelectValue } = this.props;
+    const { resetSelectValue, requestBookmarks } = this.props;
     // Update the state with the action creator
     resetSelectValue();
+    // Request for news bookmarks
+    requestBookmarks();
   }
 
   render() {
