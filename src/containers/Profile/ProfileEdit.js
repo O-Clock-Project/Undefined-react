@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import ProfileEdit from 'src/components/Profile/ProfileEdit';
 
 // Action Creators
-import { clickProfileEdit } from 'src/store/reducer';
+import { clickProfileEdit, editUser } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
@@ -20,6 +20,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   clickProfileEdit: () => {
     dispatch(clickProfileEdit());
+  },
+  editUser: (value) => {
+    dispatch(editUser(value));
   },
 });
 

@@ -20,6 +20,7 @@ class ProfileEdit extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     clickProfileEdit: PropTypes.func.isRequired,
+    editUser: PropTypes.func.isRequired,
   }
 
   clickOnTools = () => {
@@ -28,13 +29,16 @@ class ProfileEdit extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, editUser } = this.props;
     const dateBirthday = moment(user.birthday).format('YYYY-MM-DD');
     return (
       <div className="profile-edit">
         <MdClose className="profile-edit-tools" onClick={this.clickOnTools} />
         <ProfileForm
+          onSubmit={editUser}
           initialValues={{
+            id: user.id,
+            username: user.username,
             firstname: user.first_name,
             lastname: user.last_name,
             email: user.email,
