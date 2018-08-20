@@ -11,6 +11,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from 'src/components/Home';
 import Profile from 'src/containers/Profile/Profile';
 import Search from 'src/components/Search';
+import Ressource from 'src/components/Ressource';
 
 
 // Styles et assets
