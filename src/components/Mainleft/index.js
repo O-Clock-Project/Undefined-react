@@ -24,8 +24,7 @@ import './mainleft.sass';
 const Mainleft = ({ change }) => (
   <div id="mainleft">
     <Switch>
-      <Route exact path="/" component={Ressource} />
-      {/* <Route exact path="/" component={Home} /> */}
+      <Route exact path="/" component={Home} />
       <Route
         exact
         strict
