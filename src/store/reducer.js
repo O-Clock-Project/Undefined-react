@@ -38,6 +38,8 @@ const initialState = {
   },
   // Select ordering
   search_bookmark_ordering: 'last',
+  // Form Add Bookmark
+  show_add_tag: false,
 };
 
 /**
@@ -62,6 +64,10 @@ export const RECEIVED_FILTERS = 'RECEIVED_FILTERS';
 export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
+// Form add bookmark
+export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
+export const ADD_TAG = 'ADD_TAG';
+
 
 /**
  * Traitements
@@ -222,6 +228,33 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case SHOW_ADD_TAG: {
+      return {
+        ...state,
+        // New value for ordering
+        show_add_tag: !state.show_add_tag,
+      };
+    }
+
+    case ADD_TAG: {
+      const id = state.filters.tags.length + 2;
+      return {
+        ...state,
+        show_add_tag: false,
+        // New value for ordering
+        filters: {
+          ...state.filters,
+          tags: [
+            ...state.filters.tags,
+            {
+              id,
+              label: action.value.tag,
+            },
+          ],
+        },
+      };
+    }
+
     default:
       return state;
   }
@@ -301,6 +334,15 @@ export const resetSelectValue = () => ({
 
 export const changeOrderingValue = value => ({
   type: CHANGE_ORDERING_VALUE,
+  value,
+});
+
+export const showAddTag = () => ({
+  type: SHOW_ADD_TAG,
+});
+
+export const addTag = value => ({
+  type: ADD_TAG,
   value,
 });
 

@@ -44,7 +44,6 @@ class Profile extends React.Component {
     return (
       <div id="profile">
         {loaded && <h1 id="profile_title">{user.username}</h1>}
-        {loaded && <p id="profile_intro">{user.affectations['0'].promotion.name} - (Professeur référent) - (Tuteur)</p>}
         {!edit && loaded && <ProfileView />}
         {edit && loaded && <ProfileEdit />}
         {loaded && <ProfileNav />}
