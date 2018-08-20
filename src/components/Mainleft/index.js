@@ -2,7 +2,6 @@
  * Import
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
 /**
@@ -20,7 +19,7 @@ import './mainleft.sass';
 /**
  * Code
  */
-const Mainleft = ({ change }) => (
+const Mainleft = () => (
   <div id="mainleft">
     <Switch>
       <Route exact path="/" component={Home} />
@@ -29,20 +28,11 @@ const Mainleft = ({ change }) => (
         strict
         path="/profile/:id"
         component={Profile}
-        // render={({ match }) => {
-        //   const { id } = match.params;
-        //   loadUserView(id);
-        //   return <Profile />;
-        // }}
       />
       <Route exact path="/bookmarks" component={Search} />
     </Switch>
   </div>
 );
-
-Mainleft.propTypes = {
-  loadUserView: PropTypes.func.isRequired,
-};
 
 /**
  * Export

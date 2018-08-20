@@ -8,7 +8,7 @@ import React from 'react';
  */
 // Composants
 import FormSearchContainer from 'src/containers/Search/FormSearch';
-import FormAdd from './FormAdd';
+import SearchAdd from 'src/containers/Search/SearchAdd';
 
 
 // Styles et assets
@@ -53,7 +53,7 @@ class Search extends React.Component {
 
         {/* Form add or research */}
         {toggleForm && <FormSearchContainer />}
-        {!toggleForm && <FormAdd />}
+        {!toggleForm && <SearchAdd />}
       </div>
     );
   }

@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-const required = value => (value ? undefined : 'Requis');
-const number = value => (value && Number.isNaN(Number(value)) ? 'Doit être un nombre' : undefined);
+const required = value => (value ? undefined : 'Champ requis.');
 const minLength = min => value => (value && value.length < min ? `Doit faire au minimum ${min} caractères.` : undefined);
+const minLength2 = minLength(2);
 const minLength8 = minLength(8);
 const email = value => (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
   ? 'Adresse email invalide' : undefined);
-const passwordsMatch = (value, allValues) => (value !== allValues.password ? 'Le mot de passe ne correspond pas' : undefined);
+const passwordsMatch = (value, allValues) => (value !== allValues.password ? 'Les mots de passe ne correspondent pas.' : undefined);
 
 const renderField = ({
   input, label, type, meta: { touched, error, warning },
@@ -42,14 +42,14 @@ const EditProfilForm = (props) => {
         type="text"
         label="Prénom"
         component={renderField}
-        validate={required}
+        validate={[required, minLength2]}
       />
       <Field
         name="lastname"
         type="text"
         label="Nom"
         component={renderField}
-        validate={required}
+        validate={[required, minLength2]}
       />
       <Field
         name="email"
@@ -77,7 +77,7 @@ const EditProfilForm = (props) => {
         type="text"
         label="Code postal"
         component={renderField}
-        validate={[required, number]}
+        validate={required}
       />
       <Field
         name="password"

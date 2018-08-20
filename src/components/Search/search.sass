@@ -98,3 +98,129 @@
   &_reset
     padding: 0.1rem 0.8rem
 
+// Form add bookmark
+.search_add
+
+  &_title
+    font-weight: 600
+    font-size: 1.6rem
+
+  &_intro
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    padding-bottom:  0.5rem
+    border-bottom: 2px solid $border-color
+    margin-bottom: 3rem
+  
+  &_form
+    width: 100%
+    margin: 3rem auto
+    padding: 1rem
+    background-color: $div-bgcolor
+    border: 1px solid $border-color
+    border-radius: 0.3rem
+
+    &_line
+      border-bottom: 1px dashed $link-color-hover
+      margin: 1rem 0
+      padding-bottom: .5rem
+      position: relative
+
+    &_label
+      cursor: pointer
+      color: $link-color
+
+      &:hover
+        color: $link-color-hover
+    
+    &_input
+      min-width: 50%
+      margin-left: .5rem
+      background: 0 0
+      border: 0
+      color: lightblue
+      font-family: Oclock
+      font-weight: 400
+      font-size: 1rem
+
+    &_textarea
+      min-width: 100%
+      max-width: 100%
+      background: 0 0
+      border: 0
+      color: lightblue
+      font-family: Oclock
+      font-weight: 400
+      font-size: 1rem
+      vertical-align: top
+
+    &_select
+      margin-left: .5rem
+      border: 1px solid $border-color
+      border-radius: 0.3rem
+      font-size: 1rem
+      background-color: $body-bgcolor
+      font-family: inherit
+      color: inherit
+      // width: 50%
+      padding: 0 0.4rem
+
+    &-btn
+      font-family: Oclock
+      font-weight: 700
+      text-transform: uppercase
+      color: $link-color
+      background-color: $nav-bgcolor
+      border: 1px solid $link-color
+      border-radius: .3rem
+      padding: .5rem 1rem
+
+      &:hover
+        color: $link-color-hover
+        border-color: $link-color-hover
+    
+    &_addTag
+      position: absolute
+      right: 1rem
+      top: 0
+      cursor: pointer
+      color: $link-color
+
+      &:hover
+        color: $link-color-hover
+
+.search_add_tag
+  width: 100%
+  padding: 1rem
+  background-color: $div-bgcolor
+
+// Modal -> form Add Tag
+.Overlay
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, 0.75)
+
+.Modal
+  position: absolute
+  top: 50%
+  left: 50%
+  right: auto
+  bottom: auto
+  width: 30rem
+  height: 10rem
+  border: 0
+  transform: translate(-50%, -50%)
+  outline: 0
+
+  &-btn
+    position: absolute
+    background-color: transparent
+    color: $link-color
+    top: .5rem
+    right: .5rem
+    border: 0
+    font-size: 1.3rem
