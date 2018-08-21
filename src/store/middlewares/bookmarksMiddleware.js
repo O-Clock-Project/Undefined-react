@@ -82,7 +82,6 @@ const bookmarksAxios = store => next => (action) => {
 
       // Catch the state for ordering
       const ordering = store.getState().main.search_bookmark_ordering;
-      console.log(ordering);
 
       // Url requesting
       const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks${support}${language}${level}${tag1}${tag2}${tag3}&orderField=${ordering}`;
@@ -96,6 +95,7 @@ const bookmarksAxios = store => next => (action) => {
         })
         .catch((error) => {
           console.error(error);
+          console.log('pas de résultat');
         });
       break;
     }

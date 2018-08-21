@@ -23,15 +23,18 @@ class Bookmarks extends React.Component {
     status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
     ordering: PropTypes.string.isRequired,
     changeOrderingValue: PropTypes.func.isRequired,
+    requestBookmarks: PropTypes.func.isRequired,
   };
 
   handleChange = (evt) => {
     // I prepare my action creator
-    const { changeOrderingValue } = this.props;
+    const { changeOrderingValue, requestBookmarks } = this.props;
     // I catch the value of the selector
     const { value } = evt.target;
     // I change the state with action creator
     changeOrderingValue(value);
+    // Request for news bookmarks
+    requestBookmarks();
   }
 
   render() {
@@ -44,9 +47,8 @@ class Bookmarks extends React.Component {
           {/* Select ordering */}
           <select name="ordering" id="bookmarks_select" value={ordering} onChange={this.handleChange}>
             <option value="created_at">Plus récents</option>
-            <option value="old">Plus anciens</option>
-            <option value="voted">Mieux notés</option>
-            <option value="favored">Favoris</option>
+            <option value="votes">Mieux notés</option>
+            <option value="faved_by">Les favoris</option>
           </select>
         </form>
 
