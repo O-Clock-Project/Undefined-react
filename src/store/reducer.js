@@ -42,6 +42,7 @@ const initialState = {
   search_bookmark_ordering: 'last',
   // Form Add Bookmark
   show_add_tag: false,
+  show_add_bookmark: true,
 };
 
 /**
@@ -70,7 +71,9 @@ export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
 
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
+export const SHOW_ADD_BOOKMARK = 'SHOW_ADD_BOOKMARK';
 export const ADD_TAG = 'ADD_TAG';
+export const ADD_BOOKMARK = 'ADD_BOOKMARK';
 
 
 /**
@@ -240,6 +243,14 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case SHOW_ADD_BOOKMARK: {
+      return {
+        ...state,
+        // New value for ordering
+        show_add_bookmark: !state.show_add_bookmark,
+      };
+    }
+
     case ADD_TAG: {
       const id = state.filters.tags.length + 2;
       return {
@@ -256,6 +267,13 @@ const reducer = (state = initialState, action = {}) => {
             },
           ],
         },
+      };
+    }
+
+    case ADD_BOOKMARK: {
+      return {
+        ...state,
+        show_add_bookmark: true,
       };
     }
 
@@ -345,9 +363,18 @@ export const showAddTag = () => ({
   type: SHOW_ADD_TAG,
 });
 
+export const showAddBookmark = () => ({
+  type: SHOW_ADD_BOOKMARK,
+});
+
 export const addTag = value => ({
   type: ADD_TAG,
   value,
+});
+
+export const addBookmark = values => ({
+  type: ADD_BOOKMARK,
+  values,
 });
 
 /**

@@ -34,7 +34,7 @@ class Profile extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { idView, loadUserView } = this.props;
-    if (idView != prevProps.idView) {
+    if (idView !== prevProps.idView) {
       loadUserView(idView);
     }
   }

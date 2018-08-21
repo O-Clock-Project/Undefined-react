@@ -9,17 +9,15 @@ import { connect } from 'react-redux';
 import SearchAdd from 'src/components/Search/SearchAdd';
 
 // Action Creators
-import { addTag } from 'src/store/reducer';
+import { addBookmark } from 'src/store/reducer';
 
 // State
-const mapStateToProps = state => ({
-  showFormTag: state.main.show_add_tag,
-});
+const mapStateToProps = null;
 
 // Actions
 const mapDispatchToProps = dispatch => ({
-  addTag: (value) => {
-    dispatch(addTag(value));
+  addBookmark: (values) => {
+    dispatch(addBookmark(values));
   },
 });
 
