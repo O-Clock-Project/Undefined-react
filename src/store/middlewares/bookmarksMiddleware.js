@@ -29,12 +29,13 @@ const bookmarksAxios = store => next => (action) => {
     // Loading last bookmarks
     case LOAD_BOOKMARKS: {
       // Url requesting for last bookmarks
-      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks`;
+      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks&orderField=published_at&sortType=desc`;
 
       // Requesting
       axios
         .get(url)
         .then((response) => {
+          // Dispatch the data from response
           store.dispatch(receivedBookmarks(response.data));
         })
         .catch((error) => {
@@ -52,6 +53,7 @@ const bookmarksAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
+          // Dispatch the data from response
           store.dispatch(receivedFilters(response.data));
         })
         .catch((error) => {
@@ -94,12 +96,12 @@ const bookmarksAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          console.log(response);
+          // Dispatch the data from response
           store.dispatch(receivedBookmarks(response.data));
         })
         .catch((error) => {
           console.error(error);
-          console.log('pas de résultat');
+          // Dispatch for change ths state of results
           store.dispatch(noResults());
         });
       break;

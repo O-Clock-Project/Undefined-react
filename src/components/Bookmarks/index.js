@@ -72,16 +72,16 @@ class Bookmarks extends React.Component {
             </div>
             {/* Order type */}
             <select name="ordering" id="bookmarks_select" value={ordering} onChange={this.handleChange}>
-              <option value="published_at">Publication</option>
-              <option value="votes">Par votes</option>
-              <option value="faved_by">En favoris</option>
+              <option value="published_at">Date</option>
+              <option value="votes">Votes</option>
+              <option value="faved_by">Favoris</option>
             </select>
           </div>
         </form>
 
         {/* No results */}
         {results === false && (
-          <div id="bookmarks_results">Aucun résultats. Veuillez modifier votre recherche !</div>
+          <div id="bookmarks_results">Aucun résultat. Veuillez modifier votre recherche !</div>
         )}
 
         {/* Loading */}

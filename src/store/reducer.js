@@ -265,6 +265,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         // New value for ordering
         direction: newDirection,
+        bookmarksStatus: 'loading',
       };
     }
 
