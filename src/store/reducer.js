@@ -8,6 +8,7 @@ const initialState = {
   loaded_view: false,
   id_user: 0,
   id_user_view: 0,
+  user_token: '',
   user: {},
   user_view: {},
   edit_profile: false,
@@ -48,6 +49,7 @@ const initialState = {
  * Types
  */
 // Users
+export const SET_TOKEN = 'SET_TOKEN';
 export const LOAD_USER = 'LOAD_USER';
 export const LOAD_USER_VIEW = 'LOAD_USER_VIEW';
 export const RECEIVED_USER = 'RECEIVED_USER';
@@ -83,6 +85,13 @@ export const ADD_TAG = 'ADD_TAG';
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     // User Profil
+    case SET_TOKEN: {
+      return {
+        ...state,
+        user_token: action.data,
+      };
+    }
+
     case LOAD_USER: {
       return {
         ...state,
@@ -268,6 +277,11 @@ const reducer = (state = initialState, action = {}) => {
  * Action Creators
  */
 // User Profil
+export const setToken = data => ({
+  type: SET_TOKEN,
+  data,
+});
+
 export const loadUser = id => ({
   type: LOAD_USER,
   id,
