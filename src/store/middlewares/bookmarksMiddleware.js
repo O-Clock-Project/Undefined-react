@@ -84,8 +84,11 @@ const bookmarksAxios = store => next => (action) => {
       // Catch the state for ordering
       const ordering = store.getState().main.search_bookmark_ordering;
 
+      // Catch the state for direction
+      const orderDirection = store.getState().main.direction;
+
       // Url requesting
-      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks${support}${language}${level}${tag1}${tag2}${tag3}&orderField=${ordering}`;
+      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks${support}${language}${level}${tag1}${tag2}${tag3}&orderField=${ordering}&sortType=${orderDirection}`;
 
       // Requesting
       axios

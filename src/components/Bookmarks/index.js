@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactLoading from 'react-loading';
+import { FaSortAmountUp, FaSortAmountDown } from 'react-icons/fa';
 
 /**
  * Local import
@@ -25,6 +26,8 @@ class Bookmarks extends React.Component {
     changeOrderingValue: PropTypes.func.isRequired,
     requestBookmarks: PropTypes.func.isRequired,
     results: PropTypes.bool.isRequired,
+    direction: PropTypes.string.isRequired,
+    changeDirection: PropTypes.func.isRequired,
   };
 
   handleChange = (evt) => {
@@ -38,24 +41,42 @@ class Bookmarks extends React.Component {
     requestBookmarks();
   }
 
+  handleDirection = () => {
+    // I prepare my action creator
+    const { changeDirection, requestBookmarks } = this.props;
+    // I change the state with action creator
+    changeDirection();
+    // Request for news bookmarks
+    requestBookmarks();
+  }
+
   render() {
     const {
       bookmarks,
       status,
       ordering,
       results,
+      direction,
     } = this.props;
 
     return (
       <div id="bookmarks">
         <form id="bookmarks_form">
           <p id="bookmarks_title">Trier les bookmarks</p>
-          {/* Select ordering */}
-          <select name="ordering" id="bookmarks_select" value={ordering} onChange={this.handleChange}>
-            <option value="created_at">Date d'ajout</option>
-            <option value="votes">Par note</option>
-            <option value="faved_by">En favoris</option>
-          </select>
+          {/* Ordering */}
+          <div id="bookmarks_ordering">
+            {/* Order asc/desc */}
+            <div id="bookmarks_arrows">
+              {direction === 'asc' && <FaSortAmountUp onClick={this.handleDirection} />}
+              {direction === 'desc' && <FaSortAmountDown onClick={this.handleDirection} />}
+            </div>
+            {/* Order type */}
+            <select name="ordering" id="bookmarks_select" value={ordering} onChange={this.handleChange}>
+              <option value="published_at">Publication</option>
+              <option value="votes">Par votes</option>
+              <option value="faved_by">En favoris</option>
+            </select>
+          </div>
         </form>
 
         {/* No results */}

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Bookmarks from 'src/components/Bookmarks';
 
 // Action Creators
-import { changeOrderingValue, requestBookmarks } from 'src/store/reducer';
+import { changeOrderingValue, requestBookmarks, changeDirection } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
   status: state.main.bookmarksStatus,
   ordering: state.main.search_bookmark_ordering,
   results: state.main.results,
+  direction: state.main.direction,
 });
 
 // Actions
@@ -27,6 +28,10 @@ const mapDispatchToProps = dispatch => ({
 
   requestBookmarks: () => {
     dispatch(requestBookmarks());
+  },
+
+  changeDirection: () => {
+    dispatch(changeDirection());
   },
 });
 

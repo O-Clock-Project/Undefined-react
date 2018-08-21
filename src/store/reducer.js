@@ -40,8 +40,10 @@ const initialState = {
     select_tag2: '',
     select_tag3: '',
   },
-  // Select ordering
-  search_bookmark_ordering: 'created_at',
+  // Ordering ASC/DESC
+  direction: 'desc',
+  // Select ordering type
+  search_bookmark_ordering: 'published_at',
   // Form Add Bookmark
   show_add_tag: false,
 };
@@ -69,6 +71,7 @@ export const RECEIVED_FILTERS = 'RECEIVED_FILTERS';
 export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
+export const CHANGE_DIRECTION = 'CHANGE_DIRECTION';
 
 export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
 export const NO_RESULTS = 'NO_RESULTS';
@@ -255,6 +258,16 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case CHANGE_DIRECTION: {
+      // Set the value direction
+      const newDirection = state.direction === 'asc' ? 'desc' : 'asc';
+      return {
+        ...state,
+        // New value for ordering
+        direction: newDirection,
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -371,6 +384,10 @@ export const resetSelectValue = () => ({
 export const changeOrderingValue = value => ({
   type: CHANGE_ORDERING_VALUE,
   value,
+});
+
+export const changeDirection = () => ({
+  type: CHANGE_DIRECTION,
 });
 
 export const showAddTag = () => ({
