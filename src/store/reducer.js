@@ -29,6 +29,8 @@ const initialState = {
   // Loading status
   bookmarksStatus: 'loading',
   filtersStatus: 'loading',
+  // No results
+  results: true,
   // Select filter
   search_bookmark_form: {
     select_type: '',
@@ -69,6 +71,7 @@ export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
 
 export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
+export const NO_RESULTS = 'NO_RESULTS';
 
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
@@ -205,6 +208,13 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case NO_RESULTS: {
+      return {
+        ...state,
+        results: false,
+      };
+    }
+
     case CHANGE_SELECT_VALUE: {
       return {
         ...state,
@@ -215,6 +225,7 @@ const reducer = (state = initialState, action = {}) => {
           [action.name]: action.value,
         },
         bookmarksStatus: 'loading',
+        results: true,
       };
     }
 
@@ -231,6 +242,7 @@ const reducer = (state = initialState, action = {}) => {
           select_tag3: '',
         },
         bookmarksStatus: 'loading',
+        results: true,
       };
     }
 
@@ -340,6 +352,10 @@ export const receivedFilters = data => ({
 
 export const requestBookmarks = () => ({
   type: REQUEST_BOOKMARKS,
+});
+
+export const noResults = () => ({
+  type: NO_RESULTS,
 });
 
 export const changeSelectValue = (name, value) => ({

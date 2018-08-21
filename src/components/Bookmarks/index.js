@@ -24,6 +24,7 @@ class Bookmarks extends React.Component {
     ordering: PropTypes.string.isRequired,
     changeOrderingValue: PropTypes.func.isRequired,
     requestBookmarks: PropTypes.func.isRequired,
+    results: PropTypes.bool.isRequired,
   };
 
   handleChange = (evt) => {
@@ -38,7 +39,12 @@ class Bookmarks extends React.Component {
   }
 
   render() {
-    const { bookmarks, status, ordering } = this.props;
+    const {
+      bookmarks,
+      status,
+      ordering,
+      results,
+    } = this.props;
 
     return (
       <div id="bookmarks">
@@ -46,14 +52,19 @@ class Bookmarks extends React.Component {
           <p id="bookmarks_title">Trier les bookmarks</p>
           {/* Select ordering */}
           <select name="ordering" id="bookmarks_select" value={ordering} onChange={this.handleChange}>
-            <option value="created_at">Plus récents</option>
-            <option value="votes">Mieux notés</option>
-            <option value="faved_by">Les favoris</option>
+            <option value="created_at">Date d'ajout</option>
+            <option value="votes">Par note</option>
+            <option value="faved_by">En favoris</option>
           </select>
         </form>
 
+        {/* No results */}
+        {results === false && (
+          <div id="bookmarks_results">Aucun résultats. Veuillez modifier votre recherche !</div>
+        )}
+
         {/* Loading */}
-        {status === 'loading' && (
+        {status === 'loading' && results === true && (
           <div className="loading">
             <ReactLoading
               type="spinningBubbles"

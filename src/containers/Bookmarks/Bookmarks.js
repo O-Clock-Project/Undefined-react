@@ -16,6 +16,7 @@ const mapStateToProps = state => ({
   bookmarks: state.main.bookmarks,
   status: state.main.bookmarksStatus,
   ordering: state.main.search_bookmark_ordering,
+  results: state.main.results,
 });
 
 // Actions

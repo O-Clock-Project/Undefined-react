@@ -13,6 +13,7 @@ import {
   REQUEST_BOOKMARKS,
   receivedBookmarks,
   receivedFilters,
+  noResults,
 } from '../reducer';
 
 
@@ -96,6 +97,7 @@ const bookmarksAxios = store => next => (action) => {
         .catch((error) => {
           console.error(error);
           console.log('pas de résultat');
+          store.dispatch(noResults());
         });
       break;
     }
