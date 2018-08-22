@@ -34,6 +34,8 @@ const Bookmark = ({
   tags,
   faved_by: favedBy,
   votes,
+  difficulty,
+  locale,
 }) => (
   <div className="bookmark">
     <div>
@@ -64,6 +66,8 @@ const Bookmark = ({
       </div>
       {/* Bookmark tags */}
       <ul className="bookmark_tags">
+        <li><a href="#" className="bookmark_tags_tag">{locale.name}</a></li>
+        <li><a href="#" className="bookmark_tags_tag">{difficulty.name}</a></li>
         {tags.map(tag => (
           <li key={tag.id}><a href="#" className="bookmark_tags_tag">{tag.label}</a></li>
         ))}
@@ -115,6 +119,15 @@ Bookmark.propTypes = {
     id: PropTypes.number,
     value: PropTypes.number,
   })).isRequired,
+  difficulty: PropTypes.shape({
+    id: PropTypes.number,
+    level: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
+  locale: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 /**
