@@ -65,6 +65,9 @@ class Bookmark extends React.Component {
     created_at: PropTypes.string.isRequired,
     // Props from the store
     dispatchSupport: PropTypes.func.isRequired,
+    dispatchTag: PropTypes.func.isRequired,
+    dispatchLanguage: PropTypes.func.isRequired,
+    dispatchLevel: PropTypes.func.isRequired,
     requestBookmarks: PropTypes.func.isRequired,
   };
 
@@ -73,9 +76,41 @@ class Bookmark extends React.Component {
     const { dispatchSupport, requestBookmarks } = this.props;
     // Catch the id of support type
     const { support } = this.props;
-    console.log(support.id);
     // Dispatch the new property for select
     dispatchSupport(support.id);
+    // Request Bookmarks
+    requestBookmarks();
+  }
+
+  handleTag = (evt) => {
+    // Catch item from props
+    const { dispatchTag, requestBookmarks } = this.props;
+    // Catch the name of tag
+    const tag = evt.target.dataset.id;
+    // Dispatch the new tag
+    dispatchTag(tag);
+    // Request Bookmarks
+    requestBookmarks();
+  }
+
+  handleLanguage = (evt) => {
+    // Catch item from props
+    const { dispatchLanguage, requestBookmarks } = this.props;
+    // Catch the name of language
+    const language = evt.target.dataset.id;
+    // Dispatch the new language
+    dispatchLanguage(language);
+    // Request Bookmarks
+    requestBookmarks();
+  }
+
+  handleLevel = (evt) => {
+    // Catch item from props
+    const { dispatchLevel, requestBookmarks } = this.props;
+    // Catch the name of level
+    const level = evt.target.dataset.id;
+    // Dispatch the new tag
+    dispatchLevel(level);
     // Request Bookmarks
     requestBookmarks();
   }
@@ -100,6 +135,7 @@ class Bookmark extends React.Component {
     return (
       <div className="bookmark">
         <div>
+
           {/* Bookmark identity */}
           <div className="bookmark_identity">
             {/* Support  */}
@@ -119,23 +155,46 @@ class Bookmark extends React.Component {
               && <img className="bookmark_identity_certificat" src={certified} alt="certified" />
             }
           </div>
+
           {/* Bookmark infos */}
           <div className="bookmark_infos">
             <span className="bookmark_infos_proposed">Par <NavLink strict to={`/app/profile/${user.id}`}> {user.username}</NavLink> le {moment(createdAt).format('DD/MM/YYYY')} - </span>
             <span className="bookmark_infos_date">Publié en {moment(publishedAt).format('YYYY')},</span>
             <span className="bookmark_infos_author"> {author}</span>
           </div>
+
           {/* Bookmark tags */}
           <ul className="bookmark_tags">
-            <li className="bookmark_tags_tag bookmark_tags_tag--tag1">{locale.name}</li>
-            <li className="bookmark_tags_tag bookmark_tags_tag--tag2">{difficulty.name}</li>
+
+            <li
+              className="bookmark_tags_tag bookmark_tags_tag--tag1"
+              data-id={locale.id}
+              onClick={this.handleLanguage}
+            >{locale.name}
+            </li>
+
+            <li
+              className="bookmark_tags_tag bookmark_tags_tag--tag2"
+              data-id={difficulty.id}
+              onClick={this.handleLevel}
+            >{difficulty.name}
+            </li>
+
             {tags.map(tag => (
-              <li className="bookmark_tags_tag" key={tag.id}>{tag.label}</li>
+              <li
+                className="bookmark_tags_tag"
+                key={tag.id}
+                data-id={tag.id}
+                onClick={this.handleTag}
+              >{tag.label}
+              </li>
             ))}
+
           </ul>
         </div>
+
+        {/* Bookmark highlight */}
         <div>
-          {/* Bookmark highlight */}
           <div className="bookmark_highlight">
             {/* Votes */}
             <div className="bookmark_highlight_voted">

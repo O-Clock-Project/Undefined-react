@@ -9,7 +9,13 @@ import { connect } from 'react-redux';
 import Bookmark from 'src/components/Bookmark';
 
 // Action Creators
-import { dispatchSupport, requestBookmarks } from 'src/store/reducer';
+import {
+  dispatchSupport,
+  requestBookmarks,
+  dispatchTag,
+  dispatchLanguage,
+  dispatchLevel,
+} from 'src/store/reducer';
 
 // State
 const mapStateToProps = null;
@@ -18,6 +24,18 @@ const mapStateToProps = null;
 const mapDispatchToProps = dispatch => ({
   dispatchSupport: (value) => {
     dispatch(dispatchSupport(value));
+  },
+
+  dispatchTag: (value) => {
+    dispatch(dispatchTag(value));
+  },
+
+  dispatchLanguage: (value) => {
+    dispatch(dispatchLanguage(value));
+  },
+
+  dispatchLevel: (value) => {
+    dispatch(dispatchLevel(value));
   },
 
   requestBookmarks: () => {

@@ -73,7 +73,11 @@ export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
 export const CHANGE_DIRECTION = 'CHANGE_DIRECTION';
+
 export const DISPATCH_SUPPORT = 'DISPATCH_SUPPORT';
+export const DISPATCH_TAG = 'DISPACTH_TAG';
+export const DISPATCH_LANGUAGE = 'DISPATCH_LANGUAGE';
+export const DISPATCH_LEVEL = 'DISPATCH_LEVEL';
 
 export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
 export const NO_RESULTS = 'NO_RESULTS';
@@ -289,6 +293,54 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case DISPATCH_TAG: {
+      return {
+        ...state,
+        // New value for ordering
+        search_bookmark_form: {
+          select_type: '',
+          select_language: '',
+          select_level: '',
+          select_tag1: action.value,
+          select_tag2: '',
+          select_tag3: '',
+        },
+        bookmarksStatus: 'loading',
+      };
+    }
+
+    case DISPATCH_LANGUAGE: {
+      return {
+        ...state,
+        // New value for ordering
+        search_bookmark_form: {
+          select_type: '',
+          select_language: action.value,
+          select_level: '',
+          select_tag1: '',
+          select_tag2: '',
+          select_tag3: '',
+        },
+        bookmarksStatus: 'loading',
+      };
+    }
+
+    case DISPATCH_LEVEL: {
+      return {
+        ...state,
+        // New value for ordering
+        search_bookmark_form: {
+          select_type: '',
+          select_language: '',
+          select_level: action.value,
+          select_tag1: '',
+          select_tag2: '',
+          select_tag3: '',
+        },
+        bookmarksStatus: 'loading',
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -428,6 +480,21 @@ export const changeDirection = () => ({
 
 export const dispatchSupport = value => ({
   type: DISPATCH_SUPPORT,
+  value,
+});
+
+export const dispatchTag = value => ({
+  type: DISPATCH_TAG,
+  value,
+});
+
+export const dispatchLanguage = value => ({
+  type: DISPATCH_LANGUAGE,
+  value,
+});
+
+export const dispatchLevel = value => ({
+  type: DISPATCH_LEVEL,
   value,
 });
 
