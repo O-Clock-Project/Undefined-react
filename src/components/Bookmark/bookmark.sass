@@ -34,21 +34,6 @@
     font-style: italic
     margin-top: 0.3rem
 
-  // Bookmark tags
-  &_tags
-
-    & li
-      float: left
-      padding: .2rem .4rem
-      font-size: .8rem
-      font-weight: 600
-      text-transform: lowercase
-      margin-top: 0.5rem
-      margin-right: .5rem
-      background-color: $div-bgcolor
-      border: 1px solid $div-bgcolor
-      border-radius: .3rem
-
   // Bookmark highlight
   &_highlight
     display: flex
@@ -65,4 +50,28 @@
 
 .voted_title, .favored_title
   font-size: smaller
-      
+
+// Bookmark tag
+.bookmark_tags_tag
+  float: left
+  padding: .2rem .4rem
+  font-size: .8rem
+  font-weight: 600
+  text-transform: lowercase
+  margin-top: 0.5rem
+  margin-right: .5rem
+  background-color: $div-bgcolor
+  border: 1px solid $div-bgcolor
+  border-radius: .3rem
+  color: $link-color
+  cursor: pointer
+
+.bookmark_tags_tag--tag1
+  color: $link-color-hover
+  background-color: $tag1-bgcolor
+  border: none
+
+.bookmark_tags_tag--tag2
+  color: $div-bgcolor
+  background-color: $link-color
+  border: none

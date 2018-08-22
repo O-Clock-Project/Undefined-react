@@ -68,10 +68,10 @@ const Bookmark = ({
       </div>
       {/* Bookmark tags */}
       <ul className="bookmark_tags">
-        <li><a href="#" className="bookmark_tags_tag">{locale.name}</a></li>
-        <li><a href="#" className="bookmark_tags_tag">{difficulty.name}</a></li>
+        <li className="bookmark_tags_tag bookmark_tags_tag--tag1">{locale.name}</li>
+        <li className="bookmark_tags_tag bookmark_tags_tag--tag2">{difficulty.name}</li>
         {tags.map(tag => (
-          <li key={tag.id}><a href="#" className="bookmark_tags_tag">{tag.label}</a></li>
+          <li className="bookmark_tags_tag" key={tag.id}>{tag.label}</li>
         ))}
       </ul>
     </div>
