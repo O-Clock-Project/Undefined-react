@@ -10,7 +10,7 @@ import { FaSortAmountUp, FaSortAmountDown } from 'react-icons/fa';
  * Local import
  */
 // Composants
-import Bookmark from 'src/components/Bookmark';
+import Bookmark from 'src/containers/Bookmark/Bookmark';
 
 // Styles et assets
 import './bookmarks.sass';

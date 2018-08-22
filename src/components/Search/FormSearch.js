@@ -18,7 +18,7 @@ import './search.sass';
  */
 class FormSearch extends React.Component {
   static propTypes = {
-    data: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    data: PropTypes.object.isRequired,
     filters: PropTypes.objectOf(PropTypes.array.isRequired).isRequired,
     status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
     changeSelectValue: PropTypes.func.isRequired,

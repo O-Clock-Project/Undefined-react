@@ -73,6 +73,7 @@ export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
 export const RESET_SELECT_VALUE = 'RESET_SELECT_VALUE';
 export const CHANGE_ORDERING_VALUE = 'CHANGE_ORDERING_VALUE';
 export const CHANGE_DIRECTION = 'CHANGE_DIRECTION';
+export const DISPATCH_SUPPORT = 'DISPATCH_SUPPORT';
 
 export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
 export const NO_RESULTS = 'NO_RESULTS';
@@ -272,6 +273,22 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case DISPATCH_SUPPORT: {
+      return {
+        ...state,
+        // New value for ordering
+        search_bookmark_form: {
+          select_type: action.value,
+          select_language: '',
+          select_level: '',
+          select_tag1: '',
+          select_tag2: '',
+          select_tag3: '',
+        },
+        bookmarksStatus: 'loading',
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -407,6 +424,11 @@ export const changeOrderingValue = value => ({
 
 export const changeDirection = () => ({
   type: CHANGE_DIRECTION,
+});
+
+export const dispatchSupport = value => ({
+  type: DISPATCH_SUPPORT,
+  value,
 });
 
 export const showAddTag = () => ({
