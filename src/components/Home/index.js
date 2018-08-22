@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 
 /**
  * Local import
@@ -17,14 +18,25 @@ import './home.sass';
 /**
  * Code
  */
-const Home = () => (
-  <div id="home">
-    <h1 id="home_title">Invaders</h1>
-    <Channel />
-    <span id="border" />
-    <Links />
-  </div>
-);
+class Home extends React.Component {
+  componentDidMount() {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+  }
+
+  render() {
+    return (
+      <div id="home">
+        <h1 id="home_title">Invaders</h1>
+        <Channel />
+        <span id="border" />
+        <Links />
+      </div>
+    );
+  }
+}
 
 /**
  * Export

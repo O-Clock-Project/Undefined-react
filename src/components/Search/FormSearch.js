@@ -104,7 +104,7 @@ class FormSearch extends React.Component {
             <div className="search_form_tags">
               {/* Category tag1 */}
               <div className="search_form_tag">
-                <p className="search_form_label">Tag 1</p>
+                <p className="search_form_label">Tag 1 :</p>
                 <select name="select_tag1" value={data.select_tag1} className="search_form_select" onChange={this.handleChange}>
                   <option value="">Tous</option>
                   {filters.tags.map(tag => (
@@ -114,7 +114,7 @@ class FormSearch extends React.Component {
               </div>
               {/* Category tag2 */}
               <div className="search_form_tag">
-                <p className="search_form_label">Tag 2</p>
+                <p className="search_form_label">Tag 2 :</p>
                 <select name="select_tag2" value={data.select_tag2} className="search_form_select" onChange={this.handleChange}>
                   <option value="">Tous</option>
                   {filters.tags.map(tag => (
@@ -124,7 +124,7 @@ class FormSearch extends React.Component {
               </div>
               {/* Category tag3 */}
               <div className="search_form_tag">
-                <p className="search_form_label">Tag 3</p>
+                <p className="search_form_label">Tag 3 :</p>
                 <select name="select_tag3" value={data.select_tag3} className="search_form_select" onChange={this.handleChange}>
                   <option value="">Tous</option>
                   {filters.tags.map(tag => (

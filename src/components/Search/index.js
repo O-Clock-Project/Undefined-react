@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { animateScroll as scroll } from 'react-scroll';
 
 /**
  * Local import
@@ -22,6 +23,13 @@ class Search extends React.Component {
   static propTypes = {
     toggleForm: PropTypes.bool.isRequired,
     showAddBookmark: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
   }
 
   handleClick = () => {

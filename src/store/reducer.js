@@ -290,21 +290,21 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ADD_TAG: {
-      const id = state.filters.tags.length + 2;
+      // const id = state.filters.tags.length + 2;
       return {
         ...state,
         show_add_tag: false,
         // New value for ordering
-        filters: {
-          ...state.filters,
-          tags: [
-            ...state.filters.tags,
-            {
-              id,
-              label: action.value.tag,
-            },
-          ],
-        },
+        // filters: {
+        //   ...state.filters,
+        //   tags: [
+        //     ...state.filters.tags,
+        //     {
+        //       id,
+        //       label: action.value.tag,
+        //     },
+        //   ],
+        // },
       };
     }
 
@@ -417,9 +417,9 @@ export const showAddBookmark = () => ({
   type: SHOW_ADD_BOOKMARK,
 });
 
-export const addTag = value => ({
+export const addTag = values => ({
   type: ADD_TAG,
-  value,
+  values,
 });
 
 export const addBookmark = values => ({

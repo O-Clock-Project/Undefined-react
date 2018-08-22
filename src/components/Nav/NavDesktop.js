@@ -58,7 +58,14 @@ const NavDesktop = ({ user, loaded }) => (
         <FaUserCircle className="font-svg" /> Profil
       </NavLink>
       {/* Informations */}
-      <a href="#" className="navbar-link"><FaInfoCircle className="font-svg" /> Informations</a>
+      <NavLink
+        strict
+        to="/app/informations"
+        className="navbar-link"
+        activeClassName="navbar-link--active"
+      >
+        <FaInfoCircle className="font-svg" /> Informations
+      </NavLink>
     </div>
     <div className="navbar-end">
       {/* Home */}
