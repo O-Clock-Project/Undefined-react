@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactLoading from 'react-loading';
 import { FaSortAmountUp, FaSortAmountDown } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md';
 
 /**
  * Local import
@@ -24,6 +25,7 @@ class Bookmarks extends React.Component {
     status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
     ordering: PropTypes.string.isRequired,
     changeOrderingValue: PropTypes.func.isRequired,
+    resetSelectValue: PropTypes.func.isRequired,
     requestBookmarks: PropTypes.func.isRequired,
     results: PropTypes.bool.isRequired,
     direction: PropTypes.string.isRequired,
@@ -37,6 +39,15 @@ class Bookmarks extends React.Component {
     const { value } = evt.target;
     // I change the state with action creator
     changeOrderingValue(value);
+    // Request for news bookmarks
+    requestBookmarks();
+  }
+
+  handleClickOnAll = () => {
+    // Catch my action creator
+    const { resetSelectValue, requestBookmarks } = this.props;
+    // Update the state with the action creator
+    resetSelectValue();
     // Request for news bookmarks
     requestBookmarks();
   }
@@ -65,6 +76,10 @@ class Bookmarks extends React.Component {
           <p id="bookmarks_title">Trier les bookmarks</p>
           {/* Ordering */}
           <div id="bookmarks_ordering">
+            {/* Reset all filters */}
+            <div id="bookmarks_reset" onClick={this.handleClickOnAll}>
+              All
+            </div>
             {/* Order asc/desc */}
             <div id="bookmarks_arrows">
               {direction === 'asc' && <FaSortAmountUp onClick={this.handleDirection} />}

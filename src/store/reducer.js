@@ -40,6 +40,8 @@ const initialState = {
     select_tag2: '',
     select_tag3: '',
   },
+  // Show Bookmarks on Profile View
+  viewProfile: '',
   // Ordering ASC/DESC
   direction: 'desc',
   // Select ordering type
@@ -66,6 +68,8 @@ export const CLICK_PROFILE_EDIT = 'CLICK_PROFILE_EDIT';
 // Bookmarks
 export const LOAD_BOOKMARKS = 'LOAD_BOOKMARKS';
 export const LOAD_FILTERS = 'LOAD_FILTERS';
+export const LOAD_BOOKMARKS_BY_USER = 'LOAD_BOOKMARKS_BY_USER';
+export const LOAD_FAVORITES_FOR_USER = 'LOAD_FAVORITES_FOR_USER';
 export const RECEIVED_BOOKMARKS = 'RECEIVED_BOOKMARKS';
 export const RECEIVED_FILTERS = 'RECEIVED_FILTERS';
 
@@ -182,6 +186,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         // Loading status for bookmarks
         bookmarksStatus: 'loading',
+        viewProfile: '',
       };
     }
 
@@ -190,6 +195,24 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         // Loading status for filters
         filtersStatus: 'loading',
+      };
+    }
+
+    case LOAD_BOOKMARKS_BY_USER: {
+      return {
+        ...state,
+        // Loading status for bookmarks
+        bookmarksStatus: 'loading',
+        viewProfile: 'own_bookmarks',
+      };
+    }
+
+    case LOAD_FAVORITES_FOR_USER: {
+      return {
+        ...state,
+        // Loading status for bookmarks
+        bookmarksStatus: 'loading',
+        viewProfile: 'own_favorites',
       };
     }
 
@@ -253,6 +276,7 @@ const reducer = (state = initialState, action = {}) => {
           select_tag3: '',
         },
         bookmarksStatus: 'loading',
+        viewProfile: '',
         results: true,
       };
     }
@@ -439,6 +463,14 @@ export const loadBookmarks = () => ({
 
 export const loadFilters = () => ({
   type: LOAD_FILTERS,
+});
+
+export const loadBookmarksByUser = () => ({
+  type: LOAD_BOOKMARKS_BY_USER,
+});
+
+export const loadFavoritesForUser = () => ({
+  type: LOAD_FAVORITES_FOR_USER,
 });
 
 export const receivedBookmarks = data => ({

@@ -29,6 +29,12 @@ const Mainright = () => (
         component={BookmarksContainer}
       />
       <Route exact path="/app/bookmarks" component={BookmarksContainer} />
+      <Route
+        exact
+        strict
+        path="/app/bookmarks/:id"
+        component={BookmarksContainer}
+      />
       <Route exact path="/app/informations" component={InfosCharte} />
     </Switch>
   </div>

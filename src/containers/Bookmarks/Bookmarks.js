@@ -9,7 +9,9 @@ import { connect } from 'react-redux';
 import Bookmarks from 'src/components/Bookmarks';
 
 // Action Creators
-import { changeOrderingValue, requestBookmarks, changeDirection } from 'src/store/reducer';
+import {
+  changeOrderingValue, resetSelectValue, requestBookmarks, changeDirection 
+} from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
@@ -24,6 +26,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   changeOrderingValue: (value) => {
     dispatch(changeOrderingValue(value));
+  },
+
+  resetSelectValue: () => {
+    dispatch(resetSelectValue());
   },
 
   requestBookmarks: () => {

@@ -10,6 +10,8 @@ import baseUrl from 'src/data/config';
 import {
   LOAD_BOOKMARKS,
   LOAD_FILTERS,
+  LOAD_BOOKMARKS_BY_USER,
+  LOAD_FAVORITES_FOR_USER,
   REQUEST_BOOKMARKS,
   ADD_TAG,
   ADD_BOOKMARK,
@@ -66,6 +68,46 @@ const bookmarksAxios = store => next => (action) => {
       break;
     }
 
+    // Loading bookmark create by 1 user
+    case LOAD_BOOKMARKS_BY_USER: {
+      // Url requesting for last bookmarks
+      const idUser = store.getState().main.id_user_view;
+      const url = `${baseUrl}/api/users/${idUser}/bookmarks/user?displayGroup=bookmarks`;
+
+      // Requesting
+      axios
+        .get(url)
+        .then((response) => {
+          // Dispatch the data from response
+          store.dispatch(receivedBookmarks(response.data));
+        })
+        .catch((error) => {
+          console.error(error.response);
+          store.dispatch(noResults());
+        });
+      break;
+    }
+
+    // Loading favorites bookmark for 1 user
+    case LOAD_FAVORITES_FOR_USER: {
+      // Url requesting for last bookmarks
+      const idUser = store.getState().main.id_user_view;
+      const url = `${baseUrl}/api/users/${idUser}/bookmarks/faved_by?displayGroup=bookmarks`;
+
+      // Requesting
+      axios
+        .get(url)
+        .then((response) => {
+          // Dispatch the data from response
+          store.dispatch(receivedBookmarks(response.data));
+        })
+        .catch((error) => {
+          console.error(error.response);
+          store.dispatch(noResults());
+        });
+      break;
+    }
+
     // User request
     case REQUEST_BOOKMARKS: {
       // Catch the state for each select
@@ -94,7 +136,20 @@ const bookmarksAxios = store => next => (action) => {
       const orderDirection = store.getState().main.direction;
 
       // Url requesting
-      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks${support}${language}${level}${tag1}${tag2}${tag3}&orderField=${ordering}&sortType=${orderDirection}`;
+      const isProfileView = store.getState().main.viewProfile;
+
+      let url = '';
+      if (isProfileView === 'own_bookmarks') {
+        const idUser = store.getState().main.id_user_view;
+        url = `${baseUrl}/api/users/${idUser}/bookmarks/user?displayGroup=bookmarks${support}${language}${level}${tag1}${tag2}${tag3}&orderField=${ordering}&sortType=${orderDirection}`;
+      }
+      else if (isProfileView === 'own_favorites') {
+        const idUser = store.getState().main.id_user_view;
+        url = `${baseUrl}/api/users/${idUser}/bookmarks/faved_by?displayGroup=bookmarks${support}${language}${level}${tag1}${tag2}${tag3}&orderField=${ordering}&sortType=${orderDirection}`;
+      }
+      else {
+        url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks${support}${language}${level}${tag1}${tag2}${tag3}&orderField=${ordering}&sortType=${orderDirection}`;
+      }
 
       // Requesting
       axios
@@ -110,6 +165,7 @@ const bookmarksAxios = store => next => (action) => {
         });
       break;
     }
+
 
     // Add tag
     case ADD_TAG: {
