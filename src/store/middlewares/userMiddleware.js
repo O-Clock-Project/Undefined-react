@@ -36,7 +36,10 @@ const userAxios = store => next => (action) => {
           store.dispatch(receivedUser(response.data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }
@@ -51,7 +54,10 @@ const userAxios = store => next => (action) => {
           store.dispatch(receivedUserView(response.data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }
@@ -79,7 +85,10 @@ const userAxios = store => next => (action) => {
           store.dispatch(successEditUser(data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }

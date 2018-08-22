@@ -2,7 +2,7 @@
  * Import
  */
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 /**
  * Local import
@@ -10,7 +10,7 @@ import { Route, Switch } from 'react-router-dom';
 // Composants
 import Home from 'src/components/Home';
 import Profile from 'src/containers/Profile/Profile';
-import Search from 'src/components/Search';
+import Search from 'src/containers/Search/Search';
 import Ressource from 'src/containers/Ressource/Ressource';
 
 
@@ -23,15 +23,21 @@ import './mainleft.sass';
 const Mainleft = () => (
   <div id="mainleft">
     <Switch>
-      {/* <Route exact path="/" component={Ressource} /> */}
-      <Route exact path="/" component={Home} />
+      <Redirect exact from="/" to="/app" />
+      <Route exact path="/app" component={Home} />
       <Route
         exact
         strict
-        path="/profile/:id"
+        path="/app/profile/:id"
         component={Profile}
       />
-      <Route exact path="/bookmarks" component={Search} />
+      <Route exact path="/app/bookmarks" component={Search} />
+      <Route
+        exact
+        strict
+        path="/app/bookmarks/:id"
+        component={Ressource}
+      />
     </Switch>
   </div>
 );

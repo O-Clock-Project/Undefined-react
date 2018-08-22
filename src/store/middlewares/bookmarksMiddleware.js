@@ -11,9 +11,11 @@ import {
   LOAD_BOOKMARKS,
   LOAD_FILTERS,
   REQUEST_BOOKMARKS,
+  ADD_BOOKMARK,
   receivedBookmarks,
   receivedFilters,
   noResults,
+  loadBookmarks,
 } from '../reducer';
 
 
@@ -103,6 +105,73 @@ const bookmarksAxios = store => next => (action) => {
           console.error(error);
           // Dispatch for change ths state of results
           store.dispatch(noResults());
+        });
+      break;
+    }
+
+    // Add bookmark
+    case ADD_BOOKMARK: {
+      const url = `${baseUrl}/api/bookmarks`;
+      const idUser = store.getState().main.id_user;
+      const image = action.values.image || './assets/images/default.jpg';
+      const prepareData = {
+        title: action.values.title,
+        resume: action.values.resume,
+        url: action.values.url,
+        image,
+        published_at: action.values.published_at,
+        author: action.values.author,
+        add: [
+          {
+            id: action.values.select_type,
+            entity: 'support',
+            property: 'support',
+          },
+          {
+            id: action.values.select_level,
+            entity: 'difficulty',
+            property: 'difficulty',
+          },
+          {
+            id: idUser,
+            entity: 'user',
+            property: 'user',
+          },
+          {
+            id: action.values.select_language,
+            entity: 'locale',
+            property: 'locale',
+          },
+          {
+            id: action.values.select_tag1,
+            entity: 'tag',
+            property: 'tag',
+          },
+        ],
+      };
+      if (action.values.select_tag2 !== undefined) {
+        const tag2 = {
+          id: action.values.select_tag2,
+          entity: 'tag',
+          property: 'tag',
+        };
+        prepareData.add.push(tag2);
+      }
+      if (action.values.select_tag3 !== undefined) {
+        const tag3 = {
+          id: action.values.select_tag3,
+          entity: 'tag',
+          property: 'tag',
+        };
+        prepareData.add.push(tag3);
+      }
+      axios
+        .post(url, prepareData)
+        .then(() => {
+          store.dispatch(loadBookmarks());
+        })
+        .catch((error) => {
+          console.error(error.response);
         });
       break;
     }
