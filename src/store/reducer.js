@@ -43,7 +43,7 @@ const initialState = {
   // Ordering ASC/DESC
   direction: 'desc',
   // Select ordering type
-  search_bookmark_ordering: 'published_at',
+  search_bookmark_ordering: 'created_at',
   // Form Add Bookmark
   show_add_tag: false,
   show_add_bookmark: true,

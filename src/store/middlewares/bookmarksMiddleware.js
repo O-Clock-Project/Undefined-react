@@ -31,7 +31,7 @@ const bookmarksAxios = store => next => (action) => {
     // Loading last bookmarks
     case LOAD_BOOKMARKS: {
       // Url requesting for last bookmarks
-      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks&orderField=published_at&sortType=desc`;
+      const url = `${baseUrl}/api/bookmarks?displayGroup=bookmarks&orderField=created_at&sortType=desc`;
 
       // Requesting
       axios

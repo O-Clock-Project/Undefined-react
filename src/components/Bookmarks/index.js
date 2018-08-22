@@ -72,7 +72,8 @@ class Bookmarks extends React.Component {
             </div>
             {/* Order type */}
             <select name="ordering" id="bookmarks_select" value={ordering} onChange={this.handleChange}>
-              <option value="published_at">Date</option>
+              <option value="created_at">Ajout</option>
+              <option value="published_at">Publication</option>
               <option value="votes">Votes</option>
               <option value="faved_by">Favoris</option>
             </select>

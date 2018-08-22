@@ -62,7 +62,7 @@ const Bookmark = ({
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
-        <span className="bookmark_infos_proposed">Par <NavLink strict to={`/profile/${user.id}`}> {user.username}</NavLink> le {moment(createdAt).format('DD/MM/YYYY')} - </span>
+        <span className="bookmark_infos_proposed">Par <NavLink strict to={`/app/profile/${user.id}`}> {user.username}</NavLink> le {moment(createdAt).format('DD/MM/YYYY')} - </span>
         <span className="bookmark_infos_date">Publié en {moment(publishedAt).format('YYYY')},</span>
         <span className="bookmark_infos_author"> {author}</span>
       </div>
