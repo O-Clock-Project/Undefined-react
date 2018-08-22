@@ -19,13 +19,13 @@ import logo from 'src/assets/images/logo_bold_jaune.png';
 /**
  * Code
  */
-const NavDesktop = ({ user, loaded, changeUserView }) => (
+const NavDesktop = ({ user, loaded }) => (
   <nav className="navbar">
     <div className="navbar-start">
       {/* Profile */}
       <NavLink
         exact
-        to={`/profile/${user.id}`}
+        to={`/app/profile/${user.id}`}
         className="navbar-link"
       >
         {loaded && <img className="navbar-avatar" src={user.avatar} alt="Votre avatar" />}
@@ -33,7 +33,7 @@ const NavDesktop = ({ user, loaded, changeUserView }) => (
       {/* Home */}
       <NavLink
         exact
-        to="/"
+        to="/app"
         className="navbar-link"
         activeClassName="navbar-link--active"
       >
@@ -42,7 +42,7 @@ const NavDesktop = ({ user, loaded, changeUserView }) => (
       {/* Bookmarks */}
       <NavLink
         exact
-        to="/bookmarks"
+        to="/app/bookmarks"
         className="navbar-link"
         activeClassName="navbar-link--active"
       >
@@ -51,7 +51,7 @@ const NavDesktop = ({ user, loaded, changeUserView }) => (
       {/* Profile */}
       <NavLink
         strict
-        to={`/profile/${user.id}`}
+        to={`/app/profile/${user.id}`}
         className="navbar-link"
         activeClassName="navbar-link--active"
       >
@@ -64,7 +64,7 @@ const NavDesktop = ({ user, loaded, changeUserView }) => (
       {/* Home */}
       <NavLink
         exact
-        to="/"
+        to="/app"
         className="navbar-link"
         activeClassName="navbar-link--active"
       >
@@ -77,7 +77,6 @@ const NavDesktop = ({ user, loaded, changeUserView }) => (
 NavDesktop.propTypes = {
   user: PropTypes.object.isRequired,
   loaded: PropTypes.bool.isRequired,
-  changeUserView: PropTypes.func.isRequired,
 };
 
 

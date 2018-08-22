@@ -25,6 +25,7 @@ import certified from 'src/assets/images/certified.svg';
  * Code
  */
 const Bookmark = ({
+  id,
   support,
   title,
   certified_by: certifiedBy,
@@ -50,7 +51,7 @@ const Bookmark = ({
           && <a href="#" className="bookmark_identity_support"><FaFileAlt /></a>
         }
         {/* Title */}
-        <a href="#" className="bookmark_identity_title">{title}</a>
+        <NavLink strict to={`/app/bookmarks/${id}`} className="bookmark_identity_title">{title}</NavLink>
         {/* Certificat */}
         {certifiedBy.length > 0
           && <img className="bookmark_identity_certificat" src={certified} alt="certified" />
@@ -60,7 +61,7 @@ const Bookmark = ({
       <div className="bookmark_infos">
         <span className="bookmark_infos_date"> {moment(publishedAt).format('DD-MM-YYYY')} -</span>
         <span className="bookmark_infos_author"> {author} -</span>
-        <span className="bookmark_infos_proposed"> Proposé par <NavLink strict to={`/profile/${user.id}`}> {user.username}</NavLink></span>
+        <span className="bookmark_infos_proposed"> Proposé par <NavLink strict to={`/app/profile/${user.id}`}> {user.username}</NavLink></span>
       </div>
       {/* Bookmark tags */}
       <ul className="bookmark_tags">
@@ -90,6 +91,7 @@ const Bookmark = ({
 );
 
 Bookmark.propTypes = {
+  id: PropTypes.number.isRequired,
   support: PropTypes.shape({
     icon: PropTypes.string,
     id: PropTypes.number,
