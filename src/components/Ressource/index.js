@@ -104,7 +104,7 @@ class Ressource extends React.Component {
           </div>
           <div className="ressource_tags_line">
             {bookmark.tags.map(tag => (
-              <div className="ressource_tags_tag">
+              <div className="ressource_tags_tag" key={tag.id}>
                 <div className="tag_left" />
                 <div className="tag_content">{tag.label}</div>
                 <div className="tag_right" />
