@@ -56,7 +56,7 @@ class FormSearch extends React.Component {
         {/* Title */}
         <div id="search_form_intro">
           <p id="search_form_title">Filtrer les bookmarks</p>
-          <button type="button" className="search_form_reset" onClick={this.handleClick}>Reset</button>
+          <button type="button" className="search_form_reset" onClick={this.handleClick}>All</button>
         </div>
 
         {/* Loading */}

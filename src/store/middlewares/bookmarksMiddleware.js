@@ -245,7 +245,7 @@ const bookmarksAxios = store => next => (action) => {
           store.dispatch(loadBookmarks());
         })
         .catch((error) => {
-          console.error(error.response);
+          // console.error(error.response);
         });
       break;
     }

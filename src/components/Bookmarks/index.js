@@ -75,7 +75,7 @@ class Bookmarks extends React.Component {
         <form id="bookmarks_form">
           <p id="bookmarks_title">Trier les bookmarks</p>
           {/* Ordering */}
-          <div id="bookmarks_ordering">
+          <div id="bookmarks_utils">
             {/* Reset all filters */}
             <div id="bookmarks_reset" onClick={this.handleClickOnAll}>
               All
