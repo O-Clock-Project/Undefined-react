@@ -10,8 +10,8 @@ import { Route, Switch } from 'react-router-dom';
 // Composants
 import Home from 'src/components/Home';
 import Profile from 'src/containers/Profile/Profile';
-import Search from 'src/components/Search';
-import Ressource from 'src/containers/Ressource/Ressource';
+import Search from 'src/containers/Search/Search';
+// import Ressource from 'src/containers/Ressource/Ressource';
 
 
 // Styles et assets

@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -15,15 +16,19 @@ import './search.sass';
 /**
  * Code
  */
-const FormAdd = () => (
+const FormAdd = ({ addBookmark }) => (
   <div className="search_add">
     {/* Title */}
     <div className="search_add_intro">
       <p className="search_add_title">Ajouter un bookmark</p>
     </div>
-    <SearchAddForm />
+    <SearchAddForm onSubmit={addBookmark} />
   </div>
 );
+
+FormAdd.propTypes = {
+  addBookmark: PropTypes.func.isRequired,
+};
 
 /**
  * Export
