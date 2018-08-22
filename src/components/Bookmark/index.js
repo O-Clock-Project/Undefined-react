@@ -36,6 +36,7 @@ const Bookmark = ({
   votes,
   difficulty,
   locale,
+  created_at: createdAt,
 }) => (
   <div className="bookmark">
     <div>
@@ -60,9 +61,9 @@ const Bookmark = ({
       </div>
       {/* Bookmark infos */}
       <div className="bookmark_infos">
-        <span className="bookmark_infos_date"> {moment(publishedAt).format('DD-MM-YYYY')} -</span>
-        <span className="bookmark_infos_author"> {author} -</span>
-        <span className="bookmark_infos_proposed"> Proposé par <NavLink strict to={`/profile/${user.id}`}> {user.username}</NavLink></span>
+        <span className="bookmark_infos_proposed">Par <NavLink strict to={`/profile/${user.id}`}> {user.username}</NavLink> le {moment(createdAt).format('DD/MM/YYYY')} - </span>
+        <span className="bookmark_infos_date">Publié en {moment(publishedAt).format('YYYY')},</span>
+        <span className="bookmark_infos_author"> {author}</span>
       </div>
       {/* Bookmark tags */}
       <ul className="bookmark_tags">
@@ -128,6 +129,7 @@ Bookmark.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  created_at: PropTypes.string.isRequired,
 };
 
 /**
