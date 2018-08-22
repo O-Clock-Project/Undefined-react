@@ -65,6 +65,8 @@ const userAxios = store => next => (action) => {
     // Edit user
     case EDIT_USER: {
       const url = `${baseUrl}/api/users/${action.values.id}`;
+      const oldPassword = action.values.old_password;
+      const password = action.values.confirmPassword;
       const prepareData = {
         username: action.values.username,
         first_name: action.values.firstname,
@@ -73,6 +75,8 @@ const userAxios = store => next => (action) => {
         pseudo_github: action.values.github,
         zip: action.values.zip,
         birthday: action.values.birthday,
+        old_password: oldPassword,
+        password,
       };
       axios
         .put(url, prepareData)
@@ -88,6 +92,9 @@ const userAxios = store => next => (action) => {
           const { status } = error.response;
           if (status === 401) {
             window.location.replace('/');
+          }
+          if (status === 400) {
+            document.getElementById('edit-error').textContent = error.response.data.error;
           }
         });
       break;

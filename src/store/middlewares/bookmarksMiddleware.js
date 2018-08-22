@@ -11,11 +11,13 @@ import {
   LOAD_BOOKMARKS,
   LOAD_FILTERS,
   REQUEST_BOOKMARKS,
+  ADD_TAG,
   ADD_BOOKMARK,
   receivedBookmarks,
   receivedFilters,
   noResults,
   loadBookmarks,
+  loadFilters,
 } from '../reducer';
 
 
@@ -105,6 +107,22 @@ const bookmarksAxios = store => next => (action) => {
           console.error(error);
           // Dispatch for change ths state of results
           store.dispatch(noResults());
+        });
+      break;
+    }
+
+    // Add tag
+    case ADD_TAG: {
+      const url = `${baseUrl}/api/tags`;
+      const prepareData = {
+        label: action.values.tag,
+      };
+      axios
+        .post(url, prepareData)
+        .then(() => {
+          store.dispatch(loadFilters());
+        })
+        .catch(() => {
         });
       break;
     }

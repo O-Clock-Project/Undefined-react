@@ -12,6 +12,7 @@ import Home from 'src/components/Home';
 import Profile from 'src/containers/Profile/Profile';
 import Search from 'src/containers/Search/Search';
 import Ressource from 'src/containers/Ressource/Ressource';
+import Infos from 'src/components/Infos';
 
 
 // Styles et assets
@@ -38,6 +39,7 @@ const Mainleft = () => (
         path="/app/bookmarks/:id"
         component={Ressource}
       />
+      <Route exact path="/app/informations" component={Infos} />
     </Switch>
   </div>
 );

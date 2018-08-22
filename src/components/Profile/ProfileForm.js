@@ -40,44 +40,51 @@ const EditProfilForm = (props) => {
       <Field
         name="firstname"
         type="text"
-        label="Prénom"
+        label="Prénom *"
         component={renderField}
         validate={[required, minLength2]}
       />
       <Field
         name="lastname"
         type="text"
-        label="Nom"
+        label="Nom *"
         component={renderField}
         validate={[required, minLength2]}
       />
       <Field
         name="email"
         type="email"
-        label="Email"
+        label="Email *"
         component={renderField}
         validate={[required, email]}
       />
       <Field
         name="birthday"
         type="date"
-        label="Date de naissance"
+        label="Date de naissance *"
         component={renderField}
         validate={required}
       />
       <Field
         name="github"
         type="text"
-        label="Pseudo GitHub"
+        label="Pseudo GitHub *"
         component={renderField}
         validate={required}
       />
       <Field
         name="zip"
         type="text"
-        label="Code postal"
+        label="Code postal *"
         component={renderField}
         validate={required}
+      />
+      <Field
+        name="old_password"
+        type="password"
+        label="Mot de passe actuel"
+        component={renderField}
+        // validate={minLength8}
       />
       <Field
         name="password"
@@ -93,6 +100,10 @@ const EditProfilForm = (props) => {
         component={renderField}
         validate={passwordsMatch}
       />
+      <div className="profile-edit-legend">
+        * : Champ obligatoire
+      </div>
+      <div id="edit-error" />
       <div className="profile-edit-validate">
         <button className="profile-edit-btn" type="submit" disabled={submitting}>Valider</button>
       </div>
