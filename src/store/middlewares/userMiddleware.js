@@ -15,6 +15,7 @@ import {
   receivedUser,
   receivedUserView,
   successEditUser,
+  loadPromo,
 } from '../reducer';
 
 
@@ -34,6 +35,7 @@ const userAxios = store => next => (action) => {
         .get(url)
         .then((response) => {
           store.dispatch(receivedUser(response.data));
+          store.dispatch(loadPromo(response.data.affectations[0].promotion.id));
         })
         .catch((error) => {
           const { status } = error.response;
