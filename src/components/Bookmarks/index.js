@@ -5,7 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactLoading from 'react-loading';
 import { FaSortAmountUp, FaSortAmountDown } from 'react-icons/fa';
-import { MdClose } from 'react-icons/md';
 
 /**
  * Local import
@@ -73,7 +72,7 @@ class Bookmarks extends React.Component {
     return (
       <div id="bookmarks">
         <form id="bookmarks_form">
-          <p id="bookmarks_title">Trier les bookmarks</p>
+          <p id="bookmarks_title">Aperçu des bookmarks</p>
           {/* Ordering */}
           <div id="bookmarks_utils">
             {/* Reset all filters */}

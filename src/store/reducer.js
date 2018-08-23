@@ -202,6 +202,10 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         viewProfile: 'own_bookmarks',
+        // Change the loading status
+        bookmarksStatus: 'loading',
+        // Change the results state
+        results: true,
       };
     }
 
@@ -209,6 +213,10 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         viewProfile: 'own_favorites',
+        // Change the loading status
+        bookmarksStatus: 'loading',
+        // Change the results state
+        results: true,
       };
     }
 
