@@ -77,7 +77,6 @@ const bookmarksAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          console.log(response);
           // Dispatch the data from response
           store.dispatch(receivedRessource(response.data));
         })

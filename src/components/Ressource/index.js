@@ -20,7 +20,6 @@ import ReactLoading from 'react-loading';
 
 // Styles et assets
 import './ressource.sass';
-import preview from 'src/assets/images/preview.jpg';
 
 /**
  * Code
@@ -29,6 +28,7 @@ class Ressource extends React.Component {
   static propTypes = {
     bookmark: PropTypes.shape({
       id: PropTypes.number.isRequired,
+      created_at: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       resume: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
@@ -50,16 +50,8 @@ class Ressource extends React.Component {
     status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
   }
 
-  componentDidUpdate(prevProps) {
-    // Premiere const pour l'id de la vue actuelle, puis ton action middleware pour le chargement des données du bookmark
-    // const { idView, loadUserView } = this.props;
-
-    // Si l'id que tu regardes est different de l'ancien id vue (via prevProps qui stocke en memoire) alors tu relances ton action middleware
-    // if (idView !== prevProps.idView) {
-    //   loadUserView(idView);
-    // }
-
-    // Scroll to top au rechargement pour etre sur de commencer la lecture en haut si une personne clique sur un bookmark bas dans la liste à droite
+  componentDidUpdate() {
+    // Scroll to top
     scroll.scrollToTop({
       duration: 500,
       smooth: true,
@@ -83,7 +75,6 @@ class Ressource extends React.Component {
           </div>)}
 
         {/* Ressource */}
-        {console.log(bookmark)}
         {status === 'loaded' && (
           <div id="ressource">
             {/* Ressource title */}
@@ -91,9 +82,9 @@ class Ressource extends React.Component {
 
             {/* Ressource infos */}
             <p id="ressource_infos">
-              <span id="ressource_author">{bookmark.author} - </span>
-              <span id="ressource_published">{moment(bookmark.published_at).format('DD/MM/YYYY')} - </span>
-              <span id="ressource_proposed">Proposé par {bookmark.user.username}</span>
+              <span id="ressource_proposed">Par {bookmark.user.username} le {moment(bookmark.created_at).format('DD/MM/YYYY')} - </span>
+              <span id="ressource_published">Publié en {moment(bookmark.published_at).format('YYYY')}, </span>
+              <span id="ressource_author">{bookmark.author}</span>
             </p>
 
             {/* Ressource presentation */}
@@ -150,23 +141,16 @@ class Ressource extends React.Component {
                 </div>
               </div>
 
-              <div id="ressource_link">
-                <p>Lien vers le bookmark :</p>
-                <a href={bookmark.url} target="_blank" rel="noopener noreferrer">URL du bookmark</a>
-              </div>
               <div id="ressource_capture">
                 <img
                   id="ressource_image"
-                  src={bookmark.image === '' ? preview : bookmark.image}
+                  src={bookmark.image}
                   alt="preview"
                 />
               </div>
+
             </div>
-
-            {/* Return */}
-            {/* TODO: return link */}
-            <button type="button" className="search_button">Retour</button>
-
+            <a href={bookmark.url} target="_blank" rel="noopener noreferrer" className="search_button" id="ressource_link">Visiter</a>
           </div>
         )}
       </div>
