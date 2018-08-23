@@ -13,6 +13,7 @@ import Ressource from 'src/components/Ressource';
 // State
 const mapStateToProps = state => ({
   bookmark: state.main.bookmark,
+  status: state.main.ressourceStatus,
 });
 
 // Actions

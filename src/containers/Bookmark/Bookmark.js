@@ -15,6 +15,7 @@ import {
   dispatchTag,
   dispatchLanguage,
   dispatchLevel,
+  loadRessource,
 } from 'src/store/reducer';
 
 // State
@@ -40,6 +41,10 @@ const mapDispatchToProps = dispatch => ({
 
   requestBookmarks: () => {
     dispatch(requestBookmarks());
+  },
+
+  loadRessource: (id) => {
+    dispatch(loadRessource(id));
   },
 });
 

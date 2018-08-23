@@ -1,4 +1,3 @@
-import ressource from 'src/data/ressource';
 /**
  * Initial State
  */
@@ -24,11 +23,12 @@ const initialState = {
   // Bookmarks
   // Datas
   bookmarks: [],
-  bookmark: ressource,
+  bookmark: {},
   filters: {},
   // Loading status
   bookmarksStatus: 'loading',
   filtersStatus: 'loading',
+  ressourceStatus: 'loading',
   // No results
   results: true,
   // Select filter
@@ -85,6 +85,9 @@ export const DISPATCH_LEVEL = 'DISPATCH_LEVEL';
 
 export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
 export const NO_RESULTS = 'NO_RESULTS';
+
+export const LOAD_RESSOURCE = 'LOAD_RESSOURCE';
+export const RECEIVED_RESSOURCE = 'RECEIVED_RESSOURCE';
 
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
@@ -369,6 +372,24 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case LOAD_RESSOURCE: {
+      return {
+        ...state,
+        // Loading status for ressource
+        ressourceStatus: 'loading',
+      };
+    }
+
+    case RECEIVED_RESSOURCE: {
+      return {
+        ...state,
+        // Adding received ressource to the state
+        bookmark: action.data,
+        // Change the loading status
+        ressourceStatus: 'loaded',
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -532,6 +553,16 @@ export const dispatchLanguage = value => ({
 export const dispatchLevel = value => ({
   type: DISPATCH_LEVEL,
   value,
+});
+
+export const loadRessource = id => ({
+  type: LOAD_RESSOURCE,
+  id,
+});
+
+export const receivedRessource = data => ({
+  type: RECEIVED_RESSOURCE,
+  data,
 });
 
 export const showAddTag = () => ({

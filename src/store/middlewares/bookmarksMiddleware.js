@@ -10,11 +10,13 @@ import baseUrl from 'src/data/config';
 import {
   LOAD_BOOKMARKS,
   LOAD_FILTERS,
+  LOAD_RESSOURCE,
   REQUEST_BOOKMARKS,
   ADD_TAG,
   ADD_BOOKMARK,
   receivedBookmarks,
   receivedFilters,
+  receivedRessource,
   noResults,
   loadBookmarks,
   loadFilters,
@@ -59,6 +61,25 @@ const bookmarksAxios = store => next => (action) => {
         .then((response) => {
           // Dispatch the data from response
           store.dispatch(receivedFilters(response.data));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      break;
+    }
+
+    // Loadind one ressource
+    case LOAD_RESSOURCE: {
+      // Url requesting for one ressource
+      const url = `${baseUrl}/api/bookmarks/${action.id}?displayGroup=bookmark`;
+
+      // Requesting
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response);
+          // Dispatch the data from response
+          store.dispatch(receivedRessource(response.data));
         })
         .catch((error) => {
           console.error(error);
