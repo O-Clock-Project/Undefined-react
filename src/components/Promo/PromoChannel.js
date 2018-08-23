@@ -7,18 +7,17 @@ import React from 'react';
  * Local import
  */
 // Composants
-import Message from 'src/components/Message';
+import PromoMessage from './PromoMessage';
 
 // Styles et assets
-import './channel.sass';
 
 /**
  * Code
  */
 const Channel = () => (
   <div id="channel">
-    <Message />
-    <Message />
+    <PromoMessage />
+    <PromoMessage />
   </div>
 );
 

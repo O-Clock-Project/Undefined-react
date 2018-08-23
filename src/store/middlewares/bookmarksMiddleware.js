@@ -20,6 +20,8 @@ import {
   noResults,
   loadBookmarks,
   loadFilters,
+  showAddTag,
+  showAddBookmark,
 } from '../reducer';
 
 
@@ -156,8 +158,13 @@ const bookmarksAxios = store => next => (action) => {
         .post(url, prepareData)
         .then(() => {
           store.dispatch(loadFilters());
+          store.dispatch(showAddTag());
         })
-        .catch(() => {
+        .catch((error) => {
+          const { status } = error.response;
+          if (status === 400) {
+            document.getElementById('tag-error').textContent = 'Désolé, ce tag existe déjà !';
+          }
         });
       break;
     }
@@ -222,9 +229,13 @@ const bookmarksAxios = store => next => (action) => {
         .post(url, prepareData)
         .then(() => {
           store.dispatch(loadBookmarks());
+          store.dispatch(showAddBookmark());
         })
         .catch((error) => {
-          console.error(error.response);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }
