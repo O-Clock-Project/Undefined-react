@@ -201,8 +201,6 @@ const reducer = (state = initialState, action = {}) => {
     case LOAD_BOOKMARKS_BY_USER: {
       return {
         ...state,
-        // Loading status for bookmarks
-        bookmarksStatus: 'loading',
         viewProfile: 'own_bookmarks',
       };
     }
@@ -210,8 +208,6 @@ const reducer = (state = initialState, action = {}) => {
     case LOAD_FAVORITES_FOR_USER: {
       return {
         ...state,
-        // Loading status for bookmarks
-        bookmarksStatus: 'loading',
         viewProfile: 'own_favorites',
       };
     }

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import ProfileNav from 'src/components/Profile/ProfileNav';
 
 // Action Creators
-import { loadBookmarksByUser, loadFavoritesForUser } from 'src/store/reducer';
+import { loadBookmarksByUser, loadFavoritesForUser, requestBookmarks } from 'src/store/reducer';
 
 /* === State (données) === */
 const mapStateToProps = state => ({
@@ -24,6 +24,9 @@ const mapDispatchToProps = dispatch => ({
   },
   loadFavoritesForUser: () => {
     dispatch(loadFavoritesForUser());
+  },
+  requestBookmarks: () => {
+    dispatch(requestBookmarks());
   },
 });
 
