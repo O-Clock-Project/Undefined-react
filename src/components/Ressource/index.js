@@ -16,7 +16,7 @@ import ReactLoading from 'react-loading';
  * Local import
  */
 // Composants
-import Toolbar from 'src/components/Toolbar';
+import Toolbar from 'src/containers/Toolbar/Toolbar';
 
 // Styles et assets
 import './ressource.sass';
@@ -99,6 +99,7 @@ class Ressource extends React.Component {
                   votes={bookmark.votes}
                   favedBy={bookmark.faved_by}
                   userOwner={bookmark.user}
+                  certifiedBy={bookmark.certified_by}
                 />
               </div>
             </div>

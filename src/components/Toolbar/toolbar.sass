@@ -16,28 +16,10 @@
     flex-direction: column
     justify-content: center
     align-items: center
-    margin: 0 0.4rem
-
-  &_vote
-    &_up
-      margin-bottom: -0.4rem
-      cursor: pointer
-      &:hover
-        transform: scale(1.3);
-
-    &_down
-      font-size: 1.2rem
-      margin-top: -0.3rem
-      cursor: pointer
-      &:hover
-        transform: scale(1.3);
-
-    &_content
-      font-size: smaller
-      color: $link-color
 
   &_fav
     &_icon
+      margin: 0 0.4rem
       font-size: 1.4rem
       margin-bottom: 0.1rem
       cursor: pointer
@@ -50,29 +32,33 @@
 
   &_edit
     &_icon
+      margin: 0 0.4rem
+      font-size: 1.2rem
       margin-bottom: 0.1rem
       cursor: pointer
       &:hover
         transform: scale(1.3);
 
-    &_content
-      font-size: smaller
-      color: $link-color
-  
-  &_certified
-    &_icon
-      margin-bottom: 0.1rem
+  &_vote
+    &_up
+      font-size: 1.4rem
+      margin-bottom: -0.5rem
+      cursor: pointer
+      &:hover
+        transform: scale(1.3);
+
+    &_down
+      font-size: 1.4rem
+      margin-top: -0.3rem
       cursor: pointer
       &:hover
         transform: scale(1.3);
 
     &_content
+      margin: 0 0.4rem
       font-size: smaller
       color: $link-color
 
-@keyframes zoomin
-    0%
-      transform: scale(1.0);
-
-    100%
-      
+  &_certificat
+    margin-left: 0.4rem
+    height: 45px

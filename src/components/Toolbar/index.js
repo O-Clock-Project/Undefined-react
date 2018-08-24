@@ -2,70 +2,105 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaSortUp, FaSortDown, FaPencilAlt } from 'react-icons/fa';
 import {
   IoIosStar,
   IoIosStarOutline,
-  IoMdCheckbox,
-  IoMdCheckboxOutline,
 } from 'react-icons/io';
 
 /**
  * Local import
  */
 // Composants
+import './toolbar.sass';
 
 // Styles et assets
-import './toolbar.sass';
+import certified from 'src/assets/images/certified.svg';
 
 /**
  * Code
  */
-const Toolbar = () => (
-  <div id="toolbar">
+class Toolbar extends React.Component {
+  static propTypes = {
+    // From Ressource
+    votes: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      value: PropTypes.number,
+    }).isRequired).isRequired,
+    favedBy: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      username: PropTypes.string,
+    }).isRequired).isRequired,
+    userOwner: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      username: PropTypes.string.isRequired,
+    }).isRequired,
+    certifiedBy: PropTypes.arrayOf(PropTypes.objet).isRequired,
+    // From Store
+    currentUserId: PropTypes.number.isRequired,
+  }
 
-    {/* Vote */}
-    <div id="toolbar_vote">
-      <div id="toolbar_vote_up">
-        <FaSortUp />
-      </div>
-      <div id="toolbar_vote_content">
-        52
-      </div>
-      <div id="toolbar_vote_down">
-        <FaSortDown />
-      </div>
-    </div>
+  checkFavorite = () => {
+    const { favedBy, currentUserId } = this.props;
+    let result = false;
 
-    {/* Favoried */}
-    <div id="toolbar_fav">
-      <div id="toolbar_fav_icon">
-        <IoIosStarOutline />
-      </div>
-    </div>
+    favedBy.forEach((favedUser) => {
+      if (favedUser.id === currentUserId) {
+        result = true;
+      }
+    });
 
-    {/* Edit */}
-    <div id="toolbar_edit">
-      <div id="toolbar_edit_icon">
-        <FaPencilAlt />
-      </div>
-      <div id="toolbar_edit_content">
-        éditer
-      </div>
-    </div>
+    return result;
+  }
 
-    {/* Certified */}
-    <div id="toolbar_certified">
-      <div id="toolbar_certified_icon">
-        <IoMdCheckboxOutline />
-      </div>
-      <div id="toolbar_certified_content">
-        certifier
-      </div>
-    </div>
+  handleFavorite = () => {
 
-  </div>
-);
+  }
+
+  render() {
+    const { certifiedBy, userOwner, currentUserId } = this.props;
+    return (
+      <div id="toolbar">
+
+        {/* Favoried */}
+        {console.log(this.checkFavorite())}
+        <div id="toolbar_fav">
+          <div id="toolbar_fav_icon">
+            {!this.checkFavorite() && <IoIosStarOutline />}
+            {this.checkFavorite() && <IoIosStar />}
+          </div>
+        </div>
+
+        {/* Edit */}
+        <div id="toolbar_edit">
+          {userOwner.id === currentUserId && (
+            <FaPencilAlt id="toolbar_edit_icon" />
+          )}
+        </div>
+
+        {/* Vote */}
+        <div id="toolbar_vote">
+          <div id="toolbar_vote_up">
+            <FaSortUp />
+          </div>
+          <div id="toolbar_vote_content">
+            52
+          </div>
+          <div id="toolbar_vote_down">
+            <FaSortDown />
+          </div>
+        </div>
+
+        {/* Certified */}
+        <div id="toolbar_certified">
+          {certifiedBy.length > 0 && <img src={certified} alt="certified" id="toolbar_certificat" />}
+        </div>
+
+      </div>
+    );
+  }
+}
 
 /**
  * Export
