@@ -45,6 +45,12 @@ const initialState = {
   loaded_promo: false,
   promo: {},
   school_links: [],
+  loaded_announces: false,
+  announces: [],
+  loaded_announce: false,
+  announce_view: {},
+  loaded_comments: false,
+  comments: [],
 };
 
 /**
@@ -96,6 +102,14 @@ export const LOAD_PROMO = 'LOAD_PROMO';
 export const RECEIVED_PROMO = 'RECEIVED_PROMO';
 export const LOAD_SCHOOL_LINKS = 'LOAD_SCHOOL_LINKS';
 export const RECEIVED_SCHOOL_LINKS = 'RECEIVED_SCHOOL_LINKS';
+export const LOAD_ANNOUNCES = 'LOAD_ANNOUNCES';
+export const RECEIVED_ANNOUNCES = 'RECEIVED_ANNOUNCES';
+export const LOAD_ANNOUNCE = 'LOAD_ANNOUNCE';
+export const RECEIVED_ANNOUNCE = 'RECEIVED_ANNOUNCE';
+export const LOAD_COMMENTS = 'LOAD_COMMENTS';
+export const RECEIVED_COMMENTS = 'RECEIVED_COMMENTS';
+
+export const ADD_COMMENT = 'ADD_COMMENT';
 
 
 /**
@@ -442,6 +456,54 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case LOAD_ANNOUNCES: {
+      return {
+        ...state,
+        loaded_announces: true,
+      };
+    }
+
+    case RECEIVED_ANNOUNCES: {
+      return {
+        ...state,
+        announces: action.data,
+      };
+    }
+
+    case LOAD_ANNOUNCE: {
+      return {
+        ...state,
+        loaded_announce: true,
+      };
+    }
+
+    case RECEIVED_ANNOUNCE: {
+      return {
+        ...state,
+        announce_view: action.data,
+      };
+    }
+
+    case LOAD_COMMENTS: {
+      return {
+        ...state,
+        loaded_comments: true,
+      };
+    }
+
+    case RECEIVED_COMMENTS: {
+      return {
+        ...state,
+        comments: action.data,
+      };
+    }
+
+    case ADD_COMMENT: {
+      return {
+        ...state,
+      };
+    }
+
     default:
       return state;
   }
@@ -609,6 +671,41 @@ export const loadSchoolLinks = () => ({
 export const receivedSchoolLinks = data => ({
   type: RECEIVED_SCHOOL_LINKS,
   data,
+});
+
+export const loadAnnounces = id => ({
+  type: LOAD_ANNOUNCES,
+  id,
+});
+
+export const receivedAnnounces = data => ({
+  type: RECEIVED_ANNOUNCES,
+  data,
+});
+
+export const loadAnnounce = id => ({
+  type: LOAD_ANNOUNCE,
+  id,
+});
+
+export const receivedAnnounce = data => ({
+  type: RECEIVED_ANNOUNCE,
+  data,
+});
+
+export const loadComments = id => ({
+  type: LOAD_COMMENTS,
+  id,
+});
+
+export const receivedComments = data => ({
+  type: RECEIVED_COMMENTS,
+  data,
+});
+
+export const addComment = values => ({
+  type: ADD_COMMENT,
+  values,
 });
 
 /**

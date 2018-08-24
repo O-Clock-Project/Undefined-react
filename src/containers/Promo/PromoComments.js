@@ -7,28 +7,27 @@ import { withRouter } from 'react-router-dom';
 /**
  * Local import
  */
-import Promo from 'src/components/Promo';
+import PromoComments from 'src/components/Promo/PromoComments';
 
 // Action Creators
-// import { loadUserView } from 'src/store/reducer';
+// import { loadAnnounce } from 'src/store/reducer';
 
 /* === State (données) === */
 const mapStateToProps = state => ({
-  promo: state.main.promo,
-  loadedPromo: state.main.loaded_promo,
+  comments: state.main.comments,
+  loadedComments: state.main.loaded_comments,
 });
 
 /* === Actions === */
 const mapDispatchToProps = {};
 
 // Container
-const PromoContainer = connect(
+const PromoCommentsContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Promo);
-
+)(PromoComments);
 
 /**
  * Export
  */
-export default withRouter(PromoContainer);
+export default withRouter(PromoCommentsContainer);

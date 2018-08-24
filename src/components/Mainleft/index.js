@@ -26,6 +26,7 @@ const Mainleft = () => (
     <Switch>
       <Redirect exact from="/" to="/app" />
       <Route exact path="/app" component={Promo} />
+      <Route exact path="/app/announces/:id" component={Promo} />
       <Route
         exact
         strict
