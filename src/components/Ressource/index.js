@@ -16,7 +16,7 @@ import ReactLoading from 'react-loading';
  * Local import
  */
 // Composants
-
+import Toolbar from 'src/components/Toolbar';
 
 // Styles et assets
 import './ressource.sass';
@@ -87,47 +87,35 @@ class Ressource extends React.Component {
               <span id="ressource_author">{bookmark.author}</span>
             </p>
 
-            {/* Ressource presentation */}
-            <p id="ressource_presentation">
-              {bookmark.resume}
-            </p>
+            <div id="ressource_container">
+              {/* Ressource presentation */}
+              <p id="ressource_presentation">
+                {bookmark.resume}
+              </p>
 
-            {/* Ressources tags */}
-            <div id="ressource_tags">
-              <div className="ressource_tags_line">
-                <div className="ressource_tags_tag">
-                  <div className="tag_left" />
-                  <div className="tag_content">{bookmark.support.name}</div>
-                  <div className="tag_right" />
-                </div>
-                <div className="ressource_tags_tag">
-                  <div className="tag_left" />
-                  <div className="tag_content">{bookmark.locale.name}</div>
-                  <div className="tag_right" />
-                </div>
-                <div className="ressource_tags_tag">
-                  <div className="tag_left" />
-                  <div className="tag_content">{bookmark.difficulty.name}</div>
-                  <div className="tag_right" />
-                </div>
-              </div>
-              <div className="ressource_tags_line">
-                {bookmark.tags.map(tag => (
-                  <div className="ressource_tags_tag" key={tag.id}>
-                    <div className="tag_left" />
-                    <div className="tag_content">{tag.label}</div>
-                    <div className="tag_right" />
-                  </div>
-                ))}
+              {/* Ressources toolbar */}
+              <div id="ressource_toolbar">
+                <Toolbar />
               </div>
             </div>
 
-            {/* Ressources buttons */}
+            {/* Ressources tags */}
+            <div id="ressource_tags">
+              <div className="ressource_tags_tag ressource_tags_tag--tag1">
+                {bookmark.locale.name}
+              </div>
+              <div className="ressource_tags_tag ressource_tags_tag--tag2">
+                {bookmark.difficulty.name}
+              </div>
+              {bookmark.tags.map(tag => (
+                <div className="ressource_tags_tag" key={tag.id}>{tag.label}</div>
+              ))}
+            </div>
 
-            {/* Ressource links and preview */}
+            {/* Ressource preview */}
             <div id="ressource_preview">
               <div id="ressource_preview_section">
-                <p id="ressource_preview_title">Previsualisation</p>
+                <p id="ressource_preview_title">Lien vers la ressource</p>
                 <div>
                   {bookmark.support.icon === 'FaFilm'
                     && <FaFilm id="ressource_preview_icon" />
@@ -142,15 +130,16 @@ class Ressource extends React.Component {
               </div>
 
               <div id="ressource_capture">
-                <img
-                  id="ressource_image"
-                  src={bookmark.image}
-                  alt="preview"
-                />
+                <a href={bookmark.url} target="_blank" rel="noopener noreferrer">
+                  <img
+                    id="ressource_image"
+                    src={bookmark.image}
+                    alt="preview"
+                  />
+                </a>
               </div>
 
             </div>
-            <a href={bookmark.url} target="_blank" rel="noopener noreferrer" className="search_button" id="ressource_link">Visiter</a>
           </div>
         )}
       </div>
