@@ -95,7 +95,11 @@ class Ressource extends React.Component {
 
               {/* Ressources toolbar */}
               <div id="ressource_toolbar">
-                <Toolbar />
+                <Toolbar
+                  votes={bookmark.votes}
+                  favedBy={bookmark.faved_by}
+                  userOwner={bookmark.user}
+                />
               </div>
             </div>
 
