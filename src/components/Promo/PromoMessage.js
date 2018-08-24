@@ -8,9 +8,7 @@ import React from 'react';
  */
 // Composants
 
-
 // Styles et assets
-import './message.sass';
 import avatar from 'src/assets/images/avatar.jpg';
 
 /**

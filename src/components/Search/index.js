@@ -32,6 +32,13 @@ class Search extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+  }
+
   handleClick = () => {
     const { showAddBookmark } = this.props;
     showAddBookmark();

@@ -101,7 +101,7 @@ const EditProfilForm = (props) => {
         validate={passwordsMatch}
       />
       <div className="profile-edit-legend">
-        * : Champ obligatoire
+        * : Champs obligatoires
       </div>
       <div id="edit-error" />
       <div className="profile-edit-validate">

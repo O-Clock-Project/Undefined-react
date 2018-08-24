@@ -8,7 +8,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
  * Local import
  */
 // Composants
-import Home from 'src/components/Home';
+import Promo from 'src/containers/Promo/Promo';
 import Profile from 'src/containers/Profile/Profile';
 import Search from 'src/containers/Search/Search';
 import Ressource from 'src/containers/Ressource/Ressource';
@@ -25,7 +25,7 @@ const Mainleft = () => (
   <div id="mainleft">
     <Switch>
       <Redirect exact from="/" to="/app" />
-      <Route exact path="/app" component={Home} />
+      <Route exact path="/app" component={Promo} />
       <Route
         exact
         strict

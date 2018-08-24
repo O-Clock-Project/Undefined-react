@@ -1,0 +1,76 @@
+/**
+ * Import
+ */
+@import src/styles/vars
+
+/**
+ * Styles
+ */
+#home
+  margin: 3rem 1.5rem 3rem 3rem
+  display: flex
+  flex-direction: column
+  align-items: center
+
+#home_title
+  text-align: center
+  font-size: 3rem
+  font-weight: bold
+  text-transform: uppercase
+
+#border
+  height: 2px
+  width: 40%
+  background-color: $border-color
+  
+#channel
+  margin: 3rem 0rem
+  padding: 1rem
+  min-height: 22rem
+  width: 100%
+  border-radius: 0.3rem
+  border: 1px solid $border-color
+  background-color: $div-bgcolor
+
+.links
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
+  margin: 3rem 3rem 0
+
+.link
+  width: 33%
+  text-align: center
+  padding: 0 1.5rem
+
+  &_icon
+    font-size: 3rem
+
+  &_url
+    font-size: 1rem
+
+.message 
+  display: flex
+  margin-bottom: 0.6rem
+
+  &_image
+    width: 36px
+    margin-right: 0.5rem
+
+    & img
+      width: 100%
+      border-radius: 0.3rem
+
+  &_container
+    width: 100%
+    display: flex
+    justify-content: space-between
+
+  &_author 
+    font-weight: bold
+    margin-right: 0.9rem
+
+  &_date,
+  &_count
+    font-weight: lighter
+    font-size: 0.9rem

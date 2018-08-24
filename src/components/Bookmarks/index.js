@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactLoading from 'react-loading';
+import { animateScroll as scroll } from 'react-scroll';
 import { FaSortAmountUp, FaSortAmountDown } from 'react-icons/fa';
 
 /**
@@ -30,6 +31,20 @@ class Bookmarks extends React.Component {
     direction: PropTypes.string.isRequired,
     changeDirection: PropTypes.func.isRequired,
   };
+
+  componentDidMount() {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+  }
+
+  componentDidUpdate() {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+  }
 
   handleChange = (evt) => {
     // I prepare my action creator

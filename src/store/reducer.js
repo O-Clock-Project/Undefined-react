@@ -2,7 +2,7 @@
  * Initial State
  */
 const initialState = {
-  // Users
+  // USERS
   loaded: false,
   loaded_view: false,
   id_user: 0,
@@ -10,17 +10,8 @@ const initialState = {
   user: {},
   user_view: {},
   edit_profile: false,
-  edit_profile_form: {
-    input_firstname: '',
-    input_lastname: '',
-    input_email: '',
-    input_new_password: '',
-    input_confirm_new_password: '',
-    input_pseudo_github: '',
-    input_zip: '',
-    birthday: '',
-  },
-  // Bookmarks
+
+  // BOOKMARKS
   // Datas
   bookmarks: [],
   bookmark: {},
@@ -49,6 +40,11 @@ const initialState = {
   // Form Add Bookmark
   show_add_tag: false,
   show_add_bookmark: true,
+
+  // PROMO
+  loaded_promo: false,
+  promo: {},
+  school_links: [],
 };
 
 /**
@@ -95,6 +91,12 @@ export const SHOW_ADD_BOOKMARK = 'SHOW_ADD_BOOKMARK';
 export const ADD_TAG = 'ADD_TAG';
 export const ADD_BOOKMARK = 'ADD_BOOKMARK';
 
+// PROMO
+export const LOAD_PROMO = 'LOAD_PROMO';
+export const RECEIVED_PROMO = 'RECEIVED_PROMO';
+export const LOAD_SCHOOL_LINKS = 'LOAD_SCHOOL_LINKS';
+export const RECEIVED_SCHOOL_LINKS = 'RECEIVED_SCHOOL_LINKS';
+
 
 /**
  * Traitements
@@ -127,15 +129,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         user: action.data,
         loaded: true,
-        edit_profile_form: {
-          ...state.edit_profile_form,
-          input_firstname: action.data.first_name,
-          input_lastname: action.data.last_name,
-          input_email: action.data.email,
-          input_pseudo_github: action.data.pseudo_github,
-          input_zip: action.data.zip,
-          birthday: action.data.birthday,
-        },
       };
     }
 
@@ -408,28 +401,44 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ADD_TAG: {
-      // const id = state.filters.tags.length + 2;
       return {
         ...state,
-        show_add_tag: false,
-        // New value for ordering
-        // filters: {
-        //   ...state.filters,
-        //   tags: [
-        //     ...state.filters.tags,
-        //     {
-        //       id,
-        //       label: action.value.tag,
-        //     },
-        //   ],
-        // },
+        // show_add_tag: false,
       };
     }
 
     case ADD_BOOKMARK: {
       return {
         ...state,
-        show_add_bookmark: true,
+      };
+    }
+
+    // PROMO
+    case LOAD_PROMO: {
+      return {
+        ...state,
+        loaded_promo: false,
+      };
+    }
+
+    case RECEIVED_PROMO: {
+      return {
+        ...state,
+        promo: action.data,
+        loaded_promo: true,
+      };
+    }
+
+    case LOAD_SCHOOL_LINKS: {
+      return {
+        ...state,
+      };
+    }
+
+    case RECEIVED_SCHOOL_LINKS: {
+      return {
+        ...state,
+        school_links: action.data,
       };
     }
 
@@ -581,6 +590,25 @@ export const addTag = values => ({
 export const addBookmark = values => ({
   type: ADD_BOOKMARK,
   values,
+});
+
+export const loadPromo = id => ({
+  type: LOAD_PROMO,
+  id,
+});
+
+export const receivedPromo = data => ({
+  type: RECEIVED_PROMO,
+  data,
+});
+
+export const loadSchoolLinks = () => ({
+  type: LOAD_SCHOOL_LINKS,
+});
+
+export const receivedSchoolLinks = data => ({
+  type: RECEIVED_SCHOOL_LINKS,
+  data,
 });
 
 /**

@@ -13,6 +13,10 @@ const required = value => (value ? undefined : 'Champ requis.');
 const minLength = min => value => (value && value.length < min ? `Doit faire au minimum ${min} caractères.` : undefined);
 const minLength10 = minLength(10);
 
+const maxLength = max => value => (value && value.length > max ? `Doit faire au maximum ${max} caractères.` : undefined);
+const maxLength100 = maxLength(100);
+const maxLength1000 = maxLength(1000);
+
 const url = /[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/i;
 const validUrl = value => (value && !url.test(value)
   ? 'URL invalide' : undefined);
@@ -139,24 +143,24 @@ class SearchAddForm extends React.Component {
           <Field
             name="title"
             type="text"
-            label="Titre"
+            label="Titre *"
             component={renderField}
-            validate={[required, minLength10]}
+            validate={[required, minLength10, maxLength100]}
           />
           {/* Input Resumé */}
           <Field
             name="resume"
-            label="Resumé"
+            label="Resumé *"
             rows="5"
             cols="50"
             component={renderTextArea}
-            validate={required}
+            validate={[required, minLength10, maxLength1000]}
           />
           {/* Input URL */}
           <Field
             name="url"
             type="text"
-            label="Lien vers la ressource"
+            label="Lien vers la ressource *"
             component={renderField}
             validate={[required, validUrl]}
           />
@@ -172,7 +176,7 @@ class SearchAddForm extends React.Component {
           <Field
             name="published_at"
             type="date"
-            label="Date de publication"
+            label="Date de publication *"
             component={renderField}
             validate={required}
           />
@@ -180,14 +184,14 @@ class SearchAddForm extends React.Component {
           <Field
             name="author"
             type="text"
-            label="Auteur"
+            label="Auteur *"
             component={renderField}
             validate={required}
           />
           {/* Select Support */}
           <Field
             name="select_type"
-            label="Sélectionner un support"
+            label="Sélectionner un support *"
             className="search_add_form_select"
             component={renderSelect}
             validate={required}
@@ -200,7 +204,7 @@ class SearchAddForm extends React.Component {
           {/* Select Langue */}
           <Field
             name="select_language"
-            label="Sélectionner une langue"
+            label="Sélectionner une langue *"
             className="search_add_form_select"
             component={renderSelect}
             validate={required}
@@ -213,7 +217,7 @@ class SearchAddForm extends React.Component {
           {/* Select Niveau */}
           <Field
             name="select_level"
-            label="Sélectionner un niveau"
+            label="Sélectionner un niveau *"
             className="search_add_form_select"
             component={renderSelect}
             validate={required}
@@ -227,7 +231,7 @@ class SearchAddForm extends React.Component {
           <div className="search_add_form_line">
             <Field
               name="select_tag1"
-              label="Sélectionner un tag"
+              label="Sélectionner un tag *"
               className="search_add_form_select"
               component={renderTag}
               validate={required}
@@ -264,6 +268,10 @@ class SearchAddForm extends React.Component {
               <option value={tag.id} key={tag.id}>{tag.label}</option>
             ))}
           </Field>
+          <div className="profile-edit-legend">
+            * : Champs obligatoires
+          </div>
+          <div id="add-bookmark-error" />
           {/* Button Envoyer */}
           <div className="profile-edit-validate">
             <button className="profile-edit-btn" type="submit" disabled={submitting}>Envoyer</button>
