@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
+import { Formatizer } from 'formatizer';
 
 /**
  * Local import
@@ -28,7 +29,9 @@ const PromoComment = ({
         <div className="comment_content">
           <p>Posté par <NavLink className="comment_author" strict to={`/app/profile/${author.id}`}>{author.username}</NavLink>, le {day} à {time}</p>
         </div>
-        <p>{body}</p>
+        <div className="comment_text">
+          <Formatizer>{body}</Formatizer>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import { Formatizer } from 'formatizer';
+import glamorous from 'glamorous';
 
 // Tests & errors responses if inputs are not well completed
 const required = value => (value ? undefined : 'Champ requis.');
@@ -34,6 +36,28 @@ renderTextArea.propTypes = {
   meta: PropTypes.any.isRequired,
 };
 
+const Quote = glamorous.span({
+  display: 'block',
+  borderLeft: '3px solid rgba(255,255,255,0.2)',
+  fontStyle: 'italic',
+  paddingLeft: '.7em',
+  margin: '0 1rem',
+  '&:last-of-type': {
+    marginBottom: '.2em',
+  },
+});
+
+const Code = glamorous.span({
+  display: 'block',
+  background: '#3c4247',
+  border: '1px solid #32373c',
+  borderRadius: '.2em',
+  margin: '0 1rem',
+  fontFamily: 'Menlo',
+  fontSize: '0.825em',
+  textTransform: 'none',
+});
+
 class PromoAddComment extends React.Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
@@ -60,7 +84,17 @@ class PromoAddComment extends React.Component {
           component={renderTextArea}
           validate={[required, minLength10, maxLength1000]}
         />
-        <div id="add-bookmark-error" />
+        <div className="comment_exemples">
+          <p className="comment_exemples_exemple comment_exemples_bold">*gras*</p>
+          <p className="comment_exemples_exemple comment_exemples_italic">_italique_</p>
+          <p className="comment_exemples_exemple comment_exemples_crossed">~barré~</p>
+          <Code>`code`</Code>
+          <Code>```préformaté```</Code>
+          <Quote>> citation</Quote>
+          <p className="comment_exemples_exemple">###Spoiler###</p>
+          <p className="comment_exemples_smiley">:smiley:</p>
+          <Formatizer>:sunglasses:</Formatizer>
+        </div>
         {/* Button Envoyer */}
         <div className="profile-edit-validate">
           <button className="profile-edit-btn" type="submit" disabled={submitting}>Envoyer</button>
