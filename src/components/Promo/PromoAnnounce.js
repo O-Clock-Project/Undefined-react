@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { animateScroll as scroll } from 'react-scroll';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
+import { Formatizer } from 'formatizer';
 
 /**
  * Local import
@@ -67,7 +68,7 @@ class PromoAnnounce extends React.Component {
           <div className="annonce-frame">
             <h2 className="annonce-subtitle">Message</h2>
             <p className="annonce-infos">Posté par <NavLink strict to={`/app/profile/${authorId}`}>{authorUsername}</NavLink>, le {day} à {time}</p>
-            <p>{announceView.body}</p>
+            <Formatizer>{announceView.body}</Formatizer>
           </div>
           <div className="annonce-frame">
             <p className="annonce-last" onClick={this.handleClick}>Voir le dernier commentaire</p>
