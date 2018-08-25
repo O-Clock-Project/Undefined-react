@@ -68,7 +68,9 @@ class PromoAnnounce extends React.Component {
           <div className="annonce-frame">
             <h2 className="annonce-subtitle">Message</h2>
             <p className="annonce-infos">Posté par <NavLink strict to={`/app/profile/${authorId}`}>{authorUsername}</NavLink>, le {day} à {time}</p>
-            <Formatizer>{announceView.body}</Formatizer>
+            <div className="annonce-text">
+              <Formatizer>{announceView.body}</Formatizer>
+            </div>
           </div>
           <div className="annonce-frame">
             <p className="annonce-last" onClick={this.handleClick}>Voir le dernier commentaire</p>

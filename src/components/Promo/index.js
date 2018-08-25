@@ -27,6 +27,11 @@ class Promo extends React.Component {
   }
 
   componentDidMount() {
+    const { promo, loadAnnounces, loadedPromo } = this.props;
+    if (loadedPromo) {
+      loadAnnounces(promo.id);
+    }
+
     scroll.scrollToTop({
       duration: 500,
       smooth: true,
@@ -34,8 +39,10 @@ class Promo extends React.Component {
   }
 
   componentDidUpdate() {
-    const { promo, loadAnnounces } = this.props;
-    loadAnnounces(promo.id);
+    const { promo, loadAnnounces, loadedPromo } = this.props;
+    if (loadedPromo) {
+      loadAnnounces(promo.id);
+    }
 
     scroll.scrollToTop({
       duration: 500,

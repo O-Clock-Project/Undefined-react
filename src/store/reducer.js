@@ -417,7 +417,6 @@ const reducer = (state = initialState, action = {}) => {
     case ADD_TAG: {
       return {
         ...state,
-        // show_add_tag: false,
       };
     }
 

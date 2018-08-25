@@ -49,9 +49,9 @@ const promoAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
-          if (status === 404) {
-            window.location.replace('/app/not_found');
-          }
+          // if (status === 404) {
+          //   window.location.replace('/app/not_found');
+          // }
         });
       break;
     }
@@ -68,9 +68,9 @@ const promoAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
-          if (status === 404) {
-            window.location.replace('/app/not_found');
-          }
+          // if (status === 404) {
+          //   window.location.replace('/app/not_found');
+          // }
         });
       break;
     }
@@ -88,9 +88,9 @@ const promoAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
-          if (status === 404) {
-            window.location.replace('/app/not_found');
-          }
+          // if (status === 404) {
+          //   window.location.replace('/app/not_found');
+          // }
         });
       break;
     }
@@ -108,9 +108,9 @@ const promoAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
-          if (status === 404) {
-            window.location.replace('/app/not_found');
-          }
+          // if (status === 404) {
+          //   window.location.replace('/app/not_found');
+          // }
         });
       break;
     }
@@ -128,9 +128,9 @@ const promoAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
-          if (status === 404) {
-            window.location.replace('/app/not_found');
-          }
+          // if (status === 404) {
+          //   window.location.replace('/app/not_found');
+          // }
         });
       break;
     }
@@ -138,6 +138,7 @@ const promoAxios = store => next => (action) => {
     case ADD_COMMENT: {
       const url = `${baseUrl}/api/comments`;
       const idUser = store.getState().main.id_user;
+      const idPromo = store.getState().main.promo.id;
       const prepareData = {
         body: action.values.comment,
         add: [
@@ -153,12 +154,11 @@ const promoAxios = store => next => (action) => {
           },
         ],
       };
-      console.log(action.values);
       axios
         .post(url, prepareData)
         .then(() => {
           store.dispatch(loadComments(action.values.idAnnounce));
-          store.dispatch(loadAnnounces());
+          store.dispatch(loadAnnounces(idPromo));
           store.dispatch(loadAnnounce(action.values.idAnnounce));
           store.dispatch(reset('promoAddComment'));
         })
