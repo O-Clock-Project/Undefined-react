@@ -11,6 +11,7 @@ import { Route, Switch } from 'react-router-dom';
 import BookmarksContainer from 'src/containers/Bookmarks/Bookmarks';
 import PromoAnnounce from 'src/containers/Promo/PromoAnnounce';
 import InfosCharte from 'src/components/Infos/InfosCharte';
+import NotFound from 'src/components/NotFound';
 
 
 // Styles et assets
@@ -24,25 +25,24 @@ const Mainright = () => (
     <Switch>
       <Route exact path="/app" component={BookmarksContainer} />
       <Route
+        sensitive
         exact
-        strict
         path="/app/announces/:id"
         component={PromoAnnounce}
       />
       <Route
         exact
-        strict
         path="/app/profile/:id"
         component={BookmarksContainer}
       />
       <Route exact path="/app/bookmarks" component={BookmarksContainer} />
       <Route
         exact
-        strict
         path="/app/bookmarks/:id"
         component={BookmarksContainer}
       />
       <Route exact path="/app/informations" component={InfosCharte} />
+      <Route component={NotFound} />
     </Switch>
   </div>
 );

@@ -4,7 +4,6 @@
 import axios from 'axios';
 import { reset } from 'redux-form';
 
-
 /**
  * Local import
  */
@@ -44,12 +43,14 @@ const promoAxios = store => next => (action) => {
         .get(url)
         .then((response) => {
           store.dispatch(receivedPromo(response.data));
-          store.dispatch(loadAnnounces());
         })
         .catch((error) => {
           const { status } = error.response;
           if (status === 401) {
             window.location.replace('/');
+          }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
           }
         });
       break;
@@ -66,6 +67,9 @@ const promoAxios = store => next => (action) => {
           const { status } = error.response;
           if (status === 401) {
             window.location.replace('/');
+          }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
           }
         });
       break;
@@ -84,6 +88,9 @@ const promoAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
+          }
         });
       break;
     }
@@ -101,6 +108,9 @@ const promoAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
+          }
         });
       break;
     }
@@ -117,6 +127,9 @@ const promoAxios = store => next => (action) => {
           const { status } = error.response;
           if (status === 401) {
             window.location.replace('/');
+          }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
           }
         });
       break;

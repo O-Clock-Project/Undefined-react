@@ -23,9 +23,13 @@ class Promo extends React.Component {
   static propTypes = {
     promo: PropTypes.object.isRequired,
     loadedPromo: PropTypes.bool.isRequired,
+    loadAnnounces: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
+    const { loadAnnounces } = this.props;
+    loadAnnounces();
+
     scroll.scrollToTop({
       duration: 500,
       smooth: true,
@@ -33,6 +37,9 @@ class Promo extends React.Component {
   }
 
   componentDidUpdate() {
+    const { loadAnnounces } = this.props;
+    loadAnnounces();
+
     scroll.scrollToTop({
       duration: 500,
       smooth: true,

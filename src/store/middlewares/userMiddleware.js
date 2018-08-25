@@ -60,6 +60,9 @@ const userAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
+          }
         });
       break;
     }

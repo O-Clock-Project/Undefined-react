@@ -235,6 +235,15 @@ const bookmarksAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
+          if (status === 400) {
+            document.getElementById('add-bookmark-error').innerHTML = '';
+            if (error.response.data.title !== undefined) {
+              document.getElementById('add-bookmark-error').innerHTML += `<p>${error.response.data.title}</p>`;
+            }
+            if (error.response.data.url !== undefined) {
+              document.getElementById('add-bookmark-error').innerHTML += `<p>${error.response.data.url}</p>`;
+            }
+          }
         });
       break;
     }

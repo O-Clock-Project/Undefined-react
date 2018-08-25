@@ -10,7 +10,7 @@ import { withRouter } from 'react-router-dom';
 import Promo from 'src/components/Promo';
 
 // Action Creators
-// import { loadUserView } from 'src/store/reducer';
+import { loadAnnounces } from 'src/store/reducer';
 
 /* === State (données) === */
 const mapStateToProps = state => ({
@@ -19,7 +19,11 @@ const mapStateToProps = state => ({
 });
 
 /* === Actions === */
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  loadAnnounces: () => {
+    dispatch(loadAnnounces());
+  },
+});
 
 // Container
 const PromoContainer = connect(
