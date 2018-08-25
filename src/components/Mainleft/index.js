@@ -27,11 +27,11 @@ const Mainleft = () => (
     <Switch>
       <Redirect exact from="/" to="/app" />
       <Route exact path="/app" component={Promo} />
-      <Route exact path="/app/announces/:id" component={Promo} />
-      <Route exact path="/app/profile/:id" component={Profile} />
-      <Route exact path="/app/bookmarks" component={Search} />
-      <Route exact path="/app/bookmarks/:id" component={Ressource} />
-      <Route exact path="/app/informations" component={Infos} />
+      <Route exact strict path="/app/announces/:id" component={Promo} />
+      <Route exact strict path="/app/profile/:id" component={Profile} />
+      <Route exact strict path="/app/bookmarks" component={Search} />
+      <Route exact strict path="/app/bookmarks/:id" component={Ressource} />
+      <Route exact strict path="/app/informations" component={Infos} />
       <Route component={NotFound} />
     </Switch>
   </div>

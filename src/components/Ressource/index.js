@@ -26,6 +26,7 @@ import './ressource.sass';
  */
 class Ressource extends React.Component {
   static propTypes = {
+    idRessource: PropTypes.string.isRequired,
     bookmark: PropTypes.shape({
       id: PropTypes.number.isRequired,
       created_at: PropTypes.string.isRequired,
@@ -48,10 +49,25 @@ class Ressource extends React.Component {
       locale: PropTypes.object.isRequired,
     }).isRequired,
     status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
+    loadRessource: PropTypes.func.isRequired,
   }
 
-  componentDidUpdate() {
-    // Scroll to top
+  componentDidMount() {
+    const { idRessource, loadRessource } = this.props;
+    loadRessource(idRessource);
+
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { idRessource, loadRessource } = this.props;
+    if (idRessource !== prevProps.idRessource) {
+      loadRessource(idRessource);
+    }
+
     scroll.scrollToTop({
       duration: 500,
       smooth: true,

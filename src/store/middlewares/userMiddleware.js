@@ -52,7 +52,6 @@ const userAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          // console.log(response.data[0]);
           store.dispatch(receivedUserView(response.data));
         })
         .catch((error) => {

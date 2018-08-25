@@ -76,7 +76,7 @@ const promoAxios = store => next => (action) => {
     }
 
     case LOAD_ANNOUNCES: {
-      const idPromo = store.getState().main.promo.id;
+      const idPromo = action.id;
       const url = `${baseUrl}/api/promotions/${idPromo}/announcements/promotions?displayGroup=announcements&frozen=false`;
       axios
         .get(url)

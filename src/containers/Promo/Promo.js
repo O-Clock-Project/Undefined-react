@@ -20,8 +20,8 @@ const mapStateToProps = state => ({
 
 /* === Actions === */
 const mapDispatchToProps = dispatch => ({
-  loadAnnounces: () => {
-    dispatch(loadAnnounces());
+  loadAnnounces: (id) => {
+    dispatch(loadAnnounces(id));
   },
 });
 

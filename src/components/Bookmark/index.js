@@ -69,7 +69,6 @@ class Bookmark extends React.Component {
     dispatchLanguage: PropTypes.func.isRequired,
     dispatchLevel: PropTypes.func.isRequired,
     requestBookmarks: PropTypes.func.isRequired,
-    loadRessource: PropTypes.func.isRequired,
   };
 
   handleSupport = () => {
@@ -116,13 +115,6 @@ class Bookmark extends React.Component {
     requestBookmarks();
   }
 
-  handleBookmarkClick = () => {
-    // Catch the id
-    const { id, loadRessource } = this.props;
-    // Dispatch the action with id for the middleware
-    loadRessource(id);
-  }
-
   render() {
     const {
       id,
@@ -158,10 +150,9 @@ class Bookmark extends React.Component {
             }
             {/* Title */}
             <NavLink
-              strict
+              exact
               to={`/app/bookmarks/${id}`}
               className="bookmark_identity_title"
-              onClick={this.handleBookmarkClick}
             >{title}
             </NavLink>
             {/* Certificat */}

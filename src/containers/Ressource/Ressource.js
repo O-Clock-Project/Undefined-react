@@ -9,15 +9,25 @@ import { connect } from 'react-redux';
 import Ressource from 'src/components/Ressource';
 
 // Action Creators
+import { loadRessource } from 'src/store/reducer';
 
 // State
-const mapStateToProps = state => ({
-  bookmark: state.main.bookmark,
-  status: state.main.ressourceStatus,
-});
+const mapStateToProps = (state, ownProps) => {
+  const { id } = ownProps.match.params;
+
+  return {
+    idRessource: id,
+    bookmark: state.main.bookmark,
+    status: state.main.ressourceStatus,
+  };
+};
 
 // Actions
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  loadRessource: (id) => {
+    dispatch(loadRessource(id));
+  },
+});
 
 // Container
 // connect(Ce dont j'ai besoin)(Qui en a besoin)

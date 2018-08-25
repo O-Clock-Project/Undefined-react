@@ -83,7 +83,13 @@ const bookmarksAxios = store => next => (action) => {
           store.dispatch(receivedRessource(response.data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
+          }
         });
       break;
     }
