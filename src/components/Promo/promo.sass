@@ -11,7 +11,9 @@
   display: flex
   flex-direction: column
   align-items: center
-
+  @media screen and (max-width: $break-point)
+      margin: 3rem
+      
 #home_title
   text-align: center
   font-size: 3rem
@@ -45,6 +47,8 @@
 
   &_icon
     font-size: 3rem
+    @media screen and (max-width: $break-point)
+      font-size: 2rem
 
   &_url
     font-size: 1rem

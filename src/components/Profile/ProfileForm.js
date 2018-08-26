@@ -5,7 +5,10 @@ import { Field, reduxForm } from 'redux-form';
 const required = value => (value ? undefined : 'Champ requis.');
 const minLength = min => value => (value && value.length < min ? `Doit faire au minimum ${min} caractères.` : undefined);
 const minLength2 = minLength(2);
+const minLength4 = minLength(4);
 const minLength8 = minLength(8);
+const maxLength = max => value => (value && value.length > max ? `Doit faire au maximum ${max} caractères.` : undefined);
+const maxLength10 = maxLength(10);
 const email = value => (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
   ? 'Adresse email invalide' : undefined);
 const passwordsMatch = (value, allValues) => (value !== allValues.password ? 'Les mots de passe ne correspondent pas.' : undefined);
@@ -37,6 +40,7 @@ const EditProfilForm = (props) => {
   } = props;
   return (
     <form onSubmit={handleSubmit} className="profile-edit-form">
+      <h2 className="annonce-subtitle">Informations</h2>
       <Field
         name="firstname"
         type="text"
@@ -77,8 +81,9 @@ const EditProfilForm = (props) => {
         type="text"
         label="Code postal *"
         component={renderField}
-        validate={required}
+        validate={[required, minLength4, maxLength10]}
       />
+      <h2 className="annonce-subtitle">Changement de mot de passe</h2>
       <Field
         name="old_password"
         type="password"

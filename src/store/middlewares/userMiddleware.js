@@ -93,12 +93,22 @@ const userAxios = store => next => (action) => {
           store.dispatch(successEditUser(data));
         })
         .catch((error) => {
+          console.log(error.response);
           const { status } = error.response;
           if (status === 401) {
             window.location.replace('/');
           }
           if (status === 400) {
-            document.getElementById('edit-error').textContent = error.response.data.error;
+            document.getElementById('edit-error').innerHTML = '';
+            if (error.response.data.error !== undefined) {
+              document.getElementById('edit-error').innerHTML += `<p>${error.response.data.error}</p>`;
+            }
+            if (error.response.data.email !== undefined) {
+              document.getElementById('edit-error').innerHTML += `<p>${error.response.data.email}</p>`;
+            }
+            if (error.response.data.pseudo_github !== undefined) {
+              document.getElementById('edit-error').innerHTML += `<p>${error.response.data.pseudo_github}</p>`;
+            }
           }
         });
       break;
