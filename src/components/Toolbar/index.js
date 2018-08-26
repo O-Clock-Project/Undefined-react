@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaSortUp, FaSortDown, FaPencilAlt } from 'react-icons/fa';
 import {
   IoIosStar,
@@ -21,7 +22,7 @@ import './toolbar.sass';
 /**
  * Code
  */
-const Toolbar = () => (
+const Toolbar = ({ showEditBookmark }) => (
   <div id="toolbar">
 
     {/* Vote */}
@@ -45,7 +46,7 @@ const Toolbar = () => (
     </div>
 
     {/* Edit */}
-    <div id="toolbar_edit">
+    <div id="toolbar_edit" onClick={showEditBookmark}>
       <div id="toolbar_edit_icon">
         <FaPencilAlt />
       </div>
@@ -66,6 +67,10 @@ const Toolbar = () => (
 
   </div>
 );
+
+Toolbar.propTypes = {
+  showEditBookmark: PropTypes.func.isRequired,
+};
 
 /**
  * Export

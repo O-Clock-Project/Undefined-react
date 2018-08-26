@@ -40,6 +40,7 @@ const initialState = {
   // Form Add Bookmark
   show_add_tag: false,
   show_add_bookmark: true,
+  show_edit_bookmark: false,
 
   // PROMO
   loaded_promo: false,
@@ -94,8 +95,10 @@ export const RECEIVED_RESSOURCE = 'RECEIVED_RESSOURCE';
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
 export const SHOW_ADD_BOOKMARK = 'SHOW_ADD_BOOKMARK';
+export const SHOW_EDIT_BOOKMARK = 'SHOW_EDIT_BOOKMARK';
 export const ADD_TAG = 'ADD_TAG';
 export const ADD_BOOKMARK = 'ADD_BOOKMARK';
+export const EDIT_BOOKMARK = 'EDIT_BOOKMARK';
 
 // PROMO
 export const LOAD_PROMO = 'LOAD_PROMO';
@@ -394,6 +397,7 @@ const reducer = (state = initialState, action = {}) => {
         bookmark: action.data,
         // Change the loading status
         ressourceStatus: 'loaded',
+        show_edit_bookmark: false,
       };
     }
 
@@ -414,6 +418,14 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case SHOW_EDIT_BOOKMARK: {
+      return {
+        ...state,
+        // New value for ordering
+        show_edit_bookmark: !state.show_edit_bookmark,
+      };
+    }
+
     case ADD_TAG: {
       return {
         ...state,
@@ -421,6 +433,12 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ADD_BOOKMARK: {
+      return {
+        ...state,
+      };
+    }
+
+    case EDIT_BOOKMARK: {
       return {
         ...state,
       };
@@ -643,6 +661,10 @@ export const showAddBookmark = () => ({
   type: SHOW_ADD_BOOKMARK,
 });
 
+export const showEditBookmark = () => ({
+  type: SHOW_EDIT_BOOKMARK,
+});
+
 export const addTag = values => ({
   type: ADD_TAG,
   values,
@@ -650,6 +672,11 @@ export const addTag = values => ({
 
 export const addBookmark = values => ({
   type: ADD_BOOKMARK,
+  values,
+});
+
+export const editBookmark = values => ({
+  type: EDIT_BOOKMARK,
   values,
 });
 

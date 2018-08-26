@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
 
   return {
+    promo: state.main.promo,
     idAnnounce: id,
     announceView: state.main.announce_view,
     loadedAnnounce: state.main.loaded_announce,

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Ressource from 'src/components/Ressource';
 
 // Action Creators
-import { loadRessource } from 'src/store/reducer';
+import { loadRessource, showEditBookmark, editBookmark } from 'src/store/reducer';
 
 // State
 const mapStateToProps = (state, ownProps) => {
@@ -19,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
     idRessource: id,
     bookmark: state.main.bookmark,
     status: state.main.ressourceStatus,
+    formEditBookmark: state.main.show_edit_bookmark,
   };
 };
 
@@ -26,6 +27,12 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   loadRessource: (id) => {
     dispatch(loadRessource(id));
+  },
+  showEditBookmark: () => {
+    dispatch(showEditBookmark());
+  },
+  editBookmark: (values) => {
+    dispatch(editBookmark(values));
   },
 });
 

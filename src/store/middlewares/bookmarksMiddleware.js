@@ -14,14 +14,17 @@ import {
   REQUEST_BOOKMARKS,
   ADD_TAG,
   ADD_BOOKMARK,
+  EDIT_BOOKMARK,
   receivedBookmarks,
   receivedFilters,
   receivedRessource,
   noResults,
   loadBookmarks,
   loadFilters,
+  loadRessource,
   showAddTag,
   showAddBookmark,
+  showEditBookmark,
 } from '../reducer';
 
 
@@ -47,7 +50,10 @@ const bookmarksAxios = store => next => (action) => {
           store.dispatch(receivedBookmarks(response.data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }
@@ -65,7 +71,10 @@ const bookmarksAxios = store => next => (action) => {
           store.dispatch(receivedFilters(response.data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }
@@ -145,7 +154,10 @@ const bookmarksAxios = store => next => (action) => {
           store.dispatch(receivedBookmarks(response.data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
           // Dispatch for change ths state of results
           store.dispatch(noResults());
         });
@@ -178,7 +190,7 @@ const bookmarksAxios = store => next => (action) => {
     case ADD_BOOKMARK: {
       const url = `${baseUrl}/api/bookmarks`;
       const idUser = store.getState().main.id_user;
-      const image = action.values.image || './assets/images/default.jpg';
+      const image = action.values.image || '/images/default.jpg';
       const prepareData = {
         title: action.values.title,
         resume: action.values.resume,
@@ -214,27 +226,130 @@ const bookmarksAxios = store => next => (action) => {
           },
         ],
       };
-      if (action.values.select_tag2 !== undefined) {
-        const tag2 = {
-          id: action.values.select_tag2,
+      if (!(Number(action.values.select_tag2) === 0 || Number.isNaN(Number(action.values.select_tag2)))) {
+        const addTag2 = {
+          id: Number(action.values.select_tag2),
           entity: 'tag',
           property: 'tag',
         };
-        prepareData.add.push(tag2);
+        prepareData.add.push(addTag2);
       }
-      if (action.values.select_tag3 !== undefined) {
-        const tag3 = {
-          id: action.values.select_tag3,
+      if (!(Number(action.values.select_tag3) === 0 || Number.isNaN(Number(action.values.select_tag3)))) {
+        const addTag3 = {
+          id: Number(action.values.select_tag3),
           entity: 'tag',
           property: 'tag',
         };
-        prepareData.add.push(tag3);
+        prepareData.add.push(addTag3);
       }
       axios
         .post(url, prepareData)
         .then(() => {
           store.dispatch(loadBookmarks());
           store.dispatch(showAddBookmark());
+        })
+        .catch((error) => {
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
+          if (status === 400) {
+            document.getElementById('add-bookmark-error').innerHTML = '';
+            if (error.response.data.title !== undefined) {
+              document.getElementById('add-bookmark-error').innerHTML += `<p>${error.response.data.title}</p>`;
+            }
+            if (error.response.data.url !== undefined) {
+              document.getElementById('add-bookmark-error').innerHTML += `<p>${error.response.data.url}</p>`;
+            }
+          }
+        });
+      break;
+    }
+
+    // Edit bookmark
+    case EDIT_BOOKMARK: {
+      const idBookmark = action.values.id;
+      const url = `${baseUrl}/api/bookmarks/${idBookmark}`;
+
+      const currentBookmark = store.getState().main.bookmark;
+
+      const image = action.values.image || '/images/default.jpg';
+
+      const prepareData = {
+        title: action.values.title,
+        resume: action.values.resume,
+        url: action.values.url,
+        image,
+        published_at: action.values.published_at,
+        author: action.values.author,
+        remove: [
+          {
+            id: currentBookmark.tags[0].id,
+            entity: 'tag',
+            property: 'tag',
+          },
+        ],
+        add: [
+          {
+            id: action.values.select_type,
+            entity: 'support',
+            property: 'support',
+          },
+          {
+            id: action.values.select_level,
+            entity: 'difficulty',
+            property: 'difficulty',
+          },
+          {
+            id: action.values.select_language,
+            entity: 'locale',
+            property: 'locale',
+          },
+          {
+            id: action.values.select_tag1,
+            entity: 'tag',
+            property: 'tag',
+          },
+        ],
+      };
+      if (typeof currentBookmark.tags[1] !== 'undefined') {
+        const removeTag2 = {
+          id: currentBookmark.tags[1].id,
+          entity: 'tag',
+          property: 'tag',
+        };
+        prepareData.remove.push(removeTag2);
+      }
+      if (typeof currentBookmark.tags[2] !== 'undefined') {
+        const removeTag3 = {
+          id: currentBookmark.tags[2].id,
+          entity: 'tag',
+          property: 'tag',
+        };
+        prepareData.remove.push(removeTag3);
+      }
+      if (!(Number(action.values.select_tag2) === 0 || Number.isNaN(Number(action.values.select_tag2)))) {
+        const addTag2 = {
+          id: Number(action.values.select_tag2),
+          entity: 'tag',
+          property: 'tag',
+        };
+        prepareData.add.push(addTag2);
+      }
+      if (!(Number(action.values.select_tag3) === 0 || Number.isNaN(Number(action.values.select_tag3)))) {
+        const addTag3 = {
+          id: Number(action.values.select_tag3),
+          entity: 'tag',
+          property: 'tag',
+        };
+        prepareData.add.push(addTag3);
+      }
+      axios
+        .put(url, prepareData)
+        .then(() => {
+          store.dispatch(loadBookmarks());
+          store.dispatch(showEditBookmark());
+          store.dispatch(loadRessource(idBookmark));
         })
         .catch((error) => {
           const { status } = error.response;

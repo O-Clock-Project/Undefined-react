@@ -22,6 +22,7 @@ import PromoAddComment from './PromoAddComment';
  */
 class PromoAnnounce extends React.Component {
   static propTypes = {
+    promo: PropTypes.object.isRequired,
     idAnnounce: PropTypes.string.isRequired,
     loadAnnounce: PropTypes.func.isRequired,
     loadComments: PropTypes.func.isRequired,
@@ -50,18 +51,20 @@ class PromoAnnounce extends React.Component {
 
   render() {
     const {
-      idAnnounce, loadedAnnounce, announceView, addComment,
+      promo, idAnnounce, loadedAnnounce, announceView, addComment,
     } = this.props;
+    const idPromoAnnounce = (((announceView || {}).promotions || {})[0] || []).id;
     const authorId = ((announceView || {}).author || {}).id;
     const authorUsername = ((announceView || {}).author || {}).username;
     const comments = ((announceView || {}).comments || []);
-    const day = moment(announceView.createdAt).format('DD-MM-YYYY');
-    const time = moment(announceView.createdAt).format('HH:mm:ss');
+    const day = moment(announceView.created_at).format('DD-MM-YYYY');
+    const time = moment(announceView.created_at).format('HH:mm:ss');
 
     return (
       <Fragment>
         {
           loadedAnnounce
+        && promo.id === idPromoAnnounce
         && (
         <div className="annonce">
           <h1 className="annonce-title">{announceView.title}</h1>
@@ -85,6 +88,19 @@ class PromoAnnounce extends React.Component {
             }}
           />
         </div>)
+        }
+
+        {
+          loadedAnnounce
+          && promo.id !== idPromoAnnounce
+          && (
+          <div className="annonce">
+            <div className="annonce-frame">
+              <div className="annonce-text">
+                <Formatizer>Désolé tu n'as pas accès à cette annonce.</Formatizer>
+              </div>
+            </div>
+          </div>)
         }
       </Fragment>
     );

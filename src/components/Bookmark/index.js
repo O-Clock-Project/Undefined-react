@@ -150,7 +150,7 @@ class Bookmark extends React.Component {
             }
             {/* Title */}
             <NavLink
-              exact
+              strict
               to={`/app/bookmarks/${id}`}
               className="bookmark_identity_title"
             >{title}
