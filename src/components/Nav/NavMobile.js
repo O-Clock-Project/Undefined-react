@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import {
-  FaHome, FaBook, FaUserCircle, FaInfoCircle, FaSignOutAlt, FaDoorOpen,
+  FaHome, FaBook, FaUserCircle, FaInfoCircle, FaSignOutAlt,
 } from 'react-icons/fa';
 import { IoIosMenu } from 'react-icons/io';
 
@@ -92,7 +92,7 @@ class NavMobile extends React.Component {
             className="navbar-link"
             activeClassName="navbar-link--active"
           >
-            <FaDoorOpen className="font-svg" /> Déconnexion
+            <FaSignOutAlt className="font-svg" /> Déconnexion
           </NavLink>
         </div>
         <div className="navbar-end">

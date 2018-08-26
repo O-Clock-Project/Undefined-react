@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import {
-  FaHome, FaBook, FaUserCircle, FaInfoCircle, FaSignOutAlt, FaDoorOpen,
+  FaHome, FaBook, FaUserCircle, FaInfoCircle, FaSignOutAlt,
 } from 'react-icons/fa';
 
 /**
@@ -75,7 +75,7 @@ const NavDesktop = ({ user, loaded }) => (
         className="navbar-link"
         activeClassName="navbar-link--active"
       >
-        <FaDoorOpen className="font-svg" /> Déconnexion
+        <FaSignOutAlt className="font-svg" /> Déconnexion
       </NavLink>
       {/* Home */}
       <NavLink

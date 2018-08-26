@@ -53,7 +53,7 @@ class PromoAnnounce extends React.Component {
     const {
       promo, idAnnounce, loadedAnnounce, announceView, addComment,
     } = this.props;
-    const idPromoAnnounce = (((announceView || {}).promotions || {})[0] || []).id;
+    const promosAnnounce = ((announceView || {}).promotions || []);
     const authorId = ((announceView || {}).author || {}).id;
     const authorUsername = ((announceView || {}).author || {}).username;
     const comments = ((announceView || {}).comments || []);
@@ -64,7 +64,7 @@ class PromoAnnounce extends React.Component {
       <Fragment>
         {
           loadedAnnounce
-        && promo.id === idPromoAnnounce
+        && promosAnnounce.find(promotion => promotion.id === promo.id)
         && (
         <div className="annonce">
           <h1 className="annonce-title">{announceView.title}</h1>
@@ -92,7 +92,7 @@ class PromoAnnounce extends React.Component {
 
         {
           loadedAnnounce
-          && promo.id !== idPromoAnnounce
+          && !promosAnnounce.find(promotion => promotion.id === promo.id)
           && (
           <div className="annonce">
             <div className="annonce-frame">
