@@ -7,32 +7,32 @@ import { withRouter } from 'react-router-dom';
 /**
  * Local import
  */
-import Promo from 'src/components/Promo';
+import PromoChannel from 'src/components/Promo/PromoChannel';
 
 // Action Creators
-import { loadAnnounces } from 'src/store/reducer';
+import { loadComments } from 'src/store/reducer';
 
 /* === State (données) === */
 const mapStateToProps = state => ({
-  promo: state.main.promo,
-  loadedPromo: state.main.loaded_promo,
+  announces: state.main.announces,
+  loadedAnnounces: state.main.loaded_announces,
 });
 
 /* === Actions === */
 const mapDispatchToProps = dispatch => ({
-  loadAnnounces: (id) => {
-    dispatch(loadAnnounces(id));
+  loadComments: (id) => {
+    dispatch(loadComments(id));
   },
 });
 
 // Container
-const PromoContainer = connect(
+const PromoChannelContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Promo);
+)(PromoChannel);
 
 
 /**
  * Export
  */
-export default withRouter(PromoContainer);
+export default withRouter(PromoChannelContainer);

@@ -1,7 +1,8 @@
 /**
  * Import
  */
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -14,14 +15,29 @@ import PromoMessage from './PromoMessage';
 /**
  * Code
  */
-const Channel = () => (
-  <div id="channel">
-    <PromoMessage />
-    <PromoMessage />
-  </div>
+const PromoChannel = ({ announces, loadedAnnounces }) => (
+  <Fragment>
+    {loadedAnnounces
+      && (
+      <div id="channel">
+        {announces.map(announce => (
+          <PromoMessage
+            key={announce.id}
+            {...announce}
+          />
+        ))}
+      </div>
+      )
+    }
+  </Fragment>
 );
+
+PromoChannel.propTypes = {
+  announces: PropTypes.array.isRequired,
+  loadedAnnounces: PropTypes.bool.isRequired,
+};
 
 /**
  * Export
  */
-export default Channel;
+export default PromoChannel;

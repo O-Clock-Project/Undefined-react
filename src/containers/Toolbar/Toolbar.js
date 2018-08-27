@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import Toolbar from 'src/components/Toolbar';
 
 // Action Creators
+import { showEditBookmark } from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
@@ -16,7 +17,11 @@ const mapStateToProps = state => ({
 });
 
 // Actions
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  showEditBookmark: () => {
+    dispatch(showEditBookmark());
+  },
+});
 
 // Container
 // connect(Ce dont j'ai besoin)(Qui en a besoin)

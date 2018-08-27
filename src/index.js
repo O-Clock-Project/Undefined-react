@@ -31,7 +31,7 @@ const rootComponent = (
 
 render(rootComponent, document.getElementById('root'));
 
-store.dispatch(loadUser(1));
+store.dispatch(loadUser(23));
 store.dispatch(loadFilters());
 store.dispatch(loadBookmarks());
 store.dispatch(loadSchoolLinks());

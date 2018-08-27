@@ -36,9 +36,10 @@ class Toolbar extends React.Component {
       id: PropTypes.number.isRequired,
       username: PropTypes.string.isRequired,
     }).isRequired,
-    certifiedBy: PropTypes.arrayOf(PropTypes.objet).isRequired,
+    certifiedBy: PropTypes.arrayOf(PropTypes.object).isRequired,
     // From Store
     currentUserId: PropTypes.number.isRequired,
+    showEditBookmark: PropTypes.func.isRequired,
   }
 
   checkFavorite = () => {
@@ -59,7 +60,12 @@ class Toolbar extends React.Component {
   }
 
   render() {
-    const { certifiedBy, userOwner, currentUserId } = this.props;
+    const {
+      certifiedBy,
+      userOwner,
+      currentUserId,
+      showEditBookmark,
+    } = this.props;
     return (
       <div id="toolbar">
 
@@ -73,7 +79,7 @@ class Toolbar extends React.Component {
         </div>
 
         {/* Edit */}
-        <div id="toolbar_edit">
+        <div id="toolbar_edit" onClick={showEditBookmark}>
           {userOwner.id === currentUserId && (
             <FaPencilAlt id="toolbar_edit_icon" />
           )}

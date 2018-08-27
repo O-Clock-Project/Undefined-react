@@ -9,6 +9,8 @@
 // Search page
 #search
   margin: 3rem 1.5rem 3rem 3rem
+  @media screen and (max-width: $break-point)
+    margin: 3rem
 
   &_container
     margin-bottom: 3rem
@@ -87,6 +89,7 @@
 
 // Form add bookmark
 .search_add
+  position: relative
 
   &_title
     font-weight: 600
@@ -107,6 +110,7 @@
     background-color: $div-bgcolor
     border: 1px solid $border-color
     border-radius: 0.3rem
+    position: relative;
 
     &_line
       border-bottom: 1px dashed $link-color-hover
@@ -213,5 +217,9 @@
     font-size: 1.3rem
 
 #tag-error
+  text-align: center
+  margin-top: .5rem
+
+#add-bookmark-error
   text-align: center
   margin-top: .5rem

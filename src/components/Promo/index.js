@@ -10,7 +10,7 @@ import { animateScroll as scroll } from 'react-scroll';
  */
 // Composants
 import PromoLinks from 'src/containers/Promo/PromoLinks';
-import PromoChannel from './PromoChannel';
+import PromoChannel from 'src/containers/Promo/PromoChannel';
 
 
 // Styles et assets
@@ -22,10 +22,16 @@ import './promo.sass';
 class Promo extends React.Component {
   static propTypes = {
     promo: PropTypes.object.isRequired,
-    loaded: PropTypes.bool.isRequired,
+    loadedPromo: PropTypes.bool.isRequired,
+    loadAnnounces: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
+    const { promo, loadAnnounces, loadedPromo } = this.props;
+    if (loadedPromo) {
+      loadAnnounces(promo.id);
+    }
+
     scroll.scrollToTop({
       duration: 500,
       smooth: true,
@@ -33,6 +39,11 @@ class Promo extends React.Component {
   }
 
   componentDidUpdate() {
+    const { promo, loadAnnounces, loadedPromo } = this.props;
+    if (loadedPromo) {
+      loadAnnounces(promo.id);
+    }
+
     scroll.scrollToTop({
       duration: 500,
       smooth: true,
@@ -40,13 +51,13 @@ class Promo extends React.Component {
   }
 
   render() {
-    const { promo, loaded } = this.props;
+    const { promo, loadedPromo } = this.props;
     return (
       <div id="home">
-        {loaded && <h1 id="home_title">{promo.name}</h1>}
-        {loaded && <PromoChannel />}
+        {loadedPromo && <h1 id="home_title">{promo.name}</h1>}
+        {loadedPromo && <PromoChannel />}
         <span id="border" />
-        {loaded && <PromoLinks />}
+        {loadedPromo && <PromoLinks />}
       </div>
     );
   }
