@@ -389,8 +389,7 @@ const bookmarksAxios = store => next => (action) => {
       // Requesting
       axios
         .put(url, request)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           store.dispatch(requestBookmarks());
         })
         .catch((error) => {

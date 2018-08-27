@@ -97,6 +97,7 @@ class Toolbar extends React.Component {
       userOwner,
       currentUserId,
       showEditBookmark,
+      votes,
     } = this.props;
 
     return (
@@ -123,7 +124,8 @@ class Toolbar extends React.Component {
             <FaSortUp />
           </div>
           <div id="toolbar_vote_content">
-            52
+            {votes.reduce((cumul, vote) => (
+              cumul + vote.value), 0)}
           </div>
           <div id="toolbar_vote_down">
             <FaSortDown />
