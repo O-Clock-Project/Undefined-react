@@ -404,8 +404,17 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case FAV_RESSOURCE: {
+      // Loading status if require (Profil vue)
+      let newBookmarksStatus = 'loaded';
+      let newResultsStatus = true;
+      if (state.bookmarks.length < 2) {
+        newBookmarksStatus = 'loading';
+        newResultsStatus = true;
+      }
       return {
         ...state,
+        bookmarksStatus: newBookmarksStatus,
+        results: newResultsStatus,
         bookmark: {
           ...state.bookmark,
           faved_by: action.newFavedBy,

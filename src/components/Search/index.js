@@ -51,9 +51,9 @@ class Search extends React.Component {
         <h1 id="search_title">Les Bookmarks</h1>
 
         <div id="search_container">
-          <h2 id="search_title_abstract">Un petit texte d'intro ? Ici, on n'est pas chez Wikipédia</h2>
+          <h2 id="search_title_abstract">Pourquoi avons-nous créé cette section ? </h2>
 
-          <p id="search_abstract"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, pariatur quia sint excepturi non suscipit porro nemo adipisci aspernatur beatae voluptatem maiores veritatis labore mollitia. Accusamus minus animi aliquam rerum error ipsam tempore provident necessitatibus deleniti? Quisquam sapiente laudantium ipsum totam consequatur nemo alias doloribus eos quaerat officia saepe nihil ducimus ab, amet asperiores, molestiae voluptas nesciunt. Nisi atque voluptatem earum cumque exercitationem quidem rem adipisci deleniti, soluta nam harum voluptatum perspiciatis animi laboriosam dolore facere temporibus eligendi totam sint sapiente necessitatibus! Laboriosam suscipit enim laudantium cupiditate non ipsa omnis ratione. Omnis aut ratione unde, cupiditate perferendis reiciendis fuga, natus repellendus dicta nulla voluptatum reprehenderit asperiores illum suscipit magnam iure temporibus aliquid saepe quae deserunt iste fugiat tenetur doloremque. Molestias quo corrupti amet dicta tenetur. </p>
+          <p id="search_abstract"> Nous sommes partis d'un simple constat, il y a pléthore de ressources sur internet, mais la qualité est variable. De plus, durant notre parcours de formation, de nombreuses âmes charitables ont partagé leurs découvertes, mais malheureusement, peu d'outil collaboratif (gratuit) assurent une pérennité de ces données (par exemple Slack). Alors ici, l'enjeu est simple, partagez ce que vous appréciez, et nous garantirons la survie de ce travail !</p>
 
           <div id="search_buttons">
             {/* Research or add button */}

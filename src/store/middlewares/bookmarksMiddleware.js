@@ -16,6 +16,7 @@ import {
   ADD_BOOKMARK,
   EDIT_BOOKMARK,
   FAV_RESSOURCE,
+  requestBookmarks,
   receivedBookmarks,
   receivedFilters,
   receivedRessource,
@@ -390,6 +391,7 @@ const bookmarksAxios = store => next => (action) => {
         .put(url, request)
         .then((response) => {
           console.log(response);
+          store.dispatch(requestBookmarks());
         })
         .catch((error) => {
           // console.error(error);
