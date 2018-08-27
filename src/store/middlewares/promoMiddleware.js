@@ -59,7 +59,7 @@ const promoAxios = store => next => (action) => {
     }
 
     case LOAD_SCHOOL_LINKS: {
-      const url = `${baseUrl}/api/promotions/4?displayGroup=promotion`;
+      const url = `${baseUrl}/api/promotions/1?displayGroup=promotion`;
       axios
         .get(url, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {

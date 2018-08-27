@@ -15,6 +15,8 @@ import {
   ADD_TAG,
   ADD_BOOKMARK,
   EDIT_BOOKMARK,
+  FAV_RESSOURCE,
+  requestBookmarks,
   receivedBookmarks,
   receivedFilters,
   receivedRessource,
@@ -365,6 +367,38 @@ const bookmarksAxios = store => next => (action) => {
             if (error.response.data.url !== undefined) {
               document.getElementById('add-bookmark-error').innerHTML += `<p>${error.response.data.url}</p>`;
             }
+          }
+        });
+      break;
+    }
+
+    // Fav a ressource
+    case FAV_RESSOURCE: {
+      // Request
+      const request = {
+        [action.typeRequest]: [
+          {
+            'id': action.userId,
+            'entity': 'user',
+            'property': 'favedBy',
+          },
+        ],
+      };
+      // Url requesting for last bookmarks
+      const url = `${baseUrl}/api/bookmarks/${action.bookmarkId}`;
+
+      // Requesting
+      axios
+        .put(url, request)
+        .then((response) => {
+          console.log(response);
+          store.dispatch(requestBookmarks());
+        })
+        .catch((error) => {
+          // console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
           }
         });
       break;

@@ -22,7 +22,8 @@
     "react/no-unescaped-entities": "off",
     "max-len": "off",
     "jsx-a11y/label-has-for": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "quote-props": "off",
   },
   "settings": {
     "import/resolver": "webpack"

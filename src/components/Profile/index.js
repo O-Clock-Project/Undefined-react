@@ -26,17 +26,23 @@ class Profile extends React.Component {
     edit: PropTypes.bool.isRequired,
     loaded: PropTypes.bool.isRequired,
     loadUserView: PropTypes.func.isRequired,
+    loadBookmarks: PropTypes.func.isRequired,
+    resetSelectValue: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
-    const { idView, loadUserView } = this.props;
+    const { idView, loadUserView, loadBookmarks, resetSelectValue } = this.props;
     loadUserView(idView);
+    loadBookmarks();
+    resetSelectValue();
   }
 
   componentDidUpdate(prevProps) {
-    const { idView, loadUserView } = this.props;
+    const { idView, loadUserView, loadBookmarks, resetSelectValue } = this.props;
     if (idView !== prevProps.idView) {
       loadUserView(idView);
+      loadBookmarks();
+      resetSelectValue();
     }
     scroll.scrollToTop({
       duration: 500,

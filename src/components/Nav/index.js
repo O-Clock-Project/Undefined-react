@@ -33,4 +33,4 @@ Nav.propTypes = {
 /**
  * Export
  */
-export default withMobile(Nav, 990);
+export default withMobile(Nav, 1200);

@@ -94,6 +94,8 @@ export const NO_RESULTS = 'NO_RESULTS';
 export const LOAD_RESSOURCE = 'LOAD_RESSOURCE';
 export const RECEIVED_RESSOURCE = 'RECEIVED_RESSOURCE';
 
+export const FAV_RESSOURCE = 'FAV_RESSOURCE';
+
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
 export const SHOW_ADD_BOOKMARK = 'SHOW_ADD_BOOKMARK';
@@ -410,6 +412,25 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case FAV_RESSOURCE: {
+      // Loading status if require (Profil vue)
+      let newBookmarksStatus = 'loaded';
+      let newResultsStatus = true;
+      if (state.bookmarks.length < 2) {
+        newBookmarksStatus = 'loading';
+        newResultsStatus = true;
+      }
+      return {
+        ...state,
+        bookmarksStatus: newBookmarksStatus,
+        results: newResultsStatus,
+        bookmark: {
+          ...state.bookmark,
+          faved_by: action.newFavedBy,
+        },
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -665,6 +686,14 @@ export const loadRessource = id => ({
 export const receivedRessource = data => ({
   type: RECEIVED_RESSOURCE,
   data,
+});
+
+export const favRessource = (typeRequest, bookmarkId, userId, newFavedBy) => ({
+  type: FAV_RESSOURCE,
+  typeRequest,
+  bookmarkId,
+  userId,
+  newFavedBy,
 });
 
 export const showAddTag = () => ({
