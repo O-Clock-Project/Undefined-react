@@ -18,6 +18,7 @@ import mainReducer from 'src/store/reducer';
 // Middlewares
 import userMiddleware from 'src/store/middlewares/userMiddleware';
 import bookmarksMiddleware from 'src/store/middlewares/bookmarksMiddleware';
+import promoMiddleware from 'src/store/middlewares/promoMiddleware';
 
 /*
  * Code
@@ -27,7 +28,7 @@ if (window.devToolsExtension) {
   devTools.push(window.devToolsExtension());
 }
 
-const appliedMiddleware = applyMiddleware(userMiddleware, bookmarksMiddleware);
+const appliedMiddleware = applyMiddleware(userMiddleware, bookmarksMiddleware, promoMiddleware);
 const enhancers = compose(appliedMiddleware, ...devTools);
 
 const reducers = {

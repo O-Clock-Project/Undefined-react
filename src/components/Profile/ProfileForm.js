@@ -5,7 +5,10 @@ import { Field, reduxForm } from 'redux-form';
 const required = value => (value ? undefined : 'Champ requis.');
 const minLength = min => value => (value && value.length < min ? `Doit faire au minimum ${min} caractères.` : undefined);
 const minLength2 = minLength(2);
+const minLength4 = minLength(4);
 const minLength8 = minLength(8);
+const maxLength = max => value => (value && value.length > max ? `Doit faire au maximum ${max} caractères.` : undefined);
+const maxLength10 = maxLength(10);
 const email = value => (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
   ? 'Adresse email invalide' : undefined);
 const passwordsMatch = (value, allValues) => (value !== allValues.password ? 'Les mots de passe ne correspondent pas.' : undefined);
@@ -37,47 +40,56 @@ const EditProfilForm = (props) => {
   } = props;
   return (
     <form onSubmit={handleSubmit} className="profile-edit-form">
+      <h2 className="annonce-subtitle">Informations</h2>
       <Field
         name="firstname"
         type="text"
-        label="Prénom"
+        label="Prénom *"
         component={renderField}
         validate={[required, minLength2]}
       />
       <Field
         name="lastname"
         type="text"
-        label="Nom"
+        label="Nom *"
         component={renderField}
         validate={[required, minLength2]}
       />
       <Field
         name="email"
         type="email"
-        label="Email"
+        label="Email *"
         component={renderField}
         validate={[required, email]}
       />
       <Field
         name="birthday"
         type="date"
-        label="Date de naissance"
+        label="Date de naissance *"
         component={renderField}
         validate={required}
       />
       <Field
         name="github"
         type="text"
-        label="Pseudo GitHub"
+        label="Pseudo GitHub *"
         component={renderField}
         validate={required}
       />
       <Field
         name="zip"
         type="text"
-        label="Code postal"
+        label="Code postal *"
         component={renderField}
-        validate={required}
+        validate={[required, minLength4, maxLength10]}
+      />
+      <h2 className="annonce-subtitle">Changement de mot de passe</h2>
+      <Field
+        name="old_password"
+        type="password"
+        label="Mot de passe actuel"
+        component={renderField}
+        // validate={minLength8}
       />
       <Field
         name="password"
@@ -93,6 +105,10 @@ const EditProfilForm = (props) => {
         component={renderField}
         validate={passwordsMatch}
       />
+      <div className="profile-edit-legend">
+        * : Champs obligatoires
+      </div>
+      <div id="edit-error" />
       <div className="profile-edit-validate">
         <button className="profile-edit-btn" type="submit" disabled={submitting}>Valider</button>
       </div>

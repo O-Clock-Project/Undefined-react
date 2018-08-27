@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { animateScroll as scroll } from 'react-scroll';
 
 /**
  * Local import
@@ -34,9 +35,13 @@ class Profile extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { idView, loadUserView } = this.props;
-    if (idView != prevProps.idView) {
+    if (idView !== prevProps.idView) {
       loadUserView(idView);
     }
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
   }
 
   render() {

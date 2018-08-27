@@ -1,0 +1,62 @@
+/**
+ * Import
+ */
+@import src/styles/vars
+
+/**
+ * Styles
+ */
+.left
+  margin: 3rem 1.5rem 3rem 3rem
+  @media screen and (max-width: $break-point)
+    margin: 3rem
+
+.right
+  margin: 3rem 3rem 3rem 1.5rem
+  @media screen and (max-width: $break-point)
+    margin: 3rem
+
+.infos
+
+  &_container
+    margin-bottom: 3rem
+    padding: 1.5rem
+    background-color: $div-bgcolor
+    border-radius: 0.3rem
+    border: 1px solid $border-color
+
+  &_title
+    text-align: center
+    font-size: 3rem
+    font-weight: bold
+    text-transform: uppercase
+    margin-bottom: 3rem
+
+  &_textSubtitle
+    font-weight: 600
+    font-size: 1.6rem
+
+  &_divSubtitle
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    padding-bottom:  0.5rem
+    border-bottom: 2px solid $border-color
+    margin-bottom: 1rem
+
+  &_abstract,
+  &_list
+    line-height: 1.8
+    margin: 1rem 0
+
+  &_title_abstract
+    align-self: flex-start
+    font-size: 1.4rem
+    font-weight: 700
+    margin-bottom: 0.5rem
+
+  &_list
+    padding-left: 2rem
+
+  &_span
+    font-weight: 700

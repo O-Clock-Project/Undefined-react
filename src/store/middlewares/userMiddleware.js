@@ -15,6 +15,7 @@ import {
   receivedUser,
   receivedUserView,
   successEditUser,
+  loadPromo,
 } from '../reducer';
 
 
@@ -34,9 +35,13 @@ const userAxios = store => next => (action) => {
         .get(url)
         .then((response) => {
           store.dispatch(receivedUser(response.data));
+          store.dispatch(loadPromo(response.data.affectations[0].promotion.id));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }
@@ -47,11 +52,16 @@ const userAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          // console.log(response.data[0]);
           store.dispatch(receivedUserView(response.data));
         })
         .catch((error) => {
-          console.error(error);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
+          if (status === 404) {
+            window.location.replace('/app/not_found');
+          }
         });
       break;
     }
@@ -59,6 +69,8 @@ const userAxios = store => next => (action) => {
     // Edit user
     case EDIT_USER: {
       const url = `${baseUrl}/api/users/${action.values.id}`;
+      const oldPassword = action.values.old_password;
+      const password = action.values.confirmPassword;
       const prepareData = {
         username: action.values.username,
         first_name: action.values.firstname,
@@ -67,6 +79,8 @@ const userAxios = store => next => (action) => {
         pseudo_github: action.values.github,
         zip: action.values.zip,
         birthday: action.values.birthday,
+        old_password: oldPassword,
+        password,
       };
       axios
         .put(url, prepareData)
@@ -79,7 +93,23 @@ const userAxios = store => next => (action) => {
           store.dispatch(successEditUser(data));
         })
         .catch((error) => {
-          console.error(error);
+          console.log(error.response);
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
+          if (status === 400) {
+            document.getElementById('edit-error').innerHTML = '';
+            if (error.response.data.error !== undefined) {
+              document.getElementById('edit-error').innerHTML += `<p>${error.response.data.error}</p>`;
+            }
+            if (error.response.data.email !== undefined) {
+              document.getElementById('edit-error').innerHTML += `<p>${error.response.data.email}</p>`;
+            }
+            if (error.response.data.pseudo_github !== undefined) {
+              document.getElementById('edit-error').innerHTML += `<p>${error.response.data.pseudo_github}</p>`;
+            }
+          }
         });
       break;
     }

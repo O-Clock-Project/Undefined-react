@@ -11,25 +11,41 @@
   flex-direction: column
   align-items: center
   margin: 3rem 1.5rem 3rem 3rem
+  @media screen and (max-width: $break-point)
+    margin: 3rem
 
   &_title
     text-align: center
-    font-size: 3rem
+    font-size: 2rem
+    text-transform: uppercase
     font-weight: bold
     margin-bottom: 0.5rem
 
   &_infos
-    font-weight: bold
+    color: $link-color
     margin-bottom: 3rem
 
-  &_presentation
-    line-height: 1.2
-    text-align: center
-
-  &_tags
-    margin: 2.5rem 0
+  &_container
     display: flex
     flex-direction: column
+    width: 100%
+    padding: 1.5rem
+    text-align: center
+    background-color: $div-bgcolor
+    border: 1px solid $border-color
+    border-radius: 0.3rem
+
+    p
+      line-height: 1.2
+      font-size: 1.1rem
+
+  &_toolbar
+    margin-top: 1.5rem
+    align-self: flex-end
+
+  &_tags
+    display: flex
+    margin: 1.5rem auto 3rem
 
   &_preview
     width: 100%
@@ -49,12 +65,6 @@
     &_title
       font-weight: 600
       font-size: 1.6rem
-    
-  &_link
-    display: flex
-
-    & p
-      margin-right: 0.5rem
 
   &_capture
     width: 60%
@@ -63,43 +73,26 @@
   &_image
     width: 100%
 
-
 // Tags CSS
 .ressource_tags
-  
-  &_line
-    display: flex
-    justify-content: center
-    margin: 0.5rem
-
   &_tag
     display: flex
+    align-items: stretch
+    padding: .30rem .5rem
+    font-size: 1rem
+    text-transform: lowercase
+    margin: 0.3rem 0.5rem
+    background-color: $div-bgcolor
+    border: 1px solid $div-bgcolor
+    border-radius: .25rem
+    color: $link-color
 
-.tag_content
-  display: flex
-  align-items: center
-  text-align: center
-  color: $link-color
-  background-color: $div-bgcolor
-  border-top: 1px solid darken($div-bgcolor, 5%)
-  border-bottom: 1px solid darken($div-bgcolor, 5%)
-  padding: 0.5rem 0
-  text-transform: lowercase
-  font-weight: 600
+.ressource_tags_tag--tag1
+  color: $link-color-hover
+  background-color: $tag1-bgcolor
+  border: none
 
-.tag_left, .tag_right
-  width: 30px
-  height: 100%
-  background-color: $div-bgcolor
-  border: 1px solid darken($div-bgcolor, 5%)
-  border-radius: 50%
-
-.tag_left
-  transform: translate(50%)
-  z-index: -1
-
-.tag_right
-  transform: translate(-50%)
-  z-index: -1
-
-
+.ressource_tags_tag--tag2
+  color: $div-bgcolor
+  background-color: $link-color
+  border: none

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import {
-  FaHome, FaBook, FaUserCircle, FaInfoCircle,
+  FaHome, FaBook, FaUserCircle, FaInfoCircle, FaSignOutAlt,
 } from 'react-icons/fa';
 import { IoIosMenu } from 'react-icons/io';
 
@@ -49,7 +49,7 @@ class NavMobile extends React.Component {
           {/* Home */}
           <NavLink
             exact
-            to="/"
+            to="/app"
             className="navbar-link"
             activeClassName="navbar-link--active"
             onClick={this.toggleNavbar}
@@ -59,7 +59,7 @@ class NavMobile extends React.Component {
           {/* Bookmarks */}
           <NavLink
             exact
-            to="/bookmarks"
+            to="/app/bookmarks"
             className="navbar-link"
             activeClassName="navbar-link--active"
             onClick={this.toggleNavbar}
@@ -68,8 +68,8 @@ class NavMobile extends React.Component {
           </NavLink>
           {/* Profile */}
           <NavLink
-            exact
-            to={`/profile/${user.id}`}
+            strict
+            to={`/app/profile/${user.id}`}
             className="navbar-link"
             activeClassName="navbar-link--active"
             onClick={this.toggleNavbar}
@@ -77,13 +77,29 @@ class NavMobile extends React.Component {
             <FaUserCircle className="font-svg" /> Profil
           </NavLink>
           {/* Informations */}
-          <a href="#" className="navbar-link"><FaInfoCircle className="font-svg" /> Informations</a>
+          <NavLink
+            strict
+            to="/app/informations"
+            className="navbar-link"
+            activeClassName="navbar-link--active"
+            onClick={this.toggleNavbar}
+          >
+            <FaInfoCircle className="font-svg" /> Informations
+          </NavLink>
+          <NavLink
+            exact
+            to="/logout"
+            className="navbar-link"
+            activeClassName="navbar-link--active"
+          >
+            <FaSignOutAlt className="font-svg" /> Déconnexion
+          </NavLink>
         </div>
         <div className="navbar-end">
           {/* Home */}
           <NavLink
             exact
-            to="/"
+            to="/app"
             className="navbar-link"
             activeClassName="navbar-link--active"
           >

@@ -13,6 +13,10 @@ const required = value => (value ? undefined : 'Champ requis.');
 const minLength = min => value => (value && value.length < min ? `Doit faire au minimum ${min} caractères.` : undefined);
 const minLength10 = minLength(10);
 
+const maxLength = max => value => (value && value.length > max ? `Doit faire au maximum ${max} caractères.` : undefined);
+const maxLength100 = maxLength(100);
+const maxLength1000 = maxLength(1000);
+
 const url = /[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/i;
 const validUrl = value => (value && !url.test(value)
   ? 'URL invalide' : undefined);
@@ -37,6 +41,52 @@ renderField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   meta: PropTypes.any.isRequired,
+};
+
+const renderSelect = ({
+  input, label, meta: { touched, error, warning }, children,
+}) => (
+  <div className="search_add_form_line">
+    <label className="search_add_form_label">
+      {label} :
+      <select className="search_add_form_select" {...input}>
+        {children}
+      </select>
+    </label>
+    <div>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+);
+
+renderSelect.propTypes = {
+  input: PropTypes.any.isRequired,
+  label: PropTypes.string.isRequired,
+  meta: PropTypes.any.isRequired,
+  children: PropTypes.any.isRequired,
+};
+
+const renderTag = ({
+  input, label, meta: { touched, error, warning }, children,
+}) => (
+  <Fragment>
+    <label className="search_add_form_label">
+      {label} :
+      <select className="search_add_form_select" {...input}>
+        {children}
+      </select>
+    </label>
+    <div>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </Fragment>
+);
+
+renderTag.propTypes = {
+  input: PropTypes.any.isRequired,
+  label: PropTypes.string.isRequired,
+  meta: PropTypes.any.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 // Render for textarea
@@ -93,24 +143,24 @@ class SearchAddForm extends React.Component {
           <Field
             name="title"
             type="text"
-            label="Titre"
+            label="Titre *"
             component={renderField}
-            validate={[required, minLength10]}
+            validate={[required, minLength10, maxLength100]}
           />
           {/* Input Resumé */}
           <Field
             name="resume"
-            label="Resumé"
+            label="Resumé *"
             rows="5"
             cols="50"
             component={renderTextArea}
-            validate={required}
+            validate={[required, minLength10, maxLength1000]}
           />
           {/* Input URL */}
           <Field
             name="url"
             type="text"
-            label="Lien vers la ressource"
+            label="Lien vers la ressource *"
             component={renderField}
             validate={[required, validUrl]}
           />
@@ -126,7 +176,7 @@ class SearchAddForm extends React.Component {
           <Field
             name="published_at"
             type="date"
-            label="Date de publication"
+            label="Date de publication *"
             component={renderField}
             validate={required}
           />
@@ -134,102 +184,94 @@ class SearchAddForm extends React.Component {
           <Field
             name="author"
             type="text"
-            label="Auteur"
+            label="Auteur *"
             component={renderField}
             validate={required}
           />
           {/* Select Support */}
-          <div className="search_add_form_line">
-            <label className="search_add_form_label">Sélectionner un support :
-              <Field
-                name="select_type"
-                className="search_add_form_select"
-                component="select"
-              >
-                {filters.supports.map(support => (
-                  <option value={support.name} key={support.id}>{support.name}</option>
-                ))}
-              </Field>
-            </label>
-          </div>
+          <Field
+            name="select_type"
+            label="Sélectionner un support *"
+            className="search_add_form_select"
+            component={renderSelect}
+            validate={required}
+          >
+            <option>Aucun</option>
+            {filters.supports.map(support => (
+              <option value={support.id} key={support.id}>{support.name}</option>
+            ))}
+          </Field>
           {/* Select Langue */}
-          <div className="search_add_form_line">
-            <label className="search_add_form_label">Sélectionner une langue :
-              <Field
-                name="select_language"
-                className="search_add_form_select"
-                component="select"
-              >
-                {filters.locales.map(locale => (
-                  <option value={locale.name} key={locale.id}>{locale.name}</option>
-                ))}
-              </Field>
-            </label>
-          </div>
+          <Field
+            name="select_language"
+            label="Sélectionner une langue *"
+            className="search_add_form_select"
+            component={renderSelect}
+            validate={required}
+          >
+            <option>Aucun</option>
+            {filters.locales.map(locale => (
+              <option value={locale.id} key={locale.id}>{locale.name}</option>
+            ))}
+          </Field>
           {/* Select Niveau */}
-          <div className="search_add_form_line">
-            <label className="search_add_form_label">Sélectionner un niveau :
-              <Field
-                name="select_level"
-                className="search_add_form_select"
-                component="select"
-              >
-                {filters.difficulties.map(difficultie => (
-                  <option value={difficultie.name} key={difficultie.id}>{difficultie.name}</option>
-                ))}
-              </Field>
-            </label>
-          </div>
+          <Field
+            name="select_level"
+            label="Sélectionner un niveau *"
+            className="search_add_form_select"
+            component={renderSelect}
+            validate={required}
+          >
+            <option>Aucun</option>
+            {filters.difficulties.map(difficultie => (
+              <option value={difficultie.id} key={difficultie.id}>{difficultie.name}</option>
+            ))}
+          </Field>
           {/* Select TAG 1 */}
           <div className="search_add_form_line">
-            <label className="search_add_form_label">Sélectionner un tag :
-              <Field
-                name="select_tag1"
-                className="search_add_form_select"
-                component="select"
-                validate={required}
-              >
-                <option>Aucun</option>
-                {filters.tags.map(tag => (
-                  <option value={tag.label} key={tag.id}>{tag.label}</option>
-                ))}
-              </Field>
-            </label>
+            <Field
+              name="select_tag1"
+              label="Sélectionner un tag *"
+              className="search_add_form_select"
+              component={renderTag}
+              validate={required}
+            >
+              <option>Aucun</option>
+              {filters.tags.map(tag => (
+                <option value={tag.id} key={tag.id}>{tag.label}</option>
+              ))}
+            </Field>
             {/* Option for add a tag with a modal window */}
             <div className="search_add_form_addTag" onClick={this.openModal}><FaPlusCircle /> Ajouter un tag</div>
           </div>
           {/* Select TAG 2 */}
-          <div className="search_add_form_line">
-            <label className="search_add_form_label">Sélectionner un tag :
-              <Field
-                name="select_tag2"
-                className="search_add_form_select"
-                component="select"
-                validate={required}
-              >
-                <option>Aucun</option>
-                {filters.tags.map(tag => (
-                  <option value={tag.label} key={tag.id}>{tag.label}</option>
-                ))}
-              </Field>
-            </label>
-          </div>
+          <Field
+            name="select_tag2"
+            label="Sélectionner un tag"
+            className="search_add_form_select"
+            component={renderSelect}
+          >
+            <option>Aucun</option>
+            {filters.tags.map(tag => (
+              <option value={tag.id} key={tag.id}>{tag.label}</option>
+            ))}
+          </Field>
           {/* Select TAG 3 */}
-          <div className="search_add_form_line">
-            <label className="search_add_form_label">Sélectionner un tag :
-              <Field
-                name="select_tag3"
-                className="search_add_form_select"
-                component="select"
-                validate={required}
-              >
-                <option>Aucun</option>
-                {filters.tags.map(tag => (
-                  <option value={tag.label} key={tag.id}>{tag.label}</option>
-                ))}
-              </Field>
-            </label>
+          <Field
+            name="select_tag3"
+            label="Sélectionner un tag"
+            className="search_add_form_select"
+            component={renderSelect}
+          >
+            <option>Aucun</option>
+            {filters.tags.map(tag => (
+              <option value={tag.id} key={tag.id}>{tag.label}</option>
+            ))}
+          </Field>
+          <div className="profile-edit-legend">
+            * : Champs obligatoires
           </div>
+          <div id="add-bookmark-error" />
           {/* Button Envoyer */}
           <div className="profile-edit-validate">
             <button className="profile-edit-btn" type="submit" disabled={submitting}>Envoyer</button>

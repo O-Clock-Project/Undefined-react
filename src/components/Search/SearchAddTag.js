@@ -40,6 +40,7 @@ const SearchAddTag = (props) => {
         component={renderField}
         validate={[required, minLength2]}
       />
+      <div id="tag-error" />
       <div className="profile-edit-validate">
         <button className="profile-edit-btn" type="submit" disabled={submitting}>Créer</button>
       </div>

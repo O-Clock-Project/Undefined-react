@@ -2,6 +2,8 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
+import { animateScroll as scroll } from 'react-scroll';
 
 /**
  * Local import
@@ -18,20 +20,32 @@ import './search.sass';
  * Code
  */
 class Search extends React.Component {
-  state = {
-    toggleForm: true,
+  static propTypes = {
+    toggleForm: PropTypes.bool.isRequired,
+    showAddBookmark: PropTypes.func.isRequired,
   }
 
-  handleClick = () => {
-    const { toggleForm } = this.state;
-
-    this.setState({
-      toggleForm: !toggleForm,
+  componentDidMount() {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
     });
   }
 
+  componentDidUpdate() {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+  }
+
+  handleClick = () => {
+    const { showAddBookmark } = this.props;
+    showAddBookmark();
+  }
+
   render() {
-    const { toggleForm } = this.state;
+    const { toggleForm } = this.props;
     return (
       <div id="search">
         <h1 id="search_title">Les Bookmarks</h1>
@@ -52,8 +66,8 @@ class Search extends React.Component {
         </div>
 
         {/* Form add or research */}
-        {toggleForm && <FormSearchContainer />}
         {!toggleForm && <SearchAdd />}
+        {toggleForm && <FormSearchContainer />}
       </div>
     );
   }
