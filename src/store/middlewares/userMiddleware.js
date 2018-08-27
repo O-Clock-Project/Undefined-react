@@ -27,12 +27,14 @@ import {
  * Middleware
  */
 const userAxios = store => next => (action) => {
+  const token = store.getState().main.user_token;
+
   switch (action.type) {
     // Load user data connect
     case LOAD_USER: {
       const url = `${baseUrl}/api/users/${action.id}?displayGroup=profile`;
       axios
-        .get(url)
+        .get(url, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
           store.dispatch(receivedUser(response.data));
           store.dispatch(loadPromo(response.data.affectations[0].promotion.id));
@@ -50,7 +52,7 @@ const userAxios = store => next => (action) => {
     case LOAD_USER_VIEW: {
       const url = `${baseUrl}/api/users/${action.id}?displayGroup=profile`;
       axios
-        .get(url)
+        .get(url, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
           store.dispatch(receivedUserView(response.data));
         })
@@ -83,7 +85,7 @@ const userAxios = store => next => (action) => {
         password,
       };
       axios
-        .put(url, prepareData)
+        .put(url, prepareData, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
           const data = {
             ...prepareData,

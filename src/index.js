@@ -6,7 +6,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
 /**
  * Local import
@@ -16,17 +16,17 @@ import App from 'src/components/App';
 // store
 import store from 'src/store';
 import {
-  setToken, loadBookmarks, loadFilters, loadSchoolLinks,
+  setToken, loadUser, loadBookmarks, loadFilters, loadSchoolLinks,
 } from 'src/store/reducer';
 
 /**
  * Code
  */
-// const root = document.getElementById('root');
-// const { token } = root.dataset;
-// const decoded = jwtDecode(dataToken);
-// console.log(decoded);
-// store.dispatch(setToken(dataToken));
+const root = document.getElementById('root');
+const { token } = root.dataset;
+const decoded = jwtDecode(token);
+console.log(decoded);
+store.dispatch(setToken(token));
 
 const rootComponent = (
   <Provider store={store}>
@@ -38,8 +38,7 @@ const rootComponent = (
 
 render(rootComponent, document.getElementById('root'));
 
-// store.dispatch(loadUser(2));
-// store.dispatch(loadUser(23));
+store.dispatch(loadUser(decoded.id));
 store.dispatch(loadFilters());
 store.dispatch(loadBookmarks());
 store.dispatch(loadSchoolLinks());
