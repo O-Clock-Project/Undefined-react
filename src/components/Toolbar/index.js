@@ -24,6 +24,7 @@ import certified from 'src/assets/images/certified.svg';
 class Toolbar extends React.Component {
   static propTypes = {
     // From Ressource
+    bookmarkId: PropTypes.number.isRequired,
     votes: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number,
       value: PropTypes.number,
@@ -40,6 +41,8 @@ class Toolbar extends React.Component {
     // From Store
     currentUserId: PropTypes.number.isRequired,
     showEditBookmark: PropTypes.func.isRequired,
+    favRessource: PropTypes.func.isRequired,
+    currentUser: PropTypes.object.isRequired,
   }
 
   checkFavorite = () => {
@@ -56,7 +59,36 @@ class Toolbar extends React.Component {
   }
 
   handleFavorite = () => {
-
+    // Needed data from props
+    const {
+      currentUserId,
+      bookmarkId,
+      favRessource,
+      favedBy,
+      currentUser,
+    } = this.props;
+    // New favedBy for state update
+    let newFavedBy = [];
+    // Action type for request
+    let type = '';
+    // Check if the bookmark is allready favorite by the user
+    if (this.checkFavorite()) {
+      // Request type remove
+      type = 'remove';
+      // New favedBy
+      newFavedBy = favedBy.filter(faved => faved.id !== currentUserId);
+    }
+    else {
+      // Request type add
+      type = 'add';
+      // New favedBy
+      newFavedBy = [
+        ...favedBy,
+        { id: currentUserId, username: currentUser.username },
+      ];
+    }
+    // I dispacth the action with the data
+    favRessource(type, bookmarkId, currentUserId, newFavedBy);
   }
 
   render() {
@@ -66,15 +98,15 @@ class Toolbar extends React.Component {
       currentUserId,
       showEditBookmark,
     } = this.props;
+
     return (
       <div id="toolbar">
 
         {/* Favoried */}
-        {console.log(this.checkFavorite())}
         <div id="toolbar_fav">
           <div id="toolbar_fav_icon">
-            {!this.checkFavorite() && <IoIosStarOutline />}
-            {this.checkFavorite() && <IoIosStar />}
+            {!this.checkFavorite() && <IoIosStarOutline onClick={this.handleFavorite} />}
+            {this.checkFavorite() && <IoIosStar onClick={this.handleFavorite} />}
           </div>
         </div>
 
