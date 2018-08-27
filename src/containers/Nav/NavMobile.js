@@ -14,6 +14,7 @@ import NavMobile from 'src/components/Nav/NavMobile';
 // State
 const mapStateToProps = state => ({
   user: state.main.user,
+  loaded: state.main.loaded,
 });
 
 // Actions

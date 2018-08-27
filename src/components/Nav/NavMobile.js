@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import {
-  FaHome, FaBook, FaUserCircle, FaInfoCircle, FaSignOutAlt,
+  FaHome, FaBook, FaUserCircle, FaInfoCircle, FaSignOutAlt, FaUserSecret,
 } from 'react-icons/fa';
 import { IoIosMenu } from 'react-icons/io';
 
@@ -24,6 +24,7 @@ import logo from 'src/assets/images/logo_bold_jaune.png';
 class NavMobile extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
+    loaded: PropTypes.bool.isRequired,
   }
 
   state = {
@@ -38,8 +39,12 @@ class NavMobile extends React.Component {
     });
   }
 
+  clickDisconnect = () => {
+    window.location.replace('/logout');
+  }
+
   render() {
-    const { user } = this.props;
+    const { user, loaded } = this.props;
     const { navOpen } = this.state;
     const classCSS = classNames('navbar-start', { navOpen });
 
@@ -86,14 +91,21 @@ class NavMobile extends React.Component {
           >
             <FaInfoCircle className="font-svg" /> Informations
           </NavLink>
-          <NavLink
-            exact
-            to="/logout"
+          {loaded && user.best_role.level >= 3
+          && (
+          <a
             className="navbar-link"
-            activeClassName="navbar-link--active"
+            onClick={this.clickDisconnect}
+          >
+            <FaUserSecret className="font-svg" /> Administration
+          </a>
+          )}
+          <a
+            className="navbar-link"
+            onClick={this.clickDisconnect}
           >
             <FaSignOutAlt className="font-svg" /> Déconnexion
-          </NavLink>
+          </a>
         </div>
         <div className="navbar-end">
           {/* Home */}

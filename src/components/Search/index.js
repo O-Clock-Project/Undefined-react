@@ -53,7 +53,7 @@ class Search extends React.Component {
         <div id="search_container">
           <h2 id="search_title_abstract">Pourquoi avons-nous créé cette section ? </h2>
 
-          <p id="search_abstract"> Nous sommes partis d'un simple constat, il y a pléthore de ressources sur internet, mais la qualité est variable. De plus, durant notre parcours de formation, de nombreuses âmes charitables ont partagé leurs découvertes, mais malheureusement, peu d'outil collaboratif (gratuit) assurent une pérennité de ces données (par exemple Slack). Alors ici, l'enjeu est simple, partagez ce que vous appréciez, et nous garantirons la survie de ce travail !</p>
+          <p id="search_abstract"> Nous sommes partis d'un simple constat, il y a pléthore de ressources sur internet, mais la qualité est variable. De plus, durant notre parcours de formation, de nombreuses âmes charitables ont partagé leurs découvertes, mais malheureusement, peu d'outils collaboratifs (gratuits) assurent une pérennité de ces données (par exemple Slack). Alors ici, l'enjeu est simple, partagez ce que vous appréciez, et nous garantirons la survie de ce travail !</p>
 
           <div id="search_buttons">
             {/* Research or add button */}

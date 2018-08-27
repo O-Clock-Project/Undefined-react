@@ -10,7 +10,7 @@ import { withRouter } from 'react-router-dom';
 import Profile from 'src/components/Profile';
 
 // Action Creators
-import { loadUserView } from 'src/store/reducer';
+import { loadUserView, loadBookmarks, resetSelectValue } from 'src/store/reducer';
 
 /* === State (données) === */
 const mapStateToProps = (state, ownProps) => {
@@ -28,6 +28,12 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   loadUserView: (id) => {
     dispatch(loadUserView(id));
+  },
+  loadBookmarks: () => {
+    dispatch(loadBookmarks());
+  },
+  resetSelectValue: () => {
+    dispatch(resetSelectValue());
   },
 });
 
