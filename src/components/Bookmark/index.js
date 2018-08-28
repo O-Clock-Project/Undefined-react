@@ -69,6 +69,8 @@ class Bookmark extends React.Component {
     dispatchLanguage: PropTypes.func.isRequired,
     dispatchLevel: PropTypes.func.isRequired,
     requestBookmarks: PropTypes.func.isRequired,
+    dispatchVote: PropTypes.func.isRequired,
+    currentBookmark: PropTypes.object.isRequired,
   };
 
   handleSupport = () => {
@@ -115,6 +117,15 @@ class Bookmark extends React.Component {
     requestBookmarks();
   }
 
+  handleClick = () => {
+    // Take what I need from props
+    const { dispatchVote, currentBookmark, id } = this.props;
+    // Set the vote value for a bookmarks, preven ta bad display for Toolbar
+    if (currentBookmark.id !== id) {
+      dispatchVote(5);
+    }
+  }
+
   render() {
     const {
       id,
@@ -150,6 +161,7 @@ class Bookmark extends React.Component {
             }
             {/* Title */}
             <NavLink
+              onClick={this.handleClick}
               strict
               to={`/app/bookmarks/${id}`}
               className="bookmark_identity_title"

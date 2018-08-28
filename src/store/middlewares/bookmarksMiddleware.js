@@ -16,6 +16,9 @@ import {
   ADD_BOOKMARK,
   EDIT_BOOKMARK,
   FAV_RESSOURCE,
+  GET_VOTE,
+  VOTE_UP,
+  VOTE_DOWN,
   requestBookmarks,
   receivedBookmarks,
   receivedFilters,
@@ -27,6 +30,10 @@ import {
   showAddTag,
   showAddBookmark,
   showEditBookmark,
+  dispatchVote,
+  dispatchVoteid,
+  dispatchVotesBookmark,
+  reduceVotesBookmark,
 } from '../reducer';
 
 
@@ -389,8 +396,7 @@ const bookmarksAxios = store => next => (action) => {
       // Requesting
       axios
         .put(url, request)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           store.dispatch(requestBookmarks());
         })
         .catch((error) => {
@@ -400,6 +406,173 @@ const bookmarksAxios = store => next => (action) => {
             window.location.replace('/');
           }
         });
+      break;
+    }
+
+    // Get Vote for bookmark
+    case GET_VOTE: {
+      // Url requesting for last bookmarks
+      const url = `${baseUrl}/api/votes/check?voter=${action.userId}&bookmark=${action.bookmarkId}`;
+
+      // Requesting
+      axios
+        .get(url)
+        .then((response) => {
+          // Dispatch the data from response
+          store.dispatch(dispatchVote(response.data.value));
+          store.dispatch(dispatchVoteid(response.data.id));
+        })
+        .catch((error) => {
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
+        });
+      break;
+    }
+
+    // Vote Up for bookmark
+    case VOTE_UP: {
+      if (action.method === 'post') {
+        // Url requesting
+        const url = `${baseUrl}/api/votes`;
+        // Data
+        const data = {
+          'value': action.value,
+          'add':
+          [
+            {
+              'id': action.userId,
+              'entity': 'user',
+              'property': 'voter',
+            },
+            {
+              'id': action.bookmarkId,
+              'entity': 'bookmark',
+              'property': 'bookmark',
+            },
+          ],
+        };
+
+        // Requesting
+        axios
+          .post(url, data)
+          .then((response) => {
+            // Dispatch the new vote id and value in the state
+            store.dispatch(dispatchVoteid(response.data.id));
+            store.dispatch(dispatchVote(response.data.value));
+            // Adding the new vote in the state.bookmark.vote
+            const newVote = {
+              'id': response.data.id,
+              'value': response.data.value,
+            };
+            store.dispatch(dispatchVotesBookmark(newVote));
+            // Update bookmarks list
+            store.dispatch(requestBookmarks());
+          })
+          .catch((error) => {
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
+          });
+      }
+
+      else {
+        // Url requesting
+        const url = `${baseUrl}/api/votes/${action.voteId}`;
+        // Requesting
+        axios
+          .delete(url)
+          .then(() => {
+            // Dispatch the new vote id and value in the state
+            store.dispatch(dispatchVoteid(null));
+            store.dispatch(dispatchVote(0));
+            // Reduce the vote in bookmark.votes
+            store.dispatch(reduceVotesBookmark(action.voteId));
+            // Update bookmarks list
+            store.dispatch(requestBookmarks());
+          })
+          .catch((error) => {
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
+          });
+      }
+
+      break;
+    }
+
+    case VOTE_DOWN: {
+      if (action.method === 'post') {
+        // Url requesting
+        const url = `${baseUrl}/api/votes`;
+        // Data
+        const data = {
+          'value': action.value,
+          'add':
+          [
+            {
+              'id': action.userId,
+              'entity': 'user',
+              'property': 'voter',
+            },
+            {
+              'id': action.bookmarkId,
+              'entity': 'bookmark',
+              'property': 'bookmark',
+            },
+          ],
+        };
+
+        // Requesting
+        axios
+          .post(url, data)
+          .then((response) => {
+            // Dispatch the new vote id and value in the state
+            store.dispatch(dispatchVoteid(response.data.id));
+            store.dispatch(dispatchVote(response.data.value));
+            // Adding the new vote in the state.bookmark.vote
+            const newVote = {
+              'id': response.data.id,
+              'value': response.data.value,
+            };
+            store.dispatch(dispatchVotesBookmark(newVote));
+            // Update bookmarks list
+            store.dispatch(requestBookmarks());
+          })
+          .catch((error) => {
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
+          });
+      }
+
+      else {
+        // Url requesting
+        const url = `${baseUrl}/api/votes/${action.voteId}`;
+        // Requesting
+        axios
+          .delete(url)
+          .then(() => {
+            // Dispatch the new vote id and value in the state
+            store.dispatch(dispatchVoteid(null));
+            store.dispatch(dispatchVote(0));
+            // Reduce the vote in bookmark.votes
+            store.dispatch(reduceVotesBookmark(action.voteId));
+            // Update bookmarks list
+            store.dispatch(requestBookmarks());
+          })
+          .catch((error) => {
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
+          });
+      }
+
       break;
     }
 

@@ -43,6 +43,20 @@ class Toolbar extends React.Component {
     showEditBookmark: PropTypes.func.isRequired,
     favRessource: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired,
+    getVote: PropTypes.func.isRequired,
+    userVoteForBookmark: PropTypes.number.isRequired,
+    userVoteforBookmarkId: PropTypes.number,
+    voteUp: PropTypes.func.isRequired,
+    voteDown: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    userVoteforBookmarkId: null,
+  };
+
+  componentDidMount() {
+    const { getVote, currentUserId, bookmarkId } = this.props;
+    getVote(currentUserId, bookmarkId);
   }
 
   checkFavorite = () => {
@@ -91,17 +105,80 @@ class Toolbar extends React.Component {
     favRessource(type, bookmarkId, currentUserId, newFavedBy);
   }
 
+  handleVoteUp = () => {
+    // What I need from the props
+    const {
+      userVoteForBookmark,
+      currentUserId,
+      bookmarkId,
+      voteUp,
+      userVoteforBookmarkId,
+    } = this.props;
+    // The type of the vote
+    let typeVote = '';
+    // The new vote value
+    let newVoteValue = 0;
+
+    // Switch case :
+    if (userVoteForBookmark === 0) {
+      // Type is create
+      typeVote = 'post';
+      // Value for new vote
+      newVoteValue = 1;
+    }
+    else {
+      // Type is delete
+      typeVote = 'delete';
+      newVoteValue = 5;
+    }
+
+    // Dispatch for middleware request
+    voteUp(typeVote, newVoteValue, currentUserId, bookmarkId, userVoteforBookmarkId);
+  }
+
+  handleVoteDown =() => {
+    // What I need from the props
+    const {
+      userVoteForBookmark,
+      currentUserId,
+      bookmarkId,
+      voteDown,
+      userVoteforBookmarkId,
+    } = this.props;
+    // The type of the vote
+    let typeVote = '';
+    // The new vote value
+    let newVoteValue = 0;
+
+    // Switch case :
+    if (userVoteForBookmark === 0) {
+      // Type is create
+      typeVote = 'post';
+      // Value for new vote
+      newVoteValue = -1;
+    }
+    else {
+      // Type is delete
+      typeVote = 'delete';
+      newVoteValue = 5;
+    }
+
+    // Dispatch for middleware request
+    voteDown(typeVote, newVoteValue, currentUserId, bookmarkId, userVoteforBookmarkId);
+  }
+
   render() {
     const {
       certifiedBy,
       userOwner,
       currentUserId,
       showEditBookmark,
+      votes,
+      userVoteForBookmark,
     } = this.props;
 
     return (
       <div id="toolbar">
-
         {/* Favoried */}
         <div id="toolbar_fav">
           <div id="toolbar_fav_icon">
@@ -120,13 +197,16 @@ class Toolbar extends React.Component {
         {/* Vote */}
         <div id="toolbar_vote">
           <div id="toolbar_vote_up">
-            <FaSortUp />
+            {userVoteForBookmark === -1 && <FaSortUp onClick={this.handleVoteUp} />}
+            {userVoteForBookmark === 0 && <FaSortUp onClick={this.handleVoteUp} />}
           </div>
           <div id="toolbar_vote_content">
-            52
+            {votes.reduce((cumul, vote) => (
+              cumul + vote.value), 0)}
           </div>
           <div id="toolbar_vote_down">
-            <FaSortDown />
+            {userVoteForBookmark === 1 && <FaSortDown onClick={this.handleVoteDown} />}
+            {userVoteForBookmark === 0 && <FaSortDown onClick={this.handleVoteDown} />}
           </div>
         </div>
 

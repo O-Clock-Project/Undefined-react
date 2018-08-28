@@ -16,10 +16,13 @@ import {
   dispatchLanguage,
   dispatchLevel,
   loadRessource,
+  dispatchVote,
 } from 'src/store/reducer';
 
 // State
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  currentBookmark: state.main.bookmark,
+});
 
 // Actions
 const mapDispatchToProps = dispatch => ({
@@ -45,6 +48,10 @@ const mapDispatchToProps = dispatch => ({
 
   loadRessource: (id) => {
     dispatch(loadRessource(id));
+  },
+
+  dispatchVote: (value) => {
+    dispatch(dispatchVote(value));
   },
 });
 
