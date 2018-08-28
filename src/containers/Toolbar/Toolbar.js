@@ -9,13 +9,20 @@ import { connect } from 'react-redux';
 import Toolbar from 'src/components/Toolbar';
 
 // Action Creators
-import { showEditBookmark, favRessource, getVote } from 'src/store/reducer';
+import {
+  showEditBookmark,
+  favRessource,
+  getVote,
+  voteUp,
+  dispatchVote,
+} from 'src/store/reducer';
 
 // State
 const mapStateToProps = state => ({
   currentUserId: state.main.id_user,
   currentUser: state.main.user,
   userVoteForBookmark: state.main.userVoteForBookmark,
+  userVoteforBookmarkId: state.main.userVoteId,
 });
 
 // Actions
@@ -30,6 +37,14 @@ const mapDispatchToProps = dispatch => ({
 
   getVote: (userId, bookmarkId) => {
     dispatch(getVote(userId, bookmarkId));
+  },
+
+  voteUp: (method, value, userId, bookmarkId, voteId) => {
+    dispatch(voteUp(method, value, userId, bookmarkId, voteId));
+  },
+
+  dispatchVote: (value) => {
+    dispatch(dispatchVote(value));
   },
 });
 

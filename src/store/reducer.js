@@ -12,6 +12,7 @@ const initialState = {
   edit_profile: false,
   // User vote for a bookmark
   userVoteForBookmark: 5,
+  userVoteId: null,
 
   // BOOKMARKS
   // Datas
@@ -98,6 +99,9 @@ export const FAV_RESSOURCE = 'FAV_RESSOURCE';
 
 export const GET_VOTE = 'GET_VOTE';
 export const DISPATCH_VOTE = 'DISPATCH_VOTE';
+export const DISPATCH_VOTEID = 'DISPATCH_VOTEID';
+export const VOTE_UP = 'VOTE_UP';
+export const DISPATCH_VOTES_BOOKMARK = 'DISPATCH_VOTES_BOOKMARK ';
 
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
@@ -440,6 +444,32 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case DISPATCH_VOTEID: {
+      return {
+        ...state,
+        userVoteId: action.value,
+      };
+    }
+
+    case VOTE_UP: {
+      return {
+        ...state,
+      };
+    }
+
+    case DISPATCH_VOTES_BOOKMARK: {
+      return {
+        ...state,
+        bookmark: {
+          ...state.bookmark,
+          votes: [
+            ...state.bookmark.votes,
+            action.newVote,
+          ],
+        },
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -709,6 +739,25 @@ export const getVote = (userId, bookmarkId) => ({
 export const dispatchVote = value => ({
   type: DISPATCH_VOTE,
   value,
+});
+
+export const dispatchVoteid = value => ({
+  type: DISPATCH_VOTEID,
+  value,
+});
+
+export const voteUp = (method, value, userId, bookmarkId, voteId) => ({
+  type: VOTE_UP,
+  method,
+  value,
+  userId,
+  bookmarkId,
+  voteId,
+});
+
+export const dispatchVotesBookmark = newVote => ({
+  type: DISPATCH_VOTES_BOOKMARK,
+  newVote,
 });
 
 export const showAddTag = () => ({
