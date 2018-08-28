@@ -18,6 +18,7 @@ import {
   FAV_RESSOURCE,
   GET_VOTE,
   VOTE_UP,
+  VOTE_DOWN,
   requestBookmarks,
   receivedBookmarks,
   receivedFilters,
@@ -433,6 +434,76 @@ const bookmarksAxios = store => next => (action) => {
 
     // Vote Up for bookmark
     case VOTE_UP: {
+      if (action.method === 'post') {
+        // Url requesting
+        const url = `${baseUrl}/api/votes`;
+        // Data
+        const data = {
+          'value': action.value,
+          'add':
+          [
+            {
+              'id': action.userId,
+              'entity': 'user',
+              'property': 'voter',
+            },
+            {
+              'id': action.bookmarkId,
+              'entity': 'bookmark',
+              'property': 'bookmark',
+            },
+          ],
+        };
+
+        // Requesting
+        axios
+          .post(url, data)
+          .then((response) => {
+            console.log(response);
+            // Dispatch the new vote id and value in the state
+            store.dispatch(dispatchVoteid(response.data.id));
+            store.dispatch(dispatchVote(response.data.value));
+            // Adding the new vote in the state.bookmark.vote
+            const newVote = {
+              'id': response.data.id,
+              'value': response.data.value,
+            };
+            store.dispatch(dispatchVotesBookmark(newVote));
+            // Update bookmarks list
+            store.dispatch(requestBookmarks());
+          })
+          .catch((error) => {
+            console.log(data);
+            console.error(error);
+            // const { status } = error.response;
+            // if (status === 401) {
+            //   window.location.replace('/');
+            // }
+          });
+      }
+
+      else {
+        // Url requesting
+        const url = `${baseUrl}/api/votes/${action.voteId}`;
+        // Requesting
+        axios
+          .delete(url)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.error(error);
+            // const { status } = error.response;
+            // if (status === 401) {
+            //   window.location.replace('/');
+            // }
+          });
+      }
+
+      break;
+    }
+
+    case VOTE_DOWN: {
       if (action.method === 'post') {
         // Url requesting
         const url = `${baseUrl}/api/votes`;

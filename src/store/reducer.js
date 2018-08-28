@@ -101,6 +101,7 @@ export const GET_VOTE = 'GET_VOTE';
 export const DISPATCH_VOTE = 'DISPATCH_VOTE';
 export const DISPATCH_VOTEID = 'DISPATCH_VOTEID';
 export const VOTE_UP = 'VOTE_UP';
+export const VOTE_DOWN = 'VOTE_DOWN';
 export const DISPATCH_VOTES_BOOKMARK = 'DISPATCH_VOTES_BOOKMARK ';
 
 // Form add bookmark
@@ -457,6 +458,12 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case VOTE_DOWN: {
+      return {
+        ...state,
+      };
+    }
+
     case DISPATCH_VOTES_BOOKMARK: {
       return {
         ...state,
@@ -747,6 +754,15 @@ export const dispatchVoteid = value => ({
 });
 
 export const voteUp = (method, value, userId, bookmarkId, voteId) => ({
+  type: VOTE_UP,
+  method,
+  value,
+  userId,
+  bookmarkId,
+  voteId,
+});
+
+export const voteDown = (method, value, userId, bookmarkId, voteId) => ({
   type: VOTE_UP,
   method,
   value,

@@ -14,6 +14,7 @@ import {
   favRessource,
   getVote,
   voteUp,
+  voteDown,
   dispatchVote,
 } from 'src/store/reducer';
 
@@ -41,6 +42,10 @@ const mapDispatchToProps = dispatch => ({
 
   voteUp: (method, value, userId, bookmarkId, voteId) => {
     dispatch(voteUp(method, value, userId, bookmarkId, voteId));
+  },
+
+  voteDown: (method, value, userId, bookmarkId, voteId) => {
+    dispatch(voteDown(method, value, userId, bookmarkId, voteId));
   },
 
   dispatchVote: (value) => {

@@ -47,7 +47,7 @@ class Toolbar extends React.Component {
     userVoteForBookmark: PropTypes.number.isRequired,
     userVoteforBookmarkId: PropTypes.number,
     voteUp: PropTypes.func.isRequired,
-    dispatchVote: PropTypes.func.isRequired,
+    voteDown: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -137,7 +137,34 @@ class Toolbar extends React.Component {
   }
 
   handleVoteDown =() => {
-    
+    // What I need from the props
+    const {
+      userVoteForBookmark,
+      currentUserId,
+      bookmarkId,
+      voteDown,
+      userVoteforBookmarkId,
+    } = this.props;
+    // The type of the vote
+    let typeVote = '';
+    // The new vote value
+    let newVoteValue = 0;
+
+    // Switch case :
+    if (userVoteForBookmark === 0) {
+      // Type is create
+      typeVote = 'post';
+      // Value for new vote
+      newVoteValue = -1;
+    }
+    else {
+      // Type is delete
+      typeVote = 'delete';
+      newVoteValue = 5;
+    }
+
+    // Dispatch for middleware request
+    voteDown(typeVote, newVoteValue, currentUserId, bookmarkId, userVoteforBookmarkId);
   }
 
   render() {
@@ -178,8 +205,8 @@ class Toolbar extends React.Component {
               cumul + vote.value), 0)}
           </div>
           <div id="toolbar_vote_down">
-            {userVoteForBookmark === 1 && <FaSortDown />}
-            {userVoteForBookmark === 0 && <FaSortDown />}
+            {userVoteForBookmark === 1 && <FaSortDown onClick={this.handleVoteDown} />}
+            {userVoteForBookmark === 0 && <FaSortDown onClick={this.handleVoteDown} />}
           </div>
         </div>
 
