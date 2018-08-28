@@ -16,6 +16,7 @@ import {
   ADD_BOOKMARK,
   EDIT_BOOKMARK,
   FAV_RESSOURCE,
+  GET_VOTE,
   requestBookmarks,
   receivedBookmarks,
   receivedFilters,
@@ -27,6 +28,7 @@ import {
   showAddTag,
   showAddBookmark,
   showEditBookmark,
+  dispatchVote,
 } from '../reducer';
 
 
@@ -398,6 +400,29 @@ const bookmarksAxios = store => next => (action) => {
           if (status === 401) {
             window.location.replace('/');
           }
+        });
+      break;
+    }
+
+    // Get Vote for bookmark
+    case GET_VOTE: {
+      // Url requesting for last bookmarks
+      const url = `${baseUrl}/api/votes/check?voter=${action.userId}&bookmark=${action.bookmarkId}`;
+
+      // Requesting
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response.data.value);
+          // Dispatch the data from response
+          store.dispatch(dispatchVote(response.data.value));
+        })
+        .catch((error) => {
+          console.error(error);
+          // const { status } = error.response;
+          // if (status === 401) {
+          //   window.location.replace('/');
+          // }
         });
       break;
     }

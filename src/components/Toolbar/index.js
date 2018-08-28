@@ -43,6 +43,13 @@ class Toolbar extends React.Component {
     showEditBookmark: PropTypes.func.isRequired,
     favRessource: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired,
+    getVote: PropTypes.func.isRequired,
+    userVoteForBookmark: PropTypes.number.isRequired,
+  }
+
+  componentDidMount() {
+    const { getVote, currentUserId, bookmarkId } = this.props;
+    getVote(currentUserId, bookmarkId);
   }
 
   checkFavorite = () => {
@@ -98,11 +105,11 @@ class Toolbar extends React.Component {
       currentUserId,
       showEditBookmark,
       votes,
+      userVoteForBookmark,
     } = this.props;
 
     return (
       <div id="toolbar">
-
         {/* Favoried */}
         <div id="toolbar_fav">
           <div id="toolbar_fav_icon">
@@ -121,14 +128,16 @@ class Toolbar extends React.Component {
         {/* Vote */}
         <div id="toolbar_vote">
           <div id="toolbar_vote_up">
-            <FaSortUp />
+            {userVoteForBookmark === -1 && <FaSortUp />}
+            {userVoteForBookmark === 0 && <FaSortUp />}
           </div>
           <div id="toolbar_vote_content">
             {votes.reduce((cumul, vote) => (
               cumul + vote.value), 0)}
           </div>
           <div id="toolbar_vote_down">
-            <FaSortDown />
+            {userVoteForBookmark === 1 && <FaSortDown />}
+            {userVoteForBookmark === 0 && <FaSortDown />}
           </div>
         </div>
 

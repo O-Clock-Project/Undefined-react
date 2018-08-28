@@ -10,6 +10,8 @@ const initialState = {
   user: {},
   user_view: {},
   edit_profile: false,
+  // User vote for a bookmark
+  userVoteForBookmark: 5,
 
   // BOOKMARKS
   // Datas
@@ -93,6 +95,9 @@ export const LOAD_RESSOURCE = 'LOAD_RESSOURCE';
 export const RECEIVED_RESSOURCE = 'RECEIVED_RESSOURCE';
 
 export const FAV_RESSOURCE = 'FAV_RESSOURCE';
+
+export const GET_VOTE = 'GET_VOTE';
+export const DISPATCH_VOTE = 'DISPATCH_VOTE';
 
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
@@ -422,6 +427,19 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case GET_VOTE: {
+      return {
+        ...state,
+      };
+    }
+
+    case DISPATCH_VOTE: {
+      return {
+        ...state,
+        userVoteForBookmark: action.value,
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -680,6 +698,17 @@ export const favRessource = (typeRequest, bookmarkId, userId, newFavedBy) => ({
   bookmarkId,
   userId,
   newFavedBy,
+});
+
+export const getVote = (userId, bookmarkId) => ({
+  type: GET_VOTE,
+  userId,
+  bookmarkId,
+});
+
+export const dispatchVote = value => ({
+  type: DISPATCH_VOTE,
+  value,
 });
 
 export const showAddTag = () => ({
