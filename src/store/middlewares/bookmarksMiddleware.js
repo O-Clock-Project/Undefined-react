@@ -33,6 +33,7 @@ import {
   dispatchVote,
   dispatchVoteid,
   dispatchVotesBookmark,
+  reduceVotesBookmark,
 } from '../reducer';
 
 
@@ -417,17 +418,15 @@ const bookmarksAxios = store => next => (action) => {
       axios
         .get(url)
         .then((response) => {
-          console.log(response.data);
           // Dispatch the data from response
           store.dispatch(dispatchVote(response.data.value));
           store.dispatch(dispatchVoteid(response.data.id));
         })
         .catch((error) => {
-          console.error(error);
-          // const { status } = error.response;
-          // if (status === 401) {
-          //   window.location.replace('/');
-          // }
+          const { status } = error.response;
+          if (status === 401) {
+            window.location.replace('/');
+          }
         });
       break;
     }
@@ -459,7 +458,6 @@ const bookmarksAxios = store => next => (action) => {
         axios
           .post(url, data)
           .then((response) => {
-            console.log(response);
             // Dispatch the new vote id and value in the state
             store.dispatch(dispatchVoteid(response.data.id));
             store.dispatch(dispatchVote(response.data.value));
@@ -473,12 +471,10 @@ const bookmarksAxios = store => next => (action) => {
             store.dispatch(requestBookmarks());
           })
           .catch((error) => {
-            console.log(data);
-            console.error(error);
-            // const { status } = error.response;
-            // if (status === 401) {
-            //   window.location.replace('/');
-            // }
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
           });
       }
 
@@ -488,15 +484,20 @@ const bookmarksAxios = store => next => (action) => {
         // Requesting
         axios
           .delete(url)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
+            // Dispatch the new vote id and value in the state
+            store.dispatch(dispatchVoteid(null));
+            store.dispatch(dispatchVote(0));
+            // Reduce the vote in bookmark.votes
+            store.dispatch(reduceVotesBookmark(action.voteId));
+            // Update bookmarks list
+            store.dispatch(requestBookmarks());
           })
           .catch((error) => {
-            console.error(error);
-            // const { status } = error.response;
-            // if (status === 401) {
-            //   window.location.replace('/');
-            // }
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
           });
       }
 
@@ -529,7 +530,6 @@ const bookmarksAxios = store => next => (action) => {
         axios
           .post(url, data)
           .then((response) => {
-            console.log(response);
             // Dispatch the new vote id and value in the state
             store.dispatch(dispatchVoteid(response.data.id));
             store.dispatch(dispatchVote(response.data.value));
@@ -543,12 +543,10 @@ const bookmarksAxios = store => next => (action) => {
             store.dispatch(requestBookmarks());
           })
           .catch((error) => {
-            console.log(data);
-            console.error(error);
-            // const { status } = error.response;
-            // if (status === 401) {
-            //   window.location.replace('/');
-            // }
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
           });
       }
 
@@ -558,15 +556,20 @@ const bookmarksAxios = store => next => (action) => {
         // Requesting
         axios
           .delete(url)
-          .then((response) => {
-            console.log(response);
+          .then(() => {
+            // Dispatch the new vote id and value in the state
+            store.dispatch(dispatchVoteid(null));
+            store.dispatch(dispatchVote(0));
+            // Reduce the vote in bookmark.votes
+            store.dispatch(reduceVotesBookmark(action.voteId));
+            // Update bookmarks list
+            store.dispatch(requestBookmarks());
           })
           .catch((error) => {
-            console.error(error);
-            // const { status } = error.response;
-            // if (status === 401) {
-            //   window.location.replace('/');
-            // }
+            const { status } = error.response;
+            if (status === 401) {
+              window.location.replace('/');
+            }
           });
       }
 

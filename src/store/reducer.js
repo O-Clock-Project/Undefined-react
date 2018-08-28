@@ -103,6 +103,7 @@ export const DISPATCH_VOTEID = 'DISPATCH_VOTEID';
 export const VOTE_UP = 'VOTE_UP';
 export const VOTE_DOWN = 'VOTE_DOWN';
 export const DISPATCH_VOTES_BOOKMARK = 'DISPATCH_VOTES_BOOKMARK ';
+export const REDUCE_VOTES_BOOKMARK = 'REDUCE_VOTES_BOOKMARK';
 
 // Form add bookmark
 export const SHOW_ADD_TAG = 'SHOW_ADD_TAG';
@@ -477,6 +478,18 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case REDUCE_VOTES_BOOKMARK: {
+      const oldVotes = state.bookmark.votes;
+      const newVotes = oldVotes.filter(oldVote => oldVote.id !== action.voteId);
+      return {
+        ...state,
+        bookmark: {
+          ...state.bookmark,
+          votes: newVotes,
+        },
+      };
+    }
+
     // Form add bookmark
     case SHOW_ADD_TAG: {
       return {
@@ -763,7 +776,7 @@ export const voteUp = (method, value, userId, bookmarkId, voteId) => ({
 });
 
 export const voteDown = (method, value, userId, bookmarkId, voteId) => ({
-  type: VOTE_UP,
+  type: VOTE_DOWN,
   method,
   value,
   userId,
@@ -774,6 +787,11 @@ export const voteDown = (method, value, userId, bookmarkId, voteId) => ({
 export const dispatchVotesBookmark = newVote => ({
   type: DISPATCH_VOTES_BOOKMARK,
   newVote,
+});
+
+export const reduceVotesBookmark = voteId => ({
+  type: REDUCE_VOTES_BOOKMARK,
+  voteId,
 });
 
 export const showAddTag = () => ({
