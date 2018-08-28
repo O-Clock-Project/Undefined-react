@@ -8,6 +8,7 @@ import {
   FaFilm,
   FaHeadphones,
   FaFileAlt,
+  FaExternalLinkAlt,
 } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import { animateScroll as scroll } from 'react-scroll';
@@ -172,7 +173,7 @@ class Ressource extends React.Component {
               {/* Ressource preview */}
               <div id="ressource_preview">
                 <div id="ressource_preview_section">
-                  <p id="ressource_preview_title">Lien vers la ressource</p>
+                  <p id="ressource_preview_title"><a href={bookmark.url} target="_blank" rel="noopener noreferrer">Lien vers la ressource</a></p>
                   <div>
                     {bookmark.support.icon === 'FaFilm'
                       && <FaFilm id="ressource_preview_icon" />
@@ -187,13 +188,11 @@ class Ressource extends React.Component {
                 </div>
 
                 <div id="ressource_capture">
-                  <a href={bookmark.url} target="_blank" rel="noopener noreferrer">
-                    <img
-                      id="ressource_image"
-                      src={bookmark.image}
-                      alt="preview"
-                    />
-                  </a>
+                  <img
+                    id="ressource_image"
+                    src={bookmark.image}
+                    alt="preview"
+                  />
                 </div>
 
               </div>
