@@ -43,6 +43,10 @@ class NavMobile extends React.Component {
     window.location.replace('/logout');
   }
 
+  clickAdmin = () => {
+    window.location.replace('/admin');
+  }
+
   render() {
     const { user, loaded } = this.props;
     const { navOpen } = this.state;
@@ -95,7 +99,7 @@ class NavMobile extends React.Component {
           && (
           <a
             className="navbar-link"
-            onClick={this.clickDisconnect}
+            onClick={this.clickAdmin}
           >
             <FaUserSecret className="font-svg" /> Administration
           </a>

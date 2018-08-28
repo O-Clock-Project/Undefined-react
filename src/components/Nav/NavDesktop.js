@@ -88,7 +88,7 @@ class NavDesktop extends React.Component {
             && (
               <a
                 className="navbar-link"
-                onClick={this.clickDisconnect}
+                onClick={this.clickAdmin}
               >
                 <FaUserSecret className="font-svg" /> Administration
               </a>
