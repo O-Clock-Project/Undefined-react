@@ -34,7 +34,7 @@ import {
  * Middleware
  */
 const promoAxios = store => next => (action) => {
-  const token = store.getState().main.user_token;
+  // const token = store.getState().main.user_token;
 
   switch (action.type) {
     // Load user data connect
@@ -42,7 +42,7 @@ const promoAxios = store => next => (action) => {
       const idPromo = action.id;
       const url = `${baseUrl}/api/promotions/${idPromo}?displayGroup=promotion`;
       axios
-        .get(url, { headers: { Authorization: `Bearer ${token}` } })
+        .get(url) // , { headers: { Authorization: `Bearer ${token}` } }
         .then((response) => {
           store.dispatch(receivedPromo(response.data));
         })
@@ -61,7 +61,7 @@ const promoAxios = store => next => (action) => {
     case LOAD_SCHOOL_LINKS: {
       const url = `${baseUrl}/api/promotions/1?displayGroup=promotion`;
       axios
-        .get(url, { headers: { Authorization: `Bearer ${token}` } })
+        .get(url)
         .then((response) => {
           store.dispatch(receivedSchoolLinks(response.data.links));
         })
@@ -81,7 +81,7 @@ const promoAxios = store => next => (action) => {
       const idPromo = action.id;
       const url = `${baseUrl}/api/promotions/${idPromo}/announcements/promotions?displayGroup=announcements&frozen=false`;
       axios
-        .get(url, { headers: { Authorization: `Bearer ${token}` } })
+        .get(url)
         .then((response) => {
           store.dispatch(receivedAnnounces(response.data));
         })
@@ -101,7 +101,7 @@ const promoAxios = store => next => (action) => {
       const idAnnounce = action.id;
       const url = `${baseUrl}/api/announcements/${idAnnounce}?displayGroup=announcement`;
       axios
-        .get(url, { headers: { Authorization: `Bearer ${token}` } })
+        .get(url)
         .then((response) => {
           store.dispatch(receivedAnnounce(response.data));
         })
@@ -121,7 +121,7 @@ const promoAxios = store => next => (action) => {
       const idAnnounce = action.id;
       const url = `${baseUrl}/api/announcements/${idAnnounce}/comments/announcement?displayGroup=comments&orderField=created_at&sortType=ASC`;
       axios
-        .get(url, { headers: { Authorization: `Bearer ${token}` } })
+        .get(url)
         .then((response) => {
           store.dispatch(receivedComments(response.data));
         })
@@ -157,7 +157,7 @@ const promoAxios = store => next => (action) => {
         ],
       };
       axios
-        .post(url, prepareData, { headers: { Authorization: `Bearer ${token}` } })
+        .post(url, prepareData)
         .then(() => {
           store.dispatch(loadComments(action.values.idAnnounce));
           store.dispatch(loadAnnounces(idPromo));

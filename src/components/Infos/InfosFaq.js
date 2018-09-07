@@ -42,22 +42,22 @@ class InfosCharte extends React.Component {
           </p>
           <h2 className="infos_title_abstract">Comment modifier mon profil ?</h2>
           <p className="infos_abstract">
-            Directement sur la page de ton Profil, tu a accès à toutes tes informations personnelles et également au bouton “modifier ton profil”. En y accédant, un formulaire de modification te sera proposé.
+            Directement sur la page de ton Profil, tu as accès à toutes tes informations personnelles et également au bouton “Modifier ton profil”. En y accédant, un formulaire de modification te sera proposé.
             C’est également sur ce formulaire que tu pourras modifier ton mot de passe.
           </p>
           <h2 className="infos_title_abstract">Comment m’y retrouver parmi tous les Bookmarks postés ?</h2>
           <p className="infos_abstract">
-            Sur la page Bookmarks, tu disposes d’une série de filtres qui te permettent de mener des recherches précises:
-            -Support: Ecrit , Audio ou Vidéo.
-            -Langue: La langue dans laquelle est disponible le Bookmark.
-            -Niveau: Le niveau de compétence dans le sujet traité pour lequel le Bookmark est destiné (Commencer, Progresser, Se dépasser).
+            Sur la page Bookmarks, tu disposes d’une série de filtres qui te permettent de mener des recherches précises :
+            - Support : Ecrit, Audio ou Vidéo.
+            - Langue : La langue dans laquelle est disponible le Bookmark.
+            - Niveau : Le niveau de compétence dans le sujet traité pour lequel le Bookmark est destiné (Commencer, Progresser, Se dépasser).
           </p>
           <p className="infos_abstract">
             Dans la section de droite, tu disposes également en haut de plusieurs tris qui peuvent t’aider à accéder à ce que tu désires:
-            -Date d’ajout du Bookmark.
-            -Date de publication de la source ciblée par le Bookmark.
-            -Nombre de favoris.
-            -Score issus des votes de tous les utilisateurs du Hub.
+            - Date d’ajout du Bookmark.
+            - Date de publication de la source ciblée par le Bookmark.
+            - Nombre de favoris.
+            - Score issus des votes de tous les utilisateurs du Hub.
           </p>
           <h2 className="infos_title_abstract">Que veux dire la mention “Certified by Prof” ?</h2>
           <p className="infos_abstract">
@@ -67,13 +67,13 @@ class InfosCharte extends React.Component {
           <p className="infos_abstract">
             En te rendant sur la page du Bookmark choisi, tu trouvera un bouton <FaSortDown /> qui permet de l’ajouter dans tes favoris.
           </p>
-          <h2 className="infos_title_abstract">Où puis-je retrouver mes favoris ou aux bookmarks que j’ai posté ?</h2>
+          <h2 className="infos_title_abstract">Où puis-je retrouver mes favoris ou les bookmarks que j’ai posté ?</h2>
           <p className="infos_abstract">
-            En te rendant sur ta page de profil, tu trouvera un bouton “Mes favoris” et un bouton “Mes Bookmarks” qui permet de les afficher dans la zone de droite. En te rendant sur la page d’autres membres du site, tu pourras également parcourir leurs favoris et les Bookmarks qu’ils ont posté !
+            En te rendant sur ta page de profil, tu trouvera un bouton “Mes favoris” et un bouton “Mes Bookmarks” qui permettront de les afficher dans la zone de droite. En te rendant sur la page d’autres membres du site, tu pourras également parcourir leurs favoris et les Bookmarks qu’ils ont posté !
           </p>
           <h2 className="infos_title_abstract">Est-il possible de voter pour un Bookmark ?</h2>
           <p className="infos_abstract">
-            Oui, il te suffit sur la page du Bookmark de cliquer sur les flèches vers le haut ou vers le bas  et ainsi ton vote sera pris en compte. Si tu changes d’avis, tu peux cliquer sur la flèche en sens inverse pour annuler ton vote actuel. Il te sera ensuite tout à fait possible de soumettre un nouveau vote !
+            Oui, il te suffit sur la page du Bookmark de cliquer sur les flèches vers le haut ou vers le bas et ainsi ton vote sera pris en compte. Si tu changes d’avis, tu peux cliquer sur la flèche en sens inverse pour annuler ton vote actuel. Il te sera ensuite tout à fait possible de soumettre un nouveau vote !
           </p>
           <h2 className="infos_title_abstract">A quoi servent les “Kiem Tao” ?</h2>
           <p className="infos_abstract">

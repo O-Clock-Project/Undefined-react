@@ -24,7 +24,7 @@ class InfosCharte extends React.Component {
 
   render() {
     return (
-      <div className="infos right">
+      <div className="infos">
         <div className="infos_divSubtitle">
           <p className="infos_textSubtitle">Charte du site</p>
         </div>

@@ -9,6 +9,7 @@ import { animateScroll as scroll } from 'react-scroll';
  */
 // Composants
 import InfosWhoWeAre from './InfosWhoWeAre';
+import InfosCharte from './InfosCharte';
 
 // Styles et assets
 import './infos.sass';
@@ -29,6 +30,7 @@ class Infos extends React.Component {
       <div className="infos left">
         <h1 className="infos_title">Informations</h1>
         <InfosWhoWeAre />
+        <InfosCharte />
       </div>
     );
   }

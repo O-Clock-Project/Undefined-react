@@ -10,7 +10,7 @@ import { Route, Switch } from 'react-router-dom';
 // Composants
 import BookmarksContainer from 'src/containers/Bookmarks/Bookmarks';
 import PromoAnnounce from 'src/containers/Promo/PromoAnnounce';
-import InfosCharte from 'src/components/Infos/InfosCharte';
+import InfosFaq from 'src/components/Infos/InfosFaq';
 import NotFound from 'src/components/NotFound';
 
 
@@ -41,7 +41,7 @@ const Mainright = () => (
         path="/app/bookmarks/:id"
         component={BookmarksContainer}
       />
-      <Route exact path="/app/informations" component={InfosCharte} />
+      <Route exact path="/app/informations" component={InfosFaq} />
       <Route component={NotFound} />
     </Switch>
   </div>
